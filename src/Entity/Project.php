@@ -9,7 +9,6 @@ use App\Entity\Traits\ImageFileTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PositionTrait;
 use App\Entity\Traits\SlugTrait;
-use App\Entity\Traits\TitleTrait;
 use App\Entity\Traits\WebsiteTrait;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,7 +32,6 @@ class Project extends AbstractBase
     use ImageFileTrait;
     use NameTrait;
     use PositionTrait;
-    use TitleTrait;
     use SlugTrait;
     use WebsiteTrait;
 
