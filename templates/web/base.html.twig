@@ -8,12 +8,38 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('web') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('web') }}
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="{{ 'frontend.navbar' | trans }}">
+            <div class="container-xl">
+                <a class="navbar-brand" href="{{ path('app_web_homepage') }}">
+                    <img src="{{ asset('build/images/logo.png') }}" alt="{{ 'frontend.logo' | trans }} {{ project_title }}" width="140">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="{{ 'frontend.toggle' | trans }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    {{ knp_menu_render('main') }}
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="row my-4">
+                        <div class="col">
+                            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                                {{ message | trans }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'frontend.close_button' | trans }}"></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>

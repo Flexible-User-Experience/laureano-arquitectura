@@ -15,3 +15,11 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    # Menus
+    App\Menu\MenuBuilder:
+        class: App\Menu\WebMenuBuilder
+        arguments:
+            - '@knp_menu.factory'
+            - '@request_stack'
+        tags:
+            - { name: 'knp_menu.menu_builder', method: 'createMainMenu', alias: 'main' }
