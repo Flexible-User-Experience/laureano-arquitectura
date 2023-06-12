@@ -1,0 +1,8 @@
+frontend:
+    navbar: 'navbar'
+    logo: 'logo'
+    toggle: 'toggle'
+
+homepage: 'homepage'
+projects: 'projects'
+contact: 'contact'

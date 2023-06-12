@@ -1,0 +1,8 @@
+frontend:
+    navbar: 'barra de navegació'
+    logo: 'logo'
+    toggle: 'intercanviador'
+
+homepage: 'inici'
+projects: 'projectes'
+contact: 'contacte'
