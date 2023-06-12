@@ -2,6 +2,8 @@
 
 namespace App\Controller\Web;
 
+use App\Entity\Project;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,10 +27,10 @@ class MainController extends AbstractController
         ],
         name: 'app_web_projects_list',
     )]
-    public function projectsList(): Response
+    public function projectsList(ProjectRepository $pr): Response
     {
         return $this->render('web/projects.html.twig', [
-            'projects' => 'MainController :: projectsList',
+            'projects' => $pr->getActiveAndShowInFrontendSortedByPosition(),
         ]);
     }
 
@@ -40,10 +42,10 @@ class MainController extends AbstractController
         ],
         name: 'app_web_project_detail',
     )]
-    public function projectDetail(string $slug): Response
+    public function projectDetail(Project $project): Response
     {
-        return $this->render('web/homepage.html.twig', [
-            'controller_name' => 'MainController :: projectDetail',
+        return $this->render('web/project_detail.html.twig', [
+            'project' => $project,
         ]);
     }
 
