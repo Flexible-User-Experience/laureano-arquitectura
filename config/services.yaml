@@ -3,6 +3,7 @@ imports:
 
 parameters:
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    project_web_title: 'Laureano Arquitectura'
 
 services:
     _defaults:

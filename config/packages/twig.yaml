@@ -1,5 +1,13 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - 'bootstrap_5_layout.html.twig'
+        - '@EWZRecaptcha/Form/v3/ewz_recaptcha_widget.html.twig'
+        - '@SonataForm/Form/datepicker.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    globals:
+        project_title: '%project_web_title%'
+        admin_tag_version: 'v0.00.001'
 
 when@test:
     twig:
