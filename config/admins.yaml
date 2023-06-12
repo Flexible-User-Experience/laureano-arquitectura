@@ -1,0 +1,7 @@
+services:
+    admin.contact_message:
+        class: 'App\Admin\ContactMessageAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\ContactMessage', controller: 'App\Controller\Admin\ContactMessageAdminController', manager_type: 'orm', label: 'Contact Message', group: 'Web' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
