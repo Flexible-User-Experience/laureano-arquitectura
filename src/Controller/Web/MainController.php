@@ -14,9 +14,7 @@ class MainController extends AbstractController
     )]
     public function homepage(): Response
     {
-        return $this->render('web/homepage.html.twig', [
-            'controller_name' => 'MainController :: homepage',
-        ]);
+        return $this->render('web/homepage.html.twig');
     }
 
     #[Route(
@@ -29,8 +27,8 @@ class MainController extends AbstractController
     )]
     public function projectsList(): Response
     {
-        return $this->render('web/homepage.html.twig', [
-            'controller_name' => 'MainController :: projectsList',
+        return $this->render('web/projects.html.twig', [
+            'projects' => 'MainController :: projectsList',
         ]);
     }
 
@@ -60,8 +58,8 @@ class MainController extends AbstractController
     )]
     public function contact(): Response
     {
-        return $this->render('web/homepage.html.twig', [
-            'controller_name' => 'MainController :: contact',
+        return $this->render('web/contact.html.twig', [
+            'form' => 'MainController :: contact',
         ]);
     }
 }
