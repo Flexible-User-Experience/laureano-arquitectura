@@ -178,16 +178,6 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 ]
             )
             ->add(
-                'slug',
-                TextType::class,
-                [
-                    'required' => false,
-                    'attr' => [
-                        'readonly' => 'readonly,',
-                    ],
-                ]
-            )
-            ->add(
                 'summary',
                 TextType::class,
                 [
@@ -230,6 +220,16 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 NumberType::class,
                 [
                     'required' => true,
+                ]
+            )
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'required' => false,
+                    'attr' => [
+                        'readonly' => 'readonly,',
+                    ],
                 ]
             )
             ->add(
