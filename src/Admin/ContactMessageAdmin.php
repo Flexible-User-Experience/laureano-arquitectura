@@ -24,6 +24,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
         $collection
             ->add('reply', $this->getRouterIdParameter().'/reply')
             ->remove('create')
+            ->remove('edit')
             ->remove('batch')
         ;
     }
@@ -120,13 +121,12 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
                 [
                     'actions' => [
                         'show' => [],
-                        'edit' => [],
                         'reply' => [
                             'template' => '@App/admin/cells/list__action_contact_message_reply_button.html.twig',
                         ],
                         'delete' => [],
                     ],
-                    'header_style' => 'width:150px',
+                    'header_style' => 'width:117px',
                     'header_class' => 'text-right',
                     'row_align' => 'right',
                 ]
