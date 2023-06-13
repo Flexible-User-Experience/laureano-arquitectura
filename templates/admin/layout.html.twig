@@ -1,0 +1,68 @@
+{% extends "@SonataAdmin/standard_layout.html.twig" %}
+
+{# custom favicon loader #}
+{% block meta_tags %}
+    {{ parent() }}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+{% endblock %}
+
+{# custom sidebar footer #}
+{% block side_bar_after_nav %}
+    <p class="text-left small" style="padding:120px 0 0 20px;color:#EEE;">{{ admin_tag_version }}<br><i class="fa fa-code"></i> Desenvolupat per <a href="https://www.flux.cat" target="_blank">Flux</a><br><i class="fa fa-copyright"></i> {{ 'now' | date('Y') }}</p>
+{% endblock %}
+
+{# custom top menu #}
+{% block sonata_top_nav_menu %}
+    <div class="navbar-custom-menu">
+{# TODO       {{ knp_menu_render('admin_user_top_right_nav_menu', {currentClass: 'active', allow_safe_labels: true}) }}#}
+    </div>
+{% endblock %}
+
+{# override css includes #}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{# override javascript includes #}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{# custom main content #}
+{#{% block sonata_page_content %}#}
+{#    <div class="modal fade" id="pdf-preview-modal" tabindex="-1" role="dialog">#}
+{#        <div class="modal-dialog modal-lg" role="document">#}
+{#            <div data-controller="pdf-viewer" data-action="app-pdf-viewer-button-clicked@window->pdf-viewer#update" data-pdf-viewer-hidden-class="hide" data-pdf-viewer-path-value="" data-pdf-viewer-mime-value="application/pdf" class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'Close' | trans }}"><span aria-hidden="true">&times;</span></button>#}
+{#                    <div class="btn-group mr-3" role="group" aria-label="Modal">#}
+{#                        <a data-pdf-viewer-target="downloader" style="margin-right:3px;" class="btn btn-primary" download><i class="fas fa-cloud-download-alt margin-r-5"></i> {{ 'vich_uploader.link.download' | trans | capitalize }}</a>#}
+{#                    </div>#}
+{#                    <div class="btn-group" role="group" aria-label="Modal" data-pdf-viewer-target="pager">#}
+{#                        <button data-action="pdf-viewer#onPrevPage" type="button" class="btn btn-primary"><i class="fas fa-chevron-left"></i></button>#}
+{#                        <button type="button" class="btn btn-default">{{ 'Page' | trans }}&nbsp;<span data-pdf-viewer-target="current"></span>&nbsp;{{ 'Of' | trans }}&nbsp;<span data-pdf-viewer-target="total"></span></button>#}
+{#                        <button data-action="pdf-viewer#onNextPage" type="button" class="btn btn-primary"><i class="fas fa-chevron-right"></i></button>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    <div class="row" data-pdf-viewer-target="loader">#}
+{#                        <div class="col-xs-12">#}
+{#                            <p class="mt-5 mb-5 text-center text-muted">#}
+{#                                <i class="fas fa-5x fa-spin fa-sync" aria-hidden="true"></i>#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div data-pdf-viewer-target="warning"></div>#}
+{#                    <div class="row mb-2">#}
+{#                        <div class="col-xs-12">#}
+{#                            <canvas class="viewer hide" data-pdf-viewer-target="canvas"></canvas>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    {{ parent() }}#}
+{#{% endblock %}#}

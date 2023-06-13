@@ -14,6 +14,8 @@ sonata_admin:
         use_select2: true
         use_icheck: true
         pager_links: 10
+    templates:
+        layout: '@App/admin/layout.html.twig'
     dashboard:
         blocks:
             - { type: 'sonata.admin.block.admin_list', position: 'left' }
