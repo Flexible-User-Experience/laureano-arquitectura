@@ -11,7 +11,14 @@ App\Entity\Project:
     name: '<name()>'
     description: '<paragraph()>'
     summary: '<word()>'
-    website: '<url()>'
     position: '<current()>'
     beginDate: '<dateTimeThisMonth()>'
     endDate: '<dateTimeThisMonth()>'
+
+App\Entity\User:
+  admin:
+    email: 'admin@admin.com'
+    password: 'admin'
+    active: true
+    roles:
+      - 'ROLE_ADMIN'

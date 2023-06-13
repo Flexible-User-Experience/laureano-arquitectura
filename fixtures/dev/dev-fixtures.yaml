@@ -11,7 +11,6 @@ App\Entity\Project:
     name: '<name()>'
     description: '<paragraph()>'
     summary: '<word()>'
-    website: '<url()>'
     position: '<current()>'
     beginDate: '<dateTimeThisMonth()>'
     endDate: '<dateTimeThisMonth()>'

@@ -42,8 +42,8 @@ class AdminTest extends WebTestCase
     private static function getAdminAuthenticatedClient(): KernelBrowser
     {
         return WebTestCase::createClient([], [
-            'PHP_AUTH_USER' => 'superadmin',
-            'PHP_AUTH_PW'   => 'superadmin',
+            'PHP_AUTH_USER' => 'admin@admin.com',
+            'PHP_AUTH_PW'   => 'admin',
         ]);
     }
 }
