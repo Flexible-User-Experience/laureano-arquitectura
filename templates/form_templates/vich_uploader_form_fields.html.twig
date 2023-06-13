@@ -1,0 +1,73 @@
+{% extends '@VichUploader/Form/fields.html.twig' %}
+
+{%- block vich_file_widget -%}
+    <div class="vich-file">
+        {%- if errors | length > 0 -%}
+            {%- set attr = attr | merge({class: (attr.class | default('') ~ ' is-invalid') | trim}) -%}
+        {%- endif -%}
+        {{- form_label(form.file) -}}
+        {{- form_widget(form.file, {attr: attr}) -}}
+        {%- if form.delete is defined -%}
+            <div class="mt-2 ml-1">
+                {{- form_row(form.delete, {attr: {class: 'custom-control-input'}, label_attr: {class: 'custom-control-label'}}) -}}
+            </div>
+        {%- endif -%}
+        {%- if download_uri -%}
+            <div data-controller="pdf-viewer" data-pdf-viewer-path-value="{{ asset_helper is same as(true) ? asset(download_uri) : download_uri }}" data-pdf-viewer-mime-value="application/pdf">
+                <div class="row" data-pdf-viewer-target="loader">
+                    <div class="col-xs-12">
+                        <p class="mt-5 mb-5 text-center text-muted">
+                            <i class="fas fa-5x fa-spin fa-sync" aria-hidden="true"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="row hide" data-pdf-viewer-target="warning">
+                    <div class="col-xs-12">
+                        <div class="alert alert-warning mt-3 mb-3" role="alert">
+                            <i class="fas fa-exclamation-triangle fa-fw"></i> {{ 'PDF Preview Unavailable' | trans }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-xs-12">
+                        <canvas class="viewer hide" data-pdf-viewer-target="canvas"></canvas>
+                    </div>
+                </div>
+                <div class="btn-group margin-r-5 hide" data-pdf-viewer-target="downloader" role="group">
+                    <a class="btn btn-sm btn-primary" href="{{ asset_helper is same as(true) ? asset(download_uri) : download_uri }}" download>
+                        <i class="fas fa-cloud-download-alt margin-r-5"></i> {{ translation_domain is same as(false) ? download_label : download_label | trans({}, translation_domain) }}
+                    </a>
+                </div>
+                <div class="btn-group hide" data-pdf-viewer-target="pager" role="group">
+                    <button data-action="pdf-viewer#onPrevPage" type="button" class="btn btn-primary btn-sm"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm">{{ 'Page' | trans }}&nbsp;<span data-pdf-viewer-target="current"></span>&nbsp;{{ 'Of' | trans }}&nbsp;<span data-pdf-viewer-target="total"></span></button>
+                    <button data-action="pdf-viewer#onNextPage" type="button" class="btn btn-primary btn-sm"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        {%- endif -%}
+    </div>
+{%- endblock -%}
+
+{%- block vich_image_widget -%}
+    <div class="vich-image">
+        {%- if errors | length > 0 -%}
+            {%- set attr = attr | merge({class: (attr.class | default('') ~ ' is-invalid') | trim}) -%}
+        {%- endif -%}
+        {{- form_widget(form.file, {attr: attr}) -}}
+        {%- if form.delete is defined -%}
+            <div class="mt-2 ml-1">
+                {{- form_row(form.delete, {attr: {class: 'custom-control-input'}, label_attr: {class: 'custom-control-label'}}) -}}
+            </div>
+        {%- endif -%}
+        {%- if image_uri -%}
+            <a class="d-block mt-2" href="{{ asset_helper is same as(true) ? asset(image_uri) : image_uri }}" download>
+                <img src="{{ asset_helper is same as(true) ? asset(image_uri) : image_uri }}" alt="..." class="img-responsive"/>
+            </a>
+        {%- endif -%}
+        {%- if download_uri -%}
+            <a class="btn btn-sm btn-primary mt-2" href="{{ asset_helper is same as(true) ? asset(download_uri) : download_uri }}" download>
+                <i class="fas fa-cloud-download-alt mr-1"></i> {{ translation_domain is same as(false) ? download_label : download_label | trans({}, translation_domain) }}
+            </a>
+        {%- endif -%}
+    </div>
+{%- endblock -%}

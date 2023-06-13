@@ -1,4 +1,53 @@
-# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
 liip_imagine:
-    # valid drivers options include "gd" or "gmagick" or "imagick"
     driver: "gd"
+    loaders:
+        default:
+            filesystem:
+                locator: 'filesystem_insecure'
+    resolvers:
+        default:
+            web_path: ~
+    twig:
+        mode: 'lazy'
+    filter_sets:
+        cache: ~
+        2400xY:
+            quality: 75
+            filters:
+                thumbnail: { size: [ 2400, null ], mode: 'outbound' }
+        800xY:
+            quality: 100
+            filters:
+                thumbnail: { size: [ 800, null ], mode: 'outbound' }
+        585xY:
+            quality: 100
+            filters:
+                thumbnail: { size: [ 585, null ], mode: 'outbound' }
+        480xY:
+            quality: 100
+            filters:
+                thumbnail: { size: [ 480, null ], mode: 'outbound' }
+        480x620:
+            quality: 100
+            filters:
+                thumbnail: { size: [ 480, 620 ], mode: 'outbound' }
+        231x50:
+            quality: 80
+            filters:
+                thumbnail: { size: [ 231, 50 ], mode: 'outbound' }
+        200xY:
+            quality: 90
+            filters:
+                thumbnail: { size: [ 200, null ], mode: 'outbound' }
+        140x140:
+            quality: 90
+            filters:
+                thumbnail: { size: [ 140, 140 ], mode: 'outbound' }
+        132x50:
+            quality: 85
+            filters:
+                thumbnail: { size: [ 132, 50 ], mode: 'outbound' }
+        60x60:
+            quality: 95
+            filters:
+                thumbnail: { size: [ 60, 60 ], mode: 'outbound' }

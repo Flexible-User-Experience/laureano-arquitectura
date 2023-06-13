@@ -1,3 +1,24 @@
+###> app/bundle ###
+auth.json
+/public/images/projects/*
+!/public/images/projects/.gitkeep
+!/public/uploads/.gitkeep
+/src/.preload.php
+.php_cs.cache
+.php-cs-fixer.cache
+/var/cache/*
+!/var/cache/.gitkeep
+/var/csv/*
+!/var/csv/.gitkeep
+/var/log/*
+!/var/log/.gitkeep
+/var/sessions/*
+!/var/sessions/.gitkeep
+/var/uploads/*
+!/var/uploads/.gitkeep
+/var/testing-database.db
+.DS_Store
+###< app/bundle ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -13,11 +34,6 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
 
 ###> liip/imagine-bundle ###
 /public/media/cache/
