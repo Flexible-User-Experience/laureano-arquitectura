@@ -3,6 +3,7 @@
 namespace App\Controller\Web;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,8 +30,10 @@ class TermsOfServiceController extends AbstractController
         ],
         name: 'app_web_change_to_language',
     )]
-    public function changeToLanguage(string $language): Response
+    public function changeToLanguage(string $language): RedirectResponse
     {
-        return $this->render('web/privacy_policy.html.twig');
+        return $this->redirectToRoute('app_web_homepage', [
+            '_locale' => $language,
+        ]);
     }
 }

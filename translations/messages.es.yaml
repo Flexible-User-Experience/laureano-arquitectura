@@ -2,8 +2,10 @@ frontend:
     navbar: 'barra de navegación'
     logo: 'logo'
     toggle: 'intercambiador'
-
 homepage: 'inicio'
 projects: 'proyectos'
 contact: 'contacto'
 'privacy policy': 'privacy policy'
+catalan: 'català'
+spanish: 'español'
+english: 'english'
