@@ -69,7 +69,7 @@ class MainController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contactMessageRepository->add($contactMessage, true);
-//            $mailerManager->sendNewContactMessageFromNotificationToManager($contactMessage);
+// TODO           $mailerManager->sendNewContactMessageFromNotificationToManager($contactMessage);
             $contactMessage = new ContactMessage();
             $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
             $this->addFlash(

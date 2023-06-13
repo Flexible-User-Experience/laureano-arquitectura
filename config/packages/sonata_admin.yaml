@@ -1,5 +1,19 @@
 sonata_admin:
     title: '%project_web_title%'
+    persist_filters: true
+    show_mosaic_button: false
+    search: false
+    options:
+        skin: 'skin-red'
+        form_type: 'standard'
+        default_icon: 'fas fa-folder'
+        logo_content: 'icon'
+        list_action_button_content: 'icon'
+        html5_validate: true
+        confirm_exit: true
+        use_select2: true
+        use_icheck: true
+        pager_links: 10
     dashboard:
         blocks:
             - { type: 'sonata.admin.block.admin_list', position: 'left' }

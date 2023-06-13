@@ -122,7 +122,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
                         'show' => [],
                         'edit' => [],
                         'reply' => [
-                            'template' => '@App/Admin/Cells/list__action_contact_message_reply_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_contact_message_reply_button.html.twig',
                         ],
                         'delete' => [],
                     ],

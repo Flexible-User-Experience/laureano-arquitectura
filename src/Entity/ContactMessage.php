@@ -37,7 +37,6 @@ class ContactMessage extends AbstractBase
     #[ORM\Column(type: Types::BOOLEAN, options: ['default' => false])]
     private bool $hasBeenReplied = false;
 
-    #[Assert\NotBlank]
     #[ORM\Column(type: Types::TEXT, length: 4000, nullable: true)]
     private ?string $replyMessage = null;
 
