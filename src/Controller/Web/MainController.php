@@ -74,7 +74,7 @@ class MainController extends AbstractController
             $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
             $this->addFlash(
                 'success',
-                'frontend.contact.form.on_submit_success'
+                'frontend.flash.on_contact_message_submit_success'
             );
         }
 

@@ -2,6 +2,8 @@ frontend:
     navbar: 'barra de navegació'
     logo: 'logo'
     toggle: 'intercanviador'
+    flash:
+        on_contact_message_submit_success: 'El teu missatge s''ha enviat correctament. Et respondrem el més aviat possible.'
 homepage: 'inici'
 projects: 'projectes'
 contact: 'contacte'
