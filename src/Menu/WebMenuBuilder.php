@@ -2,6 +2,7 @@
 
 namespace App\Menu;
 
+use App\Enum\LanguageEnum;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -59,6 +60,63 @@ class WebMenuBuilder
                 ],
                 'linkAttributes' => [
                     'class' => 'nav-link'.('app_web_contact' === $current ? ' active' : ''),
+                ],
+            ]
+        );
+
+        return $menu;
+    }
+
+    public function createLanguagesMenu(array $options): ItemInterface
+    {
+        $current = '';
+        if ($this->requestStack->getCurrentRequest()) {
+            $current = $this->requestStack->getCurrentRequest()->get('_route');
+        }
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav col-md-4 justify-content-center');
+        $menu->addChild(
+            'catalan',
+            [
+                'route' => 'app_web_change_to_language',
+                'routeParameters' => [
+                    'language' => LanguageEnum::CATALAN->value,
+                ],
+                'attributes' => [
+                    'class' => 'nav-item',
+                ],
+                'linkAttributes' => [
+                    'class' => 'nav-link px-2 text-secondary',
+                ],
+            ]
+        );
+        $menu->addChild(
+            'spanish',
+            [
+                'route' => 'app_web_change_to_language',
+                'routeParameters' => [
+                    'language' => LanguageEnum::SPANISH->value,
+                ],
+                'attributes' => [
+                    'class' => 'nav-item',
+                ],
+                'linkAttributes' => [
+                    'class' => 'nav-link px-2 text-secondary',
+                ],
+            ]
+        );
+        $menu->addChild(
+            'english',
+            [
+                'route' => 'app_web_change_to_language',
+                'routeParameters' => [
+                    'language' => LanguageEnum::ENGLISH->value,
+                ],
+                'attributes' => [
+                    'class' => 'nav-item',
+                ],
+                'linkAttributes' => [
+                    'class' => 'nav-link px-2 text-secondary',
                 ],
             ]
         );

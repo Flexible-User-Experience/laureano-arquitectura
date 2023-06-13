@@ -20,4 +20,17 @@ class TermsOfServiceController extends AbstractController
     {
         return $this->render('web/privacy_policy.html.twig');
     }
+
+    #[Route(
+        path: [
+            'ca' => '/canviar-a-idioma/{language}',
+            'es' => '/cambiar-a-idioma/{language}',
+            'en' => '/change-to-language/{language}',
+        ],
+        name: 'app_web_change_to_language',
+    )]
+    public function changeToLanguage(string $language): Response
+    {
+        return $this->render('web/privacy_policy.html.twig');
+    }
 }
