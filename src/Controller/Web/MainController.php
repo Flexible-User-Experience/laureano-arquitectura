@@ -2,9 +2,13 @@
 
 namespace App\Controller\Web;
 
+use App\Entity\ContactMessage;
 use App\Entity\Project;
+use App\Form\Type\ContactMessageFormType;
+use App\Repository\ContactMessageRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,10 +62,24 @@ class MainController extends AbstractController
         ],
         name: 'app_web_contact',
     )]
-    public function contact(): Response
+    public function contact(Request $request, ContactMessageRepository $contactMessageRepository): Response
     {
+        $contactMessage = new ContactMessage();
+        $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactMessageRepository->add($contactMessage, true);
+//            $mailerManager->sendNewContactMessageFromNotificationToManager($contactMessage);
+            $contactMessage = new ContactMessage();
+            $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
+            $this->addFlash(
+                'success',
+                'frontend.contact.form.on_submit_success'
+            );
+        }
+
         return $this->render('web/contact.html.twig', [
-            'form' => 'MainController :: contact',
+            'form' => $form,
         ]);
     }
 }
