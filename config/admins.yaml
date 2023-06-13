@@ -1,4 +1,10 @@
 services:
+    admin.project:
+        class: 'App\Admin\ProjectAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\Project', controller: 'App\Controller\Admin\ProjectAdminController', manager_type: 'orm', label: 'Project', group: 'Web' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
     admin.contact_message:
         class: 'App\Admin\ContactMessageAdmin'
         tags:

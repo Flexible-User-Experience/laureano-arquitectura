@@ -17,10 +17,16 @@ sonata_admin:
     templates:
         layout: '@App/admin/layout.html.twig'
     dashboard:
+        groups:
+            Web:
+                icon: '<i class="fas fa-link"></i>'
+                translation_domain: 'messages'
         blocks:
             - { type: 'sonata.admin.block.admin_list', position: 'left' }
 
-sonata_block:
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts: [ 'admin' ]
+when@dev:
+    sonata_admin:
+        dashboard:
+            groups:
+                Web:
+                    keep_open: true
