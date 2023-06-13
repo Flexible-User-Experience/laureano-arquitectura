@@ -26,7 +26,6 @@ class WebMenuBuilder
         }
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'navbar-nav ms-auto mb-2 mb-lg-0');
-        // $menu->setChildrenAttribute('class', 'navbar-nav mx-5 h-100 menu');
         $menu->addChild(
             'homepage',
             [
@@ -69,57 +68,31 @@ class WebMenuBuilder
 
     public function createLanguagesMenu(array $options): ItemInterface
     {
-        $current = '';
+        $locale = '';
         if ($this->requestStack->getCurrentRequest()) {
-            $current = $this->requestStack->getCurrentRequest()->get('_route');
+            $locale = $this->requestStack->getCurrentRequest()->get('_locale');
         }
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav col-md-4 justify-content-center');
-        $menu->addChild(
-            'catalan',
-            [
-                'route' => 'app_web_change_to_language',
-                'routeParameters' => [
-                    'language' => LanguageEnum::CATALAN->value,
-                ],
-                'attributes' => [
-                    'class' => 'nav-item',
-                ],
-                'linkAttributes' => [
-                    'class' => 'nav-link px-2 text-secondary',
-                ],
-            ]
-        );
-        $menu->addChild(
-            'spanish',
-            [
-                'route' => 'app_web_change_to_language',
-                'routeParameters' => [
-                    'language' => LanguageEnum::SPANISH->value,
-                ],
-                'attributes' => [
-                    'class' => 'nav-item',
-                ],
-                'linkAttributes' => [
-                    'class' => 'nav-link px-2 text-secondary',
-                ],
-            ]
-        );
-        $menu->addChild(
-            'english',
-            [
-                'route' => 'app_web_change_to_language',
-                'routeParameters' => [
-                    'language' => LanguageEnum::ENGLISH->value,
-                ],
-                'attributes' => [
-                    'class' => 'nav-item',
-                ],
-                'linkAttributes' => [
-                    'class' => 'nav-link px-2 text-secondary',
-                ],
-            ]
-        );
+        foreach (LanguageEnum::getChoices() as $key => $language) {
+            if ($locale !== $language) {
+                $menu->addChild(
+                    $key,
+                    [
+                        'route' => 'app_web_change_to_language',
+                        'routeParameters' => [
+                            'language' => $language,
+                        ],
+                        'attributes' => [
+                            'class' => 'nav-item',
+                        ],
+                        'linkAttributes' => [
+                            'class' => 'nav-link px-2 text-secondary',
+                        ],
+                    ]
+                );
+            }
+        }
 
         return $menu;
     }
