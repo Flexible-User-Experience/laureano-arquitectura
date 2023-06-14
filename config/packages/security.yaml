@@ -3,6 +3,7 @@ security:
     role_hierarchy:
         ROLE_SONATA_CMS:
             - 'ROLE_ADMIN_PROJECT_ALL'
+            - 'ROLE_ADMIN_PROJECT_IMAGE_ALL'
             - 'ROLE_ADMIN_CONTACT_MESSAGE_ALL'
         ROLE_CMS:
             - 'ROLE_USER'

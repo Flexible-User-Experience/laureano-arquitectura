@@ -28,7 +28,7 @@ class ProjectImage extends AbstractBase
     #[ORM\Column(type: Types::STRING, length: 255)]
     private string $name;
 
-    #[Vich\UploadableField(mapping: 'projects', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
     public function getProject(): Project

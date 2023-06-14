@@ -5,6 +5,7 @@ namespace App\Admin;
 use App\Entity\AbstractBase;
 use App\Entity\Translations\ProjectTranslation;
 use App\Enum\SortOrderEnum;
+use App\Enum\SortOrderTypeEnum;
 use App\Form\Type\GedmoTranslationsType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
@@ -14,6 +15,7 @@ use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
+use Sonata\Form\Type\CollectionType;
 use Sonata\Form\Type\DatePickerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -211,6 +213,36 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 ]
             )
             ->end()
+        ;
+        if (!$this->isFormToCreateNewRecord()) {
+            $form
+                ->with(
+                    'Images',
+                    [
+                        'class' => 'col-md-8',
+                        'box_class' => 'box box-success',
+                    ]
+                )
+                ->add(
+                    'images',
+                    CollectionType::class,
+                    [
+                        'label' => false,
+                        'required' => false,
+                        'error_bubbling' => true,
+                        'by_reference' => false,
+                    ],
+                    [
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                        'sortable' => 'position',
+                        'order' => SortOrderEnum::ASCENDING->value,
+                    ]
+                )
+                ->end()
+            ;
+        }
+        $form
             ->with(
                 'Controls',
                 [
