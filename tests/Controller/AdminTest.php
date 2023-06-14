@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminTest extends WebTestCase
 {
-//    public function testPublicPages(): void
-//    {
-//        $client = static::createClient();
-//        $client->request('GET', '/admin/login');
-//        self::assertResponseIsSuccessful();
-//    }
+    public function testPublicPages(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/admin/login');
+        self::assertResponseIsSuccessful();
+    }
 
     /**
      * @dataProvider provideSuccessfulUrls
@@ -40,6 +40,9 @@ class AdminTest extends WebTestCase
         ];
     }
 
+    /**
+     * @dataProvider provideNotFoundUrls
+     */
     public function testNotFoundPages(string $url): void
     {
 
