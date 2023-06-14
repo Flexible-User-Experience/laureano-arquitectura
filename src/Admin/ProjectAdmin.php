@@ -67,7 +67,6 @@ final class ProjectAdmin extends AbstractBaseAdmin
             ->add('description')
             ->add('position')
             ->add('showInFrontend')
-            ->add('active')
         ;
     }
 
@@ -113,15 +112,6 @@ final class ProjectAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'showInFrontend',
-                FieldDescriptionInterface::TYPE_BOOLEAN,
-                [
-                    'editable' => true,
-                    'header_class' => 'text-center',
-                    'row_align' => 'center',
-                ]
-            )
-            ->add(
-                'active',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 [
                     'editable' => true,
@@ -220,27 +210,11 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 NumberType::class,
                 [
                     'required' => true,
-                ]
-            )
-            ->add(
-                'slug',
-                TextType::class,
-                [
-                    'required' => false,
-                    'attr' => [
-                        'readonly' => 'readonly,',
-                    ],
+                    'help' => 'Position Helper',
                 ]
             )
             ->add(
                 'showInFrontend',
-                null,
-                [
-                    'required' => false,
-                ]
-            )
-            ->add(
-                'active',
                 null,
                 [
                     'required' => false,
