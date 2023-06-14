@@ -10,6 +10,7 @@ twig:
         - '@SonataForm/Form/datepicker.html.twig'
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
         - '@App/form_templates/vich_uploader_form_fields.html.twig'
+        - '@App/form_templates/adapted_a2lix_translation_form.html.twig'
     globals:
         project_title: '%project_web_title%'
         admin_tag_version: 'v0.00.001'

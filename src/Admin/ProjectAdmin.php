@@ -3,7 +3,9 @@
 namespace App\Admin;
 
 use App\Entity\AbstractBase;
+use App\Entity\Translations\ProjectTranslation;
 use App\Enum\SortOrderEnum;
+use App\Form\Type\GedmoTranslationsType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -141,7 +143,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
             ->with(
                 'Images',
                 [
-                    'class' => 'col-md-4',
+                    'class' => 'col-md-3',
                     'box_class' => 'box box-success',
                 ]
             )
@@ -181,6 +183,32 @@ final class ProjectAdmin extends AbstractBaseAdmin
                     'required' => false,
                 ]
             )
+            ->end()
+            ->with(
+                'Translations',
+                [
+                    'class' => 'col-md-4',
+                    'box_class' => 'box box-success',
+                ]
+            )
+//            ->add(
+//                'translations',
+//                GedmoTranslationsType::class,
+//                [
+//                    'required' => false,
+//                    'translatable_class' => ProjectTranslation::class,
+//                    'fields' => [
+//                        'shortDescription' => [
+//                            'required' => true,
+//                            'field_type' => TextType::class,
+//                        ],
+//                        'description' => [
+//                            'required' => false,
+//                            'field_type' => CKEditorType::class,
+//                        ],
+//                    ],
+//                ]
+//            )
             ->end()
             ->with(
                 'Controls',

@@ -9,7 +9,10 @@ use App\Entity\Traits\ImageFileTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PositionTrait;
 use App\Entity\Traits\SlugTrait;
+use App\Entity\Translations\ProjectTranslation;
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -31,6 +34,10 @@ class Project extends AbstractBase
     use PositionTrait;
     use SlugTrait;
 
+    #[Assert\Valid]
+    #[ORM\OneToMany(mappedBy: 'object', targetEntity: ProjectTranslation::class, cascade: ['persist', 'remove'])]
+    private ?Collection $translations;
+
     #[Assert\NotBlank]
     #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
     private string $name;
@@ -39,9 +46,11 @@ class Project extends AbstractBase
     #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
     private string $slug;
 
+    #[Gedmo\Translatable]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $summary = null;
 
+    #[Gedmo\Translatable]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
@@ -51,11 +60,47 @@ class Project extends AbstractBase
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $endDate = null;
 
+    #[ORM\Column(type: Types::BOOLEAN, options: ['default' => true])]
+    private bool $showInFrontend = true;
+
     #[Vich\UploadableField(mapping: 'projects', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
-    #[ORM\Column(type: Types::BOOLEAN, options: ['default' => true])]
-    private bool $showInFrontend = true;
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
+    public function getTranslations(): ?Collection
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(?Collection $translations): self
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
+    public function addTranslation(ProjectTranslation $translation): self
+    {
+        if (!$this->translations->contains($translation) && $translation->getContent()) {
+            $this->translations->add($translation);
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTranslation(ProjectTranslation $translation): self
+    {
+        if ($this->translations->contains($translation)) {
+            $this->translations->removeElement($translation);
+        }
+
+        return $this;
+    }
 
     public function getSummary(): ?string
     {

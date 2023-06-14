@@ -5,17 +5,54 @@ parameters:
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
     project_web_title: 'Laureano Arquitectura'
     default_locale: 'ca'
+    locale_i18n: [ 'es', 'en' ]
+    locale_i18n_full: [ '%default_locale%', 'es', 'en' ]
 
 services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $locale: '%default_locale%'
+            $locales: '%locale_i18n_full%'
     App\:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    # Events
+    App\Form\EventListener\DefaultTranslationsListener:
+        arguments:
+            - '@App\Form\Translation\GedmoTranslationForm'
+    App\Form\EventListener\GedmoTranslationsListener:
+        arguments:
+            - '@App\Form\Translation\GedmoTranslationForm'
+    App\Form\Translation\DefaultTranslationForm:
+        arguments:
+            - '@form.registry'
+            - '@Doctrine\Common\Persistence\ManagerRegistry'
+    App\Form\Translation\GedmoTranslationForm:
+        arguments:
+            - '@form.registry'
+            - '@Doctrine\Common\Persistence\ManagerRegistry'
+        calls:
+            - setGedmoTranslatableListener: [ '@stof_doctrine_extensions.listener.translatable' ]
+    # Forms
+    App\Form\Type\GedmoTranslationsType:
+        arguments:
+            - '@App\Form\EventListener\GedmoTranslationsListener'
+            - '@App\Form\Translation\GedmoTranslationForm'
+            - '%locale_i18n%'
+            - ~
+        tags:
+            - { name: 'form.type' }
+    App\Form\Type\TranslationsFormsType:
+        arguments:
+            - '%locale_i18n%'
+            - ~
+        tags:
+            - { name: 'form.type' }
     # Menus
     App\Menu\MenuBuilder:
         class: App\Menu\WebMenuBuilder
