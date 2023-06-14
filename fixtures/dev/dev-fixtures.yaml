@@ -14,3 +14,12 @@ App\Entity\Project:
     position: '<current()>'
     beginDate: '<dateTimeThisMonth()>'
     endDate: '<dateTimeThisMonth()>'
+
+App\Entity\User:
+  admin:
+    username: 'admin'
+    email: 'admin@admin.com'
+    plainPassword: 'admin'
+    enabled: true
+    roles:
+      - 'ROLE_ADMIN'
