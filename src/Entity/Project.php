@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Gedmo\TranslationEntity(class: ProjectTranslation::class)]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 #[Vich\Uploadable]
 #[UniqueEntity(['name'])]

@@ -5,7 +5,6 @@ namespace App\Form\Type;
 use App\Form\DataMapper\GedmoTranslationMapper;
 use App\Form\EventListener\GedmoTranslationsListener;
 use App\Form\Translation\GedmoTranslationForm;
-use Exception;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -40,7 +39,7 @@ class GedmoTranslationsType extends AbstractType
             $builder->addEventSubscriber($this->translationsListener);
         } else {
             if (!$options['translatable_class']) {
-                throw new Exception("If you want include the default locale with translations locales, you need to fill the 'translatable_class' option");
+                throw new \RuntimeException("If you want include the default locale with translations locales, you need to fill the 'translatable_class' option");
             }
             $childrenOptions = $this->translationForm->getChildrenOptions($options['translatable_class'], $options);
             $defaultLocale = (array) $this->translationForm->getGedmoTranslatableListener()->getDefaultLocale();

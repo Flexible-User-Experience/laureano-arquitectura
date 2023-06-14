@@ -191,24 +191,25 @@ final class ProjectAdmin extends AbstractBaseAdmin
                     'box_class' => 'box box-success',
                 ]
             )
-//            ->add(
-//                'translations',
-//                GedmoTranslationsType::class,
-//                [
-//                    'required' => false,
-//                    'translatable_class' => ProjectTranslation::class,
-//                    'fields' => [
-//                        'shortDescription' => [
-//                            'required' => true,
-//                            'field_type' => TextType::class,
-//                        ],
-//                        'description' => [
-//                            'required' => false,
-//                            'field_type' => CKEditorType::class,
-//                        ],
-//                    ],
-//                ]
-//            )
+            ->add(
+                'translations',
+                GedmoTranslationsType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'translatable_class' => ProjectTranslation::class,
+                    'fields' => [
+                        'summary' => [
+                            'required' => true,
+                            'field_type' => TextType::class,
+                        ],
+                        'description' => [
+                            'required' => false,
+                            'field_type' => CKEditorType::class,
+                        ],
+                    ],
+                ]
+            )
             ->end()
             ->with(
                 'Controls',
