@@ -1,0 +1,16 @@
+App\Entity\ContactMessage:
+  contactmessage{1..5}:
+    legacyId: '<current()>'
+    name: '<company()>'
+    email: '<safeEmail()>'
+    message: '<sentence()>'
+
+App\Entity\Project:
+  project{1..5}:
+    legacyId: '<current()>'
+    name: '<name()>'
+    description: '<paragraph()>'
+    summary: '<word()>'
+    position: '<current()>'
+    beginDate: '<dateTimeThisMonth()>'
+    endDate: '<dateTimeThisMonth()>'

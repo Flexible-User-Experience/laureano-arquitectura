@@ -1,5 +1,19 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    paths:
+        '%kernel.project_dir%/templates': 'App'
+        '%kernel.project_dir%/assets/styles': 'styles'
+        '%kernel.project_dir%/assets/images': 'images'
+    form_themes:
+        - 'bootstrap_5_layout.html.twig'
+        - '@EWZRecaptcha/Form/v3/ewz_recaptcha_widget.html.twig'
+        - '@SonataForm/Form/datepicker.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        - '@App/form_templates/vich_uploader_form_fields.html.twig'
+        - '@App/form_templates/adapted_a2lix_translation_form.html.twig'
+    globals:
+        project_title: '%project_web_title%'
+        admin_tag_version: 'v0.00.001'
 
 when@test:
     twig:

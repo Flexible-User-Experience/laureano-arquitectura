@@ -1,0 +1,24 @@
+App\Entity\ContactMessage:
+  contactmessage{1..5}:
+    legacyId: '<current()>'
+    name: '<company()>'
+    email: '<safeEmail()>'
+    message: '<sentence()>'
+
+App\Entity\Project:
+  project{1..5}:
+    legacyId: '<current()>'
+    name: '<name()>'
+    description: '<paragraph()>'
+    summary: '<word()>'
+    position: '<current()>'
+    beginDate: '<dateTimeThisMonth()>'
+    endDate: '<dateTimeThisMonth()>'
+
+App\Entity\User:
+  admin:
+    email: 'admin@admin.com'
+    password: 'admin'
+    active: true
+    roles:
+      - 'ROLE_ADMIN'

@@ -1,0 +1,32 @@
+sonata_admin:
+    title: '%project_web_title%'
+    persist_filters: true
+    show_mosaic_button: false
+    search: false
+    options:
+        skin: 'skin-red'
+        form_type: 'standard'
+        default_icon: 'fas fa-folder'
+        logo_content: 'icon'
+        list_action_button_content: 'icon'
+        html5_validate: true
+        confirm_exit: true
+        use_select2: true
+        use_icheck: true
+        pager_links: 10
+    templates:
+        layout: '@App/admin/layout.html.twig'
+    dashboard:
+        groups:
+            Web:
+                icon: '<i class="fas fa-link"></i>'
+                translation_domain: 'messages'
+        blocks:
+            - { type: 'sonata.admin.block.admin_list', position: 'left' }
+
+when@dev:
+    sonata_admin:
+        dashboard:
+            groups:
+                Web:
+                    keep_open: true

@@ -1,0 +1,15 @@
+{% extends 'web/base.html.twig' %}
+
+{% block title %}{{ project.name }} · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h1>{{ 'Project' | trans }} {{ project.name }}</h1>
+                <h4 class="text-secondary">{{ project.summary }}</h4>
+                {{ project.description | raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

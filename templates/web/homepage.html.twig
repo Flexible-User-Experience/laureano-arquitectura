@@ -1,0 +1,13 @@
+{% extends 'web/base.html.twig' %}
+
+{% block title %}{{ 'homepage' | trans | capitalize }} · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h1 class="mb-0">{{ 'homepage' | trans | capitalize }}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
