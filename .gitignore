@@ -6,6 +6,7 @@ auth.json
 /src/.preload.php
 .php_cs.cache
 .php-cs-fixer.cache
+/var/*.db
 /var/cache/*
 !/var/cache/.gitkeep
 /var/csv/*
@@ -26,7 +27,6 @@ auth.json
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-/var/
 /vendor/
 ###< symfony/framework-bundle ###
 
