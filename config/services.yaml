@@ -66,8 +66,13 @@ services:
         tags:
             - { name: 'form.type' }
     # Menus
-    App\Menu\MenuBuilder:
-        class: App\Menu\WebMenuBuilder
+    App\Menu\AdminTopRightNavMenuBuilder:
+        arguments:
+            - '@knp_menu.factory'
+            - '@security.helper'
+        tags:
+            - { name: 'knp_menu.menu_builder', method: 'createRightTopNavMenu', alias: 'admin_top_right_nav_menu' }
+    App\Menu\WebMenuBuilder:
         arguments:
             - '@knp_menu.factory'
             - '@request_stack'

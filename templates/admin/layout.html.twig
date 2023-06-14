@@ -14,7 +14,7 @@
 {# custom top menu #}
 {% block sonata_top_nav_menu %}
     <div class="navbar-custom-menu">
-{# TODO       {{ knp_menu_render('admin_user_top_right_nav_menu', {currentClass: 'active', allow_safe_labels: true}) }}#}
+    {{ knp_menu_render('admin_top_right_nav_menu', {currentClass: 'active', allow_safe_labels: true}) }}
     </div>
 {% endblock %}
 
