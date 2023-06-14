@@ -1,3 +1,16 @@
 framework:
     mailer:
         dsn: '%env(MAILER_DSN)%'
+        envelope:
+            sender: '%mailer_destination%'
+
+when@dev:
+    framework:
+        mailer:
+            envelope:
+                recipients: [ '%delivery_dev_address%' ]
+
+when@test:
+    framework:
+        mailer:
+            dsn: 'null://null'

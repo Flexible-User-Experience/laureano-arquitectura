@@ -3,8 +3,13 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Enum\SortOrderEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @extends ServiceEntityRepository<User>
@@ -38,5 +43,29 @@ class UserRepository extends ServiceEntityRepository
     {
         $this->getEntityManager()->remove($entity);
         $this->update($flush);
+    }
+
+    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    {
+        if (!$user instanceof User) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+        }
+        $user->setPassword($newHashedPassword);
+        $this->add($user, true);
+    }
+
+    public function getAllSortedByNameQB(): QueryBuilder
+    {
+        return $this->createQueryBuilder('u')->orderBy('u.name', SortOrderEnum::ASCENDING);
+    }
+
+    public function getAllSortedByNameQ(): Query
+    {
+        return $this->getAllSortedByNameQB()->getQuery();
+    }
+
+    public function getAllSortedByName(): array
+    {
+        return $this->getAllSortedByNameQ()->getResult();
     }
 }

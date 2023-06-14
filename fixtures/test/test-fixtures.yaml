@@ -17,8 +17,9 @@ App\Entity\Project:
 
 App\Entity\User:
   admin:
+    username: 'admin'
     email: 'admin@admin.com'
-    password: 'admin'
-    active: true
+    plainPassword: 'admin'
+    enabled: true
     roles:
       - 'ROLE_ADMIN'

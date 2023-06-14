@@ -39,6 +39,11 @@ class Project extends AbstractBase
     #[ORM\OneToMany(mappedBy: 'object', targetEntity: ProjectTranslation::class, cascade: ['persist', 'remove'])]
     private ?Collection $translations;
 
+    #[Assert\Valid]
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, cascade: ['persist', 'remove'])]
+    #[ORM\OrderBy(['position' => 'ASC'])]
+    private ?Collection $images;
+
     #[Assert\NotBlank]
     #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
     private string $name;
@@ -70,6 +75,7 @@ class Project extends AbstractBase
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getTranslations(): ?Collection
@@ -98,6 +104,37 @@ class Project extends AbstractBase
     {
         if ($this->translations->contains($translation)) {
             $this->translations->removeElement($translation);
+        }
+
+        return $this;
+    }
+
+    public function getImages(): ?Collection
+    {
+        return $this->images;
+    }
+
+    public function setImages(?Collection $images): self
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    public function addImage(ProjectImage $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(ProjectImage $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
         }
 
         return $this;

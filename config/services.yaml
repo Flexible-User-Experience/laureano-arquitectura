@@ -2,11 +2,23 @@ imports:
     - { resource: 'admins.yaml' }
 
 parameters:
-    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
-    project_web_title: 'Laureano Arquitectura'
     default_locale: 'ca'
     locale_i18n: [ 'es', 'en' ]
     locale_i18n_full: [ '%default_locale%', 'es', 'en' ]
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    project_web_title: 'Laureano Arquitectura'
+    project_url_base: '%env(string:PROJECT_BASE_URL)%'
+    enterprise_name: '%env(string:ENTERPRISE_NAME)%'
+    enterprise_tin: '%env(string:ENTERPRISE_TIN)%'
+    enterprise_phone: '%env(string:ENTERPRISE_PHONE)%'
+    enterprise_address: '%env(string:ENTERPRISE_ADDRESS)%'
+    enterprise_zip: '%env(string:ENTERPRISE_ZIP)%'
+    enterprise_city: '%env(string:ENTERPRISE_CITY)%'
+    enterprise_state: '%env(string:ENTERPRISE_STATE)%'
+    enterprise_ban: '%env(string:ENTERPRISE_BAN)%'
+    enterprise_pdf_footer: '%env(string:ENTERPRISE_PDF_FOOTER)%'
+    mailer_destination: '%env(string:MAILER_DESTINATION)%'
+    delivery_dev_address: '%env(string:DEV_DELIVERY_ADDRESS)%'
 
 services:
     _defaults:

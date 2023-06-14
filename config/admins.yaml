@@ -5,6 +5,12 @@ services:
             - { name: 'sonata.admin', model_class: 'App\Entity\Project', controller: 'App\Controller\Admin\ProjectAdminController', manager_type: 'orm', label: 'Project', group: 'Web' }
         calls:
             - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    admin.project_image:
+        class: 'App\Admin\ProjectImageAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\ProjectImage', controller: 'App\Controller\Admin\ProjectImageAdminController', manager_type: 'orm', label: 'Project Image', group: 'Web', show_in_dashboard: false }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
     admin.contact_message:
         class: 'App\Admin\ContactMessageAdmin'
         tags:

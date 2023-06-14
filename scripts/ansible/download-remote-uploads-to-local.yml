@@ -1,0 +1,22 @@
+---
+- hosts: s8
+  gather_facts: false
+  vars_files:
+    - "{{ playbook_dir }}/vars/config.yml"
+  tasks:
+    - name: copy remote expenses directory to local
+      synchronize:
+        mode: pull
+        recursive: yes
+        perms: yes
+        times: yes
+        src: "{{ vhost_path_prod }}/shared/var/uploads/expenses"
+        dest: "{{ playbook_dir }}/../../var/uploads"
+    - name: fix ownership in downloaded files locally
+      delegate_to: mother
+      file:
+        path: "{{ playbook_dir }}/../../var/uploads/expenses"
+        recurse: yes
+        follow: yes
+        owner: "{{ local_system_user }}"
+        group: "{{ local_system_group }}"

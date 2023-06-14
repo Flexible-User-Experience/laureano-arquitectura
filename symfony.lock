@@ -198,6 +198,9 @@
             "ref": "30dba2f9b719f21b497a6302f41aac07f9079e13"
         }
     },
+    "sonata-project/user-bundle": {
+        "version": "5.9.0"
+    },
     "stof/doctrine-extensions-bundle": {
         "version": "1.7",
         "recipe": {
