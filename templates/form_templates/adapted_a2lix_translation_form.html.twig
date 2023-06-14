@@ -6,11 +6,11 @@
                 <li {% if loop.first %}class="active"{% endif %}>
                     <a href="javascript:void(0)" data-toggle="tab" data-target=".a2lix_translationsFields-{{ locale }}">
                         {% if locale == 'es' %}
-                            {% set status = 'warning' %}
+                            {% set language = 'spanish' | trans %}
                         {% elseif locale == 'en' %}
-                            {% set status = 'danger' %}
+                            {% set language = 'english' | trans %}
                         {% endif %}
-                        <span class="text-{{ status }}">{{ locale | upper }}</span>
+                        <span class="text-success">{{ language | capitalize }}</span>
                     </a>
                 </li>
             {% endfor %}

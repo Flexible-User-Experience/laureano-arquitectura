@@ -141,7 +141,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
     {
         $form
             ->with(
-                'Images',
+                'Image',
                 [
                     'class' => 'col-md-3',
                     'box_class' => 'box box-success',
