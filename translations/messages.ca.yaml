@@ -7,6 +7,7 @@ frontend:
 homepage: 'inici'
 services: 'serveis'
 projects: 'projectes'
+projects_cta: 'veure projectes realitzats'
 contact: 'contacte'
 map: 'Mapa'
 Name: 'Nom'
