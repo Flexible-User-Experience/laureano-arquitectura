@@ -9,16 +9,25 @@
                 <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
                     <h1 class="mb-0 sr-only">{{ 'homepage' | trans | capitalize }}</h1>
                     <img src="{{ asset('build/vectors/full_logo_grey.svg') }}" alt="{{ 'frontend.logo' | trans | capitalize }} {{ project_title }}" width="230" class="d-block mx-auto mb-5">
-                    <p>
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
-                    </p>
+                    {% include 'helpers/random_paragraph_placeholder.html.twig' %}
                     <a class="btn btn-primary disabled placeholder col-4"></a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container px-4 py-5">
+        <h3 class="pb-2 border-bottom">{{ 'services' | trans | capitalize }}</h3>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            {% set icon = ['fa-compass-drafting', 'fa-house', 'fa-archway', 'fa-building', 'fa-couch'] %}
+            {% for i in 0..4 %}
+                <div class="feature col">
+                    <div class="d-inline-flex align-items-center justify-content-center text-bg-secondary bg-gradient fs-2 mb-3">
+                        <i class="p-5 fa-3x fa-solid {{ icon[i] }}"></i>
+                    </div>
+                    <h3 class="fs-2 text-body-emphasis"><span class="placeholder col-10 placeholder-lg"></span></h3>
+                    {% include 'helpers/random_paragraph_placeholder.html.twig' %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

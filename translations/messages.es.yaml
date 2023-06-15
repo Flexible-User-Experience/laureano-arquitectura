@@ -5,6 +5,7 @@ frontend:
     flash:
         on_contact_message_submit_success: 'Tu mensaje se ha enviado correctamente. Te responderemos lo antes posible.'
 homepage: 'inicio'
+services: 'servicios'
 projects: 'proyectos'
 contact: 'contacto'
 map: 'Mapa'
