@@ -4,6 +4,7 @@ frontend:
     toggle: 'intercanviador'
     flash:
         on_contact_message_submit_success: 'El teu missatge s''ha enviat correctament. Et respondrem el més aviat possible.'
+'read more': 'llegir més'
 homepage: 'inici'
 services: 'serveis'
 projects: 'projectes'

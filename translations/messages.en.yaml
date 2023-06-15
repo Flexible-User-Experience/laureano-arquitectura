@@ -4,6 +4,7 @@ frontend:
     toggle: 'toggle'
     flash:
         on_contact_message_submit_success: 'Your message has been sent successfully. We will answer you as soon as possible.'
+'read more': 'read more'
 homepage: 'homepage'
 services: 'services'
 projects: 'projects'
