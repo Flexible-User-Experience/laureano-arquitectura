@@ -153,7 +153,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 'imageFile',
                 VichImageType::class,
                 [
-                    'required' => false,
+                    'required' => true,
                 ]
             )
             ->end()

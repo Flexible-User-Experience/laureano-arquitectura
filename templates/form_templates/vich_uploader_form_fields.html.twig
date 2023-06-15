@@ -61,7 +61,7 @@
         {%- endif -%}
         {%- if image_uri -%}
             <a class="d-block mt-2" href="{{ asset_helper is same as(true) ? asset(image_uri) : image_uri }}" download>
-                <img src="{{ asset_helper is same as(true) ? asset(image_uri) : image_uri }}" alt="..." class="img-responsive" style="max-width: 500px"/>
+                <img src="{{ asset_helper is same as(true) ? asset(image_uri) : image_uri }}" alt="..." class="img-responsive"/>
             </a>
         {%- endif -%}
         {%- if download_uri -%}

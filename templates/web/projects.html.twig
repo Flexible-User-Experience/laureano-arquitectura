@@ -12,7 +12,20 @@
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
             {% if projects | length > 0 %}
                 {% for project in projects %}
-                    <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="list-group-item list-group-item-action">{{ project.name }}</a>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img src="{{ vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY') }}" class="card-img-top" alt="{{ project.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.name }}</h5>
+                                <p class="card-text">
+                                    {{ project.summary }}
+                                </p>
+                                <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="btn btn-primary text-white">
+                                    <i class="fa-solid fa-search fa-fw"></i> {{ 'read more' | trans | capitalize }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 {% endfor %}
             {% else %}
                 {% for i in 0..6 %}
