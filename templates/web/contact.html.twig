@@ -8,11 +8,17 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) {
             let map;
+            let marker;
             async function initMap() {
                 const { Map } = await google.maps.importLibrary("maps");
                 map = new Map(document.getElementById("map"), {
                     center: { lat: 40.71065, lng: 0.57584 },
                     zoom: 15,
+                });
+                marker = new google.maps.Marker({
+                    position: { lat: 40.71065, lng: 0.57584 },
+                    map,
+                    title: "Hello World!",
                 });
             }
             initMap();
