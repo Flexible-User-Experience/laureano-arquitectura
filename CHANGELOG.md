@@ -1,3 +1,10 @@
+TODO
+====
+
+ * fix Sendgrid delivery problem
+ * add Google Analytics
+ * send message contact replies
+
 Changelog
 =========
 
