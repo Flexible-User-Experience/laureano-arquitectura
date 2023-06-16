@@ -2,8 +2,8 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class WebTest extends WebTestCase
 {
@@ -21,6 +21,8 @@ class WebTest extends WebTestCase
     public function provideSuccessfulUrls(): array
     {
         return [
+            // sitemap
+            ['/sitemap.default.xml'],
             // ca
             ['/'],
             ['/projectes'],
@@ -36,6 +38,24 @@ class WebTest extends WebTestCase
             ['/en/projects'],
             ['/en/contact'],
             ['/en/privacy-policy'],
+        ];
+    }
+
+    /**
+     * @dataProvider provideNotFoundUrls
+     */
+    public function testNotFoundPages(string $url): void
+    {
+
+        $client = static::createClient();
+        $client->request('GET', $url);
+        self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    }
+
+    public function provideNotFoundUrls(): array
+    {
+        return [
+            ['/not-found-url'],
         ];
     }
 }
