@@ -1,0 +1,55 @@
+{% extends '@App/mail/layout.html.twig' %}
+
+{% block content %}
+    {% apply inky_to_html | inline_css(source('@styles/foundation-emails.css')) %}
+        <container class="header">
+            <row>
+                <columns>
+                    <spacer size="32"></spacer>
+                    <h3 class="text-center">{{ 'Contact message answer' | trans }}</h3>
+                </columns>
+            </row>
+        </container>
+        <container class="body-border">
+            <row>
+                <columns>
+                    <spacer size="32"></spacer>
+                    <center>
+                        <img src="{{ absolute_url(asset('build/images/full_logo.png')) }}" alt="{{ project_title }}">
+                    </center>
+                    <spacer size="32"></spacer>
+                    <p>{{ 'Contact Message Reply help text 1' | trans({'%day%': contact.createdAtString}) | raw }} <a class="flux" href="{{ absolute_url(path('app_web_homepage')) }}">{{ project_url_base }}</a> {{ 'with the following text' | trans }}:</p>
+                    <spacer size="16"></spacer>
+                    <callout>
+                        <spacer size="14"></spacer>
+                        <p>{{ contact.message }}</p>
+                    </callout>
+                    <spacer size="16"></spacer>
+                    <p>{{ 'Contact Message Reply help text 2' | trans }}</p>
+                    <spacer size="16"></spacer>
+                    <callout>
+                        <spacer size="14"></spacer>
+                        <p>{{ contact.replyMessage }}</p>
+                    </callout>
+                </columns>
+            </row>
+            <row>
+                <columns>
+                    <spacer size="16"></spacer>
+                    <p>{{ 'Contact Message Reply help text 3' | trans }}</p>
+                </columns>
+            </row>
+        </container>
+        <container class="header">
+            <row>
+                <columns>
+                    <spacer size="32"></spacer>
+                    <p class="muted">{{ 'Contact Message Reply help text 4' | trans({'%phone%': enterprise_phone}) }}</p>
+                    <menu>
+                        <item class="flux" href="{{ absolute_url(path('app_web_homepage')) }}">&copy; {{ 'now' | date('Y') }} {{ project_title }}</item>
+                    </menu>
+                </columns>
+            </row>
+        </container>
+    {% endapply %}
+{% endblock %}

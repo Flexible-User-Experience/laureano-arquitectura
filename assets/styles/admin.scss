@@ -84,6 +84,8 @@ canvas.viewer {
 }
 
 // sonata hacks
+textarea { resize: vertical; }
+
 header.main-header {
   a.logo {
     background-color: $primary !important;
