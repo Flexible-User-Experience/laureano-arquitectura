@@ -18,7 +18,7 @@ class WebMenuBuilder
         $this->requestStack = $requestStack;
     }
 
-    public function createMainMenu(array $options): ItemInterface
+    public function createMainMenu(): ItemInterface
     {
         $current = '';
         if ($this->requestStack->getCurrentRequest()) {
@@ -66,7 +66,7 @@ class WebMenuBuilder
         return $menu;
     }
 
-    public function createLanguagesMenu(array $options): ItemInterface
+    public function createLanguagesMenu(): ItemInterface
     {
         $locale = '';
         if ($this->requestStack->getCurrentRequest()) {

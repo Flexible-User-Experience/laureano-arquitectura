@@ -2,10 +2,9 @@ TODO
 ====
 
  * fix Sendgrid delivery problem
- * add Google Analytics
  * send message contact replies
  * add privacy policy page
- * add favicon
+ * add recovery password feature
 
 Changelog
 =========

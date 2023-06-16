@@ -12,6 +12,8 @@ twig:
         - '@App/form_templates/vich_uploader_form_fields.html.twig'
         - '@App/form_templates/adapted_a2lix_translation_form.html.twig'
     globals:
+        google_tag_manager_enabled: false
+        google_tag_manager_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
         google_maps_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
         project_title: '%project_web_title%'
         enterprise_phone: '%enterprise_phone%'
@@ -24,3 +26,8 @@ twig:
 when@test:
     twig:
         strict_variables: true
+
+when@prod:
+    twig:
+        globals:
+            google_tag_manager_enabled: true
