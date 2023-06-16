@@ -5,7 +5,7 @@ parameters:
     default_locale: 'ca'
     locale_i18n: [ 'es', 'en' ]
     locale_i18n_full: [ '%default_locale%', 'es', 'en' ]
-    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    google_recaptcha_site_key: '%env(string:GOOGLE_RECAPTCHA_SITE_KEY)%'
     project_web_title: 'Laureano Arquitectura'
     project_url_base: '%env(string:PROJECT_BASE_URL)%'
     enterprise_name: '%env(string:ENTERPRISE_NAME)%'
@@ -66,8 +66,13 @@ services:
         tags:
             - { name: 'form.type' }
     # Menus
-    App\Menu\MenuBuilder:
-        class: App\Menu\WebMenuBuilder
+    App\Menu\AdminTopRightNavMenuBuilder:
+        arguments:
+            - '@knp_menu.factory'
+            - '@security.helper'
+        tags:
+            - { name: 'knp_menu.menu_builder', method: 'createRightTopNavMenu', alias: 'admin_top_right_nav_menu' }
+    App\Menu\WebMenuBuilder:
         arguments:
             - '@knp_menu.factory'
             - '@request_stack'

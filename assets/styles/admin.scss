@@ -1,5 +1,6 @@
 // colors
-$magenta: #E02693;
+$primary: #F00000;
+$secondary: #59595D;
 $white: #FFFFFF;
 
 // spacers
@@ -85,7 +86,7 @@ canvas.viewer {
 // sonata hacks
 header.main-header {
   a.logo {
-    background-color: $magenta !important;
+    background-color: $primary !important;
     padding: 0;
     width: 231px;
     img {
@@ -96,15 +97,15 @@ header.main-header {
 }
 
 .skin-red.main-header.navbar {
-  background-color: $magenta !important;
+  background-color: $primary !important;
 }
 
 .skin-red .sidebar-menu > li.active > a {
-  border-left-color: $magenta !important;
+  border-left-color: $primary !important;
 }
 
 html body.sonata-bc.skin-red.fixed.sonata-select2.sonata-icheck div.wrapper header.main-header nav.navbar.navbar-static-top {
-  background-color: $magenta !important;
+  background-color: $primary !important;
 }
 
 .breadcrumb > .active {

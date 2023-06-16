@@ -5,6 +5,7 @@ namespace App\Controller\Web;
 use App\Entity\ContactMessage;
 use App\Entity\Project;
 use App\Form\Type\ContactMessageFormType;
+use App\Manager\MailerManager;
 use App\Repository\ContactMessageRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,6 +41,23 @@ class MainController extends AbstractController
 
     #[Route(
         path: [
+            'ca' => '/projecte-mostra/titol-projecte',
+            'es' => '/proyecto-muestra/titulo-proyecto',
+            'en' => '/project-sample/sample-project',
+        ],
+        name: 'app_web_project_placeholder',
+    )]
+    public function projectPlaceholder(ProjectRepository $pr): Response
+    {
+        if (count($pr->getActiveAndShowInFrontendSortedByPosition()) !== 0) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('web/project_detail_placeholder.html.twig');
+    }
+
+    #[Route(
+        path: [
             'ca' => '/projecte/{slug}',
             'es' => '/proyecto/{slug}',
             'en' => '/project/{slug}',
@@ -62,14 +80,14 @@ class MainController extends AbstractController
         ],
         name: 'app_web_contact',
     )]
-    public function contact(Request $request, ContactMessageRepository $contactMessageRepository): Response
+    public function contact(Request $request, ContactMessageRepository $cmr, MailerManager $mm): Response
     {
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $contactMessageRepository->add($contactMessage, true);
-// TODO           $mailerManager->sendNewContactMessageFromNotificationToManager($contactMessage);
+            $cmr->add($contactMessage, true);
+            $mm->sendNewContactMessageFromNotificationToManager($contactMessage);
             $contactMessage = new ContactMessage();
             $form = $this->createForm(ContactMessageFormType::class, $contactMessage);
             $this->addFlash(

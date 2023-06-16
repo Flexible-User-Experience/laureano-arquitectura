@@ -1,9 +1,15 @@
 // set custom variables before
-$primary: darken(#428bca, 20%);
+$primary: #F00000;
+$secondary: #59595D;
 
 // custom settings
 label.required:after {
   content: " *";
+}
+
+div.gmap {
+  height: 580px;
+  width: 100%;
 }
 
 // imports

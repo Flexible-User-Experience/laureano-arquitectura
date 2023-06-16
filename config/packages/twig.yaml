@@ -12,7 +12,13 @@ twig:
         - '@App/form_templates/vich_uploader_form_fields.html.twig'
         - '@App/form_templates/adapted_a2lix_translation_form.html.twig'
     globals:
+        google_maps_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
         project_title: '%project_web_title%'
+        enterprise_phone: '%enterprise_phone%'
+        enterprise_address: '%enterprise_address%'
+        enterprise_zip: '%enterprise_zip%'
+        enterprise_city: '%enterprise_city%'
+        enterprise_state: '%enterprise_state%'
         admin_tag_version: 'v0.01.000'
 
 when@test:
