@@ -53,7 +53,7 @@ final class ContactMessageAdminController extends CRUDController
             ;
             $cmr->update(true);
             // send notifications
-            // TODO $mm->sendUserBackendNotification($object);
+            $mm->sendContactMessageReplyToPotentialCustomerNotification($object);
             // build flash message
             $this->addFlash(
                 'sonata_flash_success',
