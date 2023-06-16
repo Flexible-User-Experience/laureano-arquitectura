@@ -17,8 +17,13 @@
                 });
                 marker = new google.maps.Marker({
                     position: { lat: 40.71065, lng: 0.57584 },
-                    map,
-                    title: "Hello World!",
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 10,
+                    },
+                    draggable: false,
+                    map: map,
+                    title: "{{ project_title }}",
                 });
             }
             initMap();
