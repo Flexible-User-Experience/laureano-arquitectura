@@ -5,7 +5,6 @@ namespace App\Admin;
 use App\Entity\AbstractBase;
 use App\Entity\Translations\ProjectTranslation;
 use App\Enum\SortOrderEnum;
-use App\Enum\SortOrderTypeEnum;
 use App\Form\Type\GedmoTranslationsType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;

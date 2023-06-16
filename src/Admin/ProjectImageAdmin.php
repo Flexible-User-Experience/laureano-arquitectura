@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,11 +16,22 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 final class ProjectImageAdmin extends AbstractBaseAdmin
 {
+    protected $classnameLabel = 'Project Image';
+    protected $baseRoutePattern = 'web/project-image';
+
     protected function configureDefaultSortValues(array &$sortValues): void
     {
         $sortValues[DatagridInterface::PAGE] = 1;
         $sortValues[DatagridInterface::SORT_ORDER] = SortOrderEnum::ASCENDING->value;
         $sortValues[DatagridInterface::SORT_BY] = 'position';
+    }
+
+    protected function configureRoutes(RouteCollectionInterface $collection): void
+    {
+        $collection
+            ->remove('show')
+            ->remove('batch')
+        ;
     }
 
     protected function configureListFields(ListMapper $list): void

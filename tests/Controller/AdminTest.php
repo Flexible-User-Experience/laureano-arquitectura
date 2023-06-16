@@ -34,6 +34,10 @@ class AdminTest extends WebTestCase
             ['/admin/web/project/create'],
             ['/admin/web/project/1/edit'],
             ['/admin/web/project/1/delete'],
+            ['/admin/web/project-image/list'],
+            ['/admin/web/project-image/create'],
+            ['/admin/web/project-image/1/edit'],
+            ['/admin/web/project-image/1/delete'],
             ['/admin/web/contact-message/list'],
             ['/admin/web/contact-message/1/show'],
             ['/admin/web/contact-message/1/delete'],
@@ -54,7 +58,34 @@ class AdminTest extends WebTestCase
     public function provideNotFoundUrls(): array
     {
         return [
+            ['/admin/web/project/batch'],
+            ['/admin/web/project/1/show'],
+            ['/admin/web/project-image/batch'],
+            ['/admin/web/project-image/1/show'],
             ['/admin/web/contact-message/batch'],
+            ['/admin/web/contact-message/1/edit'],
+        ];
+    }
+
+    /**
+     * @dataProvider provideForbiddenUrls
+     */
+    public function testForbiddenPages(string $url): void
+    {
+
+        $client = static::getAdminAuthenticatedClient();
+        $client->request('GET', $url);
+        self::assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+    }
+
+    public function provideForbiddenUrls(): array
+    {
+        return [
+            ['/admin/app/user/list'],
+            ['/admin/app/user/create'],
+            ['/admin/app/user/1/edit'],
+            ['/admin/app/user/1/delete'],
+            ['/admin/app/user/1/show'],
         ];
     }
 

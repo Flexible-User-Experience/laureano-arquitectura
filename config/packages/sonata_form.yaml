@@ -1,2 +1,2 @@
 sonata_form:
-    form_type: standard
+    form_type: 'standard'

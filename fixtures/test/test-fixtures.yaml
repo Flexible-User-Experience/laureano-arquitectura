@@ -16,6 +16,14 @@ App\Entity\Project:
     beginDate: '<dateTimeThisMonth()>'
     endDate: '<dateTimeThisMonth()>'
 
+App\Entity\ProjectImage:
+  projectimage{1..5}:
+    project: '@project<current()>'
+    legacyId: '<current()>'
+    name: '<name()>'
+    imageName: 'lorem-picsum.jpg'
+    position: '<current()>'
+
 App\Entity\User:
   admin:
     username: 'admin'
