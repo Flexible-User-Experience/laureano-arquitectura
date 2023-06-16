@@ -72,17 +72,17 @@ class MailerManager
     /**
      * @throws TransportExceptionInterface
      */
-//    public function sendContactMessageReplyToPotentialCustomerNotification(ContactMessage $contactMessage): void
-//    {
-//        $email = (new TemplatedEmail())
-//            ->from(new Address($this->parameterBag->get('mailer_destination'), $this->parameterBag->get('project_web_title')))
-//            ->to(new Address($contactMessage->getEmail(), $contactMessage->getName()))
-//            ->subject($this->translator->trans('Contact message answer').' '.$this->parameterBag->get('project_web_title'))
-//            ->htmlTemplate('@App/Mail/contact_message_reply_notification_to_potential_customer.html.twig')
-//            ->context([
-//                'contact' => $contactMessage,
-//            ])
-//        ;
-//        $this->mailer->send($email);
-//    }
+    public function sendContactMessageReplyToPotentialCustomerNotification(ContactMessage $contactMessage): void
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->parameterBag->get('mailer_destination'), $this->parameterBag->get('project_web_title')))
+            ->to(new Address($contactMessage->getEmail(), $contactMessage->getName()))
+            ->subject($this->translator->trans('Contact message answer').' '.$this->parameterBag->get('project_web_title'))
+            ->htmlTemplate('@App/Mail/contact_message_reply_notification_to_potential_customer.html.twig')
+            ->context([
+                'contact' => $contactMessage,
+            ])
+        ;
+        $this->mailer->send($email);
+    }
 }

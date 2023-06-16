@@ -45,6 +45,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
             )
             ->add('name')
             ->add('email')
+            ->add('mobileNumber')
             ->add('message')
             ->add(
                 'replyDate',
@@ -166,7 +167,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
                 [
                     'required' => false,
                     'attr' => [
-                        'readonly' => 'readonly,',
+                        'readonly' => 'readonly',
                     ],
                 ]
             )
@@ -235,6 +236,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
             )
             ->add('name')
             ->add('email')
+            ->add('mobileNumber')
             ->add('message')
             ->end()
             ->with(
