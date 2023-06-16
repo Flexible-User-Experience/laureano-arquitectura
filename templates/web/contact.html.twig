@@ -6,21 +6,18 @@
     {{ parent() }}
     <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&v=weekly" defer></script>
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function(event) {
+        document.addEventListener("DOMContentLoaded", function() {
             let map;
             let marker;
+            const position = { lat: 40.71065, lng: 0.57584 };
             async function initMap() {
                 const { Map } = await google.maps.importLibrary("maps");
                 map = new Map(document.getElementById("map"), {
-                    center: { lat: 40.71065, lng: 0.57584 },
+                    center: position,
                     zoom: 15,
                 });
                 marker = new google.maps.Marker({
-                    position: { lat: 40.71065, lng: 0.57584 },
-                    icon: {
-                        path: google.maps.SymbolPath.CIRCLE,
-                        scale: 10,
-                    },
+                    position: position,
                     draggable: false,
                     map: map,
                     title: "{{ project_title }}",
