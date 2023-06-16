@@ -1,7 +1,6 @@
 TODO
 ====
 
- * fix Sendgrid delivery problem
  * send message contact replies
  * add privacy policy page
  * add recovery password feature
@@ -14,7 +13,7 @@ Changelog
  * keep working
 
 ##### Version 1.01.001 (2023-06-16)
- * lot of pending works
+ * lots of pending works
 
 ##### Version 0.01.001 (2023-06-14)
  * first skeleton app
