@@ -7,7 +7,17 @@
         <div class="row">
             <div class="col">
                 <h1 class="pb-2 border-bottom mb-5">{{ 'Project' | trans }} {{ project.name }}</h1>
-                <h4 class="text-secondary mb-5">{{ project.summary }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{{ vich_uploader_asset(project, 'imageFile') | imagine_filter('2400xY') }}" class="img-fluid mb-3" alt="{{ project.name }}">
+                {% for image in project.images %}
+                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('2400xY') }}" class="img-fluid mb-3" alt="{{ image.name }}">
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h4 class="text-secondary mb-3">{{ project.summary }}</h4>
                 {{ project.description | raw }}
             </div>
         </div>
