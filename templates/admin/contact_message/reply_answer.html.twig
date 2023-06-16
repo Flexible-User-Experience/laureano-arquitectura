@@ -1,0 +1,66 @@
+{% extends "@SonataAdmin/CRUD/base_show.html.twig" %}
+
+{% block show_groups %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h4 class="box-title">{{ 'General' | trans }}</h4>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table">
+                        <tbody>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Name' | trans }}</th>
+                            <td>{{ object.name }}</td>
+                        </tr>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Email' | trans }}</th>
+                            <td>{{ object.email }}</td>
+                        </tr>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Mobile Number' | trans }}</th>
+                            <td>{{ object.mobileNumber }}</td>
+                        </tr>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Message' | trans }}</th>
+                            <td>{{ object.message }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h4 class="box-title">{{ 'Controls' | trans }}</h4>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table">
+                        <tbody>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Created At' | trans }}</th>
+                            <td>{{ object.createdAtString }}</td>
+                        </tr>
+                        <tr class="sonata-ba-view-container">
+                            <th>{{ 'Has Been Read' | trans }}</th>
+                            <td>{{ object.hasBeenRead }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h4 class="box-title">{{ 'Reply' | trans }}</h4>
+                </div>
+                <div class="box-body">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

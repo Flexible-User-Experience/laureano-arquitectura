@@ -1,7 +1,6 @@
 TODO
 ====
 
- * send message contact replies
  * add privacy policy page
  * add recovery password feature
 

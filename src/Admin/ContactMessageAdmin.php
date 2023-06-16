@@ -240,18 +240,9 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
             ->add('message')
             ->end()
             ->with(
-                'Reply',
-                [
-                    'class' => 'col-md-4',
-                    'box_class' => 'box box-info',
-                ]
-            )
-            ->add('replyMessage')
-            ->end()
-            ->with(
                 'Controls',
                 [
-                    'class' => 'col-md-4',
+                    'class' => 'col-md-3',
                     'box_class' => 'box box-info',
                 ]
             )
@@ -261,5 +252,18 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
             ->add('replyDateString')
             ->end()
         ;
+        if ($this->getSubject()->getHasBeenReplied()) {
+            $show
+                ->with(
+                    'Reply',
+                    [
+                        'class' => 'col-md-5',
+                        'box_class' => 'box box-info',
+                    ]
+                )
+                ->add('replyMessage')
+                ->end()
+            ;
+        }
     }
 }
