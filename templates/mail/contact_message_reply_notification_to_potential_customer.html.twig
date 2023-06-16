@@ -15,10 +15,10 @@
                 <columns>
                     <spacer size="32"></spacer>
                     <center>
-                        <img src="{{ absolute_url(asset('build/images/logo_small.png')) }}" alt="{{ project_title }}">
+                        <img src="{{ absolute_url(asset('build/images/full_logo.png')) }}" alt="{{ project_title }}">
                     </center>
                     <spacer size="32"></spacer>
-                    <p>{{ 'Contact Message Reply help text 1' | trans({'%day%': contact.createdAtString}) | raw }} <a class="flux" href="{{ absolute_url(path('frontend_homepage')) }}">{{ project_url_base }}</a> {{ 'with the following text' | trans }}:</p>
+                    <p>{{ 'Contact Message Reply help text 1' | trans({'%day%': contact.createdAtString}) | raw }} <a class="flux" href="{{ absolute_url(path('app_web_homepage')) }}">{{ project_url_base }}</a> {{ 'with the following text' | trans }}:</p>
                     <spacer size="16"></spacer>
                     <callout>
                         <spacer size="14"></spacer>
@@ -44,7 +44,7 @@
             <row>
                 <columns>
                     <spacer size="32"></spacer>
-                    <p class="muted">{{ 'Contact Message Reply help text 4' | trans({'%phone%': project_contact_phone}) }}</p>
+                    <p class="muted">{{ 'Contact Message Reply help text 4' | trans({'%phone%': enterprise_phone}) }}</p>
                     <menu>
                         <item class="flux" href="{{ absolute_url(path('app_web_homepage')) }}">&copy; {{ 'now' | date('Y') }} {{ project_title }}</item>
                     </menu>
