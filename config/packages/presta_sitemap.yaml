@@ -3,8 +3,3 @@ presta_sitemap:
         priority: 1
         changefreq: 'weekly'
         lastmod: 'now'
-    alternate:
-      enabled: true
-      default_locale: '%default_locale%'
-      locales: [ 'es', 'en' ]
-      i18n: 'symfony'
