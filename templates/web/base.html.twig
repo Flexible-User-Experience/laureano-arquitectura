@@ -45,10 +45,10 @@
             <footer class="d-flex flex-wrap justify-content-between  py-3 my-4 border-top">
                 <p class="col-md-4 mb-0 text-muted">
                     <strong>{{ project_title }}</strong><br>
-                    <span class="d-block mb-0 mt-3"><i class="fa-solid fa-fw fa-phone"></i> {{ enterprise_phone }}</span><br>
+                    <i class="fa-solid fa-fw fa-phone"></i> {{ enterprise_phone }}<br>
                     {{ enterprise_address }}<br>
                     {{ enterprise_zip }} {{ enterprise_city }}<br>
-                    {{ enterprise_state }}
+                    ({{ enterprise_state }})
                 </p>
                 {{ knp_menu_render('languages') }}
                 <ul class="nav nav-stacked col-md-4 justify-content-end">
