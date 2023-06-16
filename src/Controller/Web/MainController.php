@@ -40,6 +40,23 @@ class MainController extends AbstractController
 
     #[Route(
         path: [
+            'ca' => '/projecte-mostra/titol-projecte',
+            'es' => '/proyecto-muestra/titulo-proyecto',
+            'en' => '/project-sample/sample-project',
+        ],
+        name: 'app_web_project_placeholder',
+    )]
+    public function projectPlaceholder(ProjectRepository $pr): Response
+    {
+        if (count($pr->getActiveAndShowInFrontendSortedByPosition()) !== 0) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('web/project_detail_placeholder.html.twig');
+    }
+
+    #[Route(
+        path: [
             'ca' => '/projecte/{slug}',
             'es' => '/proyecto/{slug}',
             'en' => '/project/{slug}',

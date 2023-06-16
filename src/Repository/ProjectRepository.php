@@ -49,6 +49,7 @@ class ProjectRepository extends ServiceEntityRepository
             ->where('p.active = :active')
             ->setParameter('active', true)
             ->orderBy('p.position', SortOrderEnum::ASCENDING->value)
+            ->addOrderBy('p.name', SortOrderEnum::ASCENDING->value)
         ;
     }
 
