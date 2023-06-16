@@ -9,6 +9,7 @@ App\Entity\Project:
   project{1..5}:
     legacyId: '<current()>'
     name: '<name()>'
+    imageName: 'lorem-picsum.jpg'
     description: '<paragraph()>'
     summary: '<word()>'
     position: '<current()>'
