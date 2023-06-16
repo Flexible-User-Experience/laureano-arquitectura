@@ -9,9 +9,12 @@ TODO
 Changelog
 =========
 
-##### Version 0.01.002 (WIP)
+##### Version 1.01.002 (WIP)
  * fix bugs
  * keep working
+
+##### Version 1.01.001 (2023-06-16)
+ * lot of pending works
 
 ##### Version 0.01.001 (2023-06-14)
  * first skeleton app

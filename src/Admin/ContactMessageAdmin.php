@@ -256,6 +256,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
                 ]
             )
             ->add('createdAtString')
+            ->add('hasBeenRead')
             ->add('hasBeenReplied')
             ->add('replyDateString')
             ->end()
