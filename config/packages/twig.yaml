@@ -13,7 +13,7 @@ twig:
         - '@App/form_templates/adapted_a2lix_translation_form.html.twig'
     globals:
         google_tag_manager_enabled: false
-        google_tag_manager_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
+        google_tag_manager_api_key: '%env(string:GOOGLE_TAG_MANAGER_ACCOUNT)%'
         google_maps_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
         project_title: '%project_web_title%'
         enterprise_phone: '%enterprise_phone%'
