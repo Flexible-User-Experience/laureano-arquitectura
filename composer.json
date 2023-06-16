@@ -14,6 +14,7 @@
         "excelwebzone/recaptcha-bundle": "^1.5",
         "friendsofsymfony/ckeditor-bundle": "^2.3",
         "knplabs/knp-menu-bundle": "^3.2",
+        "league/commonmark": "^2.4",
         "liip/imagine-bundle": "^2.5",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.22",
