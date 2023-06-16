@@ -29,9 +29,11 @@
             </div>
             <div class="col">
                 <h4 class="text-secondary mb-3"><span class="placeholder col-{{ random(5, 12) }}"></span></h4>
-                <p>
-                    {% include 'helpers/random_paragraph_placeholder.html.twig' %}
-                </p>
+                {% for i in 0..random(4, 7) %}
+                    <p>
+                        {% include 'helpers/random_paragraph_placeholder.html.twig' %}
+                    </p>
+                {% endfor %}
             </div>
         </div>
     </div>

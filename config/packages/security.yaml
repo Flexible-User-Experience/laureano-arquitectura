@@ -13,6 +13,7 @@ security:
             - 'ROLE_CMS'
         ROLE_SUPER_ADMIN:
             - 'ROLE_ADMIN'
+            - 'ROLE_APP_USER_ALL'
             - 'ROLE_ALLOWED_TO_SWITCH'
     password_hashers:
         Sonata\UserBundle\Model\UserInterface: 'auto'

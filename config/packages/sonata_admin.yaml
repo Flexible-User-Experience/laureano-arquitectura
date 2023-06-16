@@ -15,6 +15,10 @@ sonata_admin:
         use_select2: true
         use_icheck: true
         pager_links: 10
+    security:
+        handler: 'sonata.admin.security.handler.role'
+        role_admin: 'ROLE_ADMIN'
+        role_super_admin: 'ROLE_SUPER_ADMIN'
     templates:
         layout: '@App/admin/layout.html.twig'
     dashboard:
