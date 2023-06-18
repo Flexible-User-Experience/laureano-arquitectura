@@ -4,10 +4,10 @@
             <span class="info-box-icon"><i class="far fa-folder-open"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">{{ 'projects' | trans }}</span>
-                <span class="info-box-number">{{ computed.totalProjectsAmount }}</span>
+                <span class="info-box-number">{{ computed.totalProjectsAmount | i }}</span>
                 {% if computed.totalProjectsAmount == 0 %}
                     <div class="progress"></div>
-                    <span class="progress-description"><i class="fa fa-plus-circle fa-fw"></i> {{ 'Project Create' | trans }}</span>
+                    <span class="progress-description"><i class="fa fa-plus-circle fa-fw"></i> {{ 'Add new' | trans }}</span>
                 {% endif %}
             </div>
         </div>
@@ -18,8 +18,12 @@
         <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="far fa-envelope-open"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">{{ 'Contact Message List' | trans }}</span>
-                <span class="info-box-number">{{ computed.totalContactMessagesAmount }}</span>
+                <span class="info-box-text">{{ 'Contact Message List' | trans }} {{ 'received' | trans }}</span>
+                <span class="info-box-number">{{ computed.totalContactMessagesAmount | i }}</span>
+                {% if computed.responsePendingContactMessagesAmount > 0 %}
+                    <div class="progress"></div>
+                    <span class="progress-description">{{ computed.responsePendingContactMessagesAmount | i }} {{ 'response pending' | trans }}</span>
+                {% endif %}
             </div>
         </div>
     </a>

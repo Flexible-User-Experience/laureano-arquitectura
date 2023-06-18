@@ -20,11 +20,16 @@ class DashboardPerformanceChart
 
     public function getTotalProjectsAmount(): int
     {
-        return count($this->pr->findAll());
+        return $this->pr->getTotalProjectsAmount();
     }
 
     public function getTotalContactMessagesAmount(): int
     {
-        return count($this->cmr->findAll());
+        return $this->cmr->getContactMessagesAmount();
+    }
+
+    public function getResponsePendingContactMessagesAmount(): int
+    {
+        return $this->cmr->getResponsePendingContactMessagesAmount();
     }
 }

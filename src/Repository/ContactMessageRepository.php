@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\ContactMessage;
+use App\Enum\SortOrderEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -38,5 +41,35 @@ class ContactMessageRepository extends ServiceEntityRepository
     {
         $this->getEntityManager()->remove($entity);
         $this->update($flush);
+    }
+
+    public function getAllSortedByCreatedAtQB(): QueryBuilder
+    {
+        return $this->createQueryBuilder('cm')->orderBy('cm.createdAt', SortOrderEnum::DESCENDING->value);
+    }
+
+    public function getAllSortedByCreatedAtQ(): Query
+    {
+        return $this->getAllSortedByCreatedAtQB()->getQuery();
+    }
+
+    public function getAllSortedByCreatedAt(): array
+    {
+        return $this->getAllSortedByCreatedAtQ()->getResult();
+    }
+
+    public function getContactMessagesAmount(): int
+    {
+        return count($this->getAllSortedByCreatedAt());
+    }
+
+    public function getResponsePendingContactMessagesAmount(): int
+    {
+        $qb = $this->getAllSortedByCreatedAtQB()
+            ->where('cm.hasBeenReplied = :replied')
+            ->setParameter('replied', true)
+        ;
+
+        return count($qb->getQuery()->getResult());
     }
 }
