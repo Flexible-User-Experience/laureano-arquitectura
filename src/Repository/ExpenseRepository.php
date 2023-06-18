@@ -73,4 +73,9 @@ class ExpenseRepository extends ServiceEntityRepository
 
         return is_null($query->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR)) ? 0 : (float) $query->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR);
     }
+
+    public function getTotalExpensesAmount(): int
+    {
+        return count($this->findAll());
+    }
 }
