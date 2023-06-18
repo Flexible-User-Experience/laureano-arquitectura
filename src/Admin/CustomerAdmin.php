@@ -217,7 +217,9 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'locale',
                 ChoiceType::class,
                 [
-                    'preferred_choices' => LocaleEnum::CA->value,
+                    'preferred_choices' => [
+                        LocaleEnum::CA->value
+                    ],
                     'choices' => LocaleEnum::getChoices(),
                     'required' => true,
                     'multiple' => false,
