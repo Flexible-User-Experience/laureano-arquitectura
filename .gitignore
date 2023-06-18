@@ -1,5 +1,6 @@
 ###> app/bundle ###
 auth.json
+google_apis_credentials.json
 /public/images/projects/*
 !/public/images/projects/.gitkeep
 !/public/uploads/.gitkeep
