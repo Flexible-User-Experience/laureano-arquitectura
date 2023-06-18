@@ -4,6 +4,7 @@ namespace App\Twig\Components;
 
 use App\Repository\ContactMessageRepository;
 use App\Repository\CustomerRepository;
+use App\Repository\InvoiceRepository;
 use App\Repository\ProjectRepository;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
@@ -13,12 +14,14 @@ class DashboardPerformanceChart
     private ProjectRepository $pr;
     private ContactMessageRepository $cmr;
     private CustomerRepository $cr;
+    private InvoiceRepository $ir;
 
-    public function __construct(ProjectRepository $pr, ContactMessageRepository $cmr, CustomerRepository $cr)
+    public function __construct(ProjectRepository $pr, ContactMessageRepository $cmr, CustomerRepository $cr, InvoiceRepository $ir)
     {
         $this->pr = $pr;
         $this->cmr = $cmr;
         $this->cr = $cr;
+        $this->ir = $ir;
     }
 
     public function getTotalProjectsAmount(): int
@@ -39,5 +42,10 @@ class DashboardPerformanceChart
     public function getTotalCustomersAmount(): int
     {
         return $this->cr->getTotalCustomersAmount();
+    }
+
+    public function getTotalInvoicesAmount(): int
+    {
+        return $this->ir->getTotalInvoicesAmount();
     }
 }
