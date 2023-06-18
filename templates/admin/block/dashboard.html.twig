@@ -1,9 +1,8 @@
 <div class="row">
-{#    <div class="col-md-4">#}
-{#        {{ component('dashboard_performance_chart') }}#}
-{#    </div>#}
+    {{ component('dashboard_performance_chart') }}
+</div>
+<div class="row">
     <div class="col-md-8">
-{#        {{ component('unfinished_work_orders_table') }}#}
         {{ component('unpaid_invoices_table') }}
     </div>
 </div>

@@ -1,16 +1,26 @@
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class="box-title text-info"><i class="fas fa-chart-bar fa-fw"></i> {{ 'Performance Average' | trans }}</h3>
-        <div class="box-tools pull-right">
-            <a class="btn btn-outline-primary" href="{{ path('admin_charts') }}" title="{{ 'Show All' | trans }}"><i class="far fa-list-alt"></i></a>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <a href="{% if computed.totalProjectsAmount == 0 %}{{ path('admin_app_project_create') }}{% else %}{{ path('admin_app_project_list') }}{% endif %}">
+        <div class="info-box bg-teal">
+            <span class="info-box-icon"><i class="far fa-folder-open"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ 'projects' | trans }}</span>
+                <span class="info-box-number">{{ computed.totalProjectsAmount }}</span>
+                {% if computed.totalProjectsAmount == 0 %}
+                    <div class="progress"></div>
+                    <span class="progress-description"><i class="fa fa-plus-circle fa-fw"></i> {{ 'Project Create' | trans }}</span>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="box-body">
-        {{ render_chart(computed.chart, {'data-controller': 'labeledchart'}) }}
-    </div>
-    <div class="box-footer text-center">
-        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::RED') }}">{{ 'Last X Days' | trans({'%days%': 30}) }}</span>
-        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::GREEN') }}">{{ 'Last X Days' | trans({'%days%': 180}) }}</span>
-        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::BLUE') }}">{{ 'Last X Days' | trans({'%days%': 365}) }}</span>
-    </div>
+    </a>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <a href="{{ path('admin_app_contactmessage_list') }}">
+        <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="far fa-envelope-open"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ 'Contact Message List' | trans }}</span>
+                <span class="info-box-number">{{ computed.totalContactMessagesAmount }}</span>
+            </div>
+        </div>
+    </a>
 </div>

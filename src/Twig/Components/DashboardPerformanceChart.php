@@ -2,90 +2,29 @@
 
 namespace App\Twig\Components;
 
-use Doctrine\ORM\NonUniqueResultException;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
-use Symfony\UX\Chartjs\Model\Chart;
+use App\Repository\ContactMessageRepository;
+use App\Repository\ProjectRepository;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent('dashboard_performance_chart')]
 class DashboardPerformanceChart
 {
-    private TranslatorInterface $ts;
-    private ChartBuilderInterface $cb;
+    private ProjectRepository $pr;
+    private ContactMessageRepository $cmr;
 
-    public function __construct(TranslatorInterface $ts, ChartBuilderInterface $cb)
+    public function __construct(ProjectRepository $pr, ContactMessageRepository $cmr)
     {
-        $this->ts = $ts;
-        $this->cb = $cb;
+        $this->pr = $pr;
+        $this->cmr = $cmr;
     }
 
-    /**
-     * @throws NonUniqueResultException
-     */
-    public function getChart(): Chart
+    public function getTotalProjectsAmount(): int
     {
-        $chart = $this->cb->createChart(Chart::TYPE_DOUGHNUT);
-        $last30WorkingDaysPerformance = (int) round($this->wdr->lastWorkingDaysPerformance(30));
-        $last180WorkingDaysPerformance = (int) round($this->wdr->lastWorkingDaysPerformance(180));
-        $last365WorkingDaysPerformance = (int) round($this->wdr->lastWorkingDaysPerformance(365));
-        $chart
-            ->setData([
-                'datasets' => [
-                    [
-                        'label' => $this->ts->trans('Last 10 Days'),
-                        'data' => [$last30WorkingDaysPerformance, 100 - $last30WorkingDaysPerformance],
-                        'backgroundColor' => [
-                            LastMonthsInvoicingResumeChart::RED,
-                            LastMonthsInvoicingResumeChart::LIGHT_GREY,
-                        ],
-                    ],
-                    [
-                        'label' => $this->ts->trans('Last Month'),
-                        'data' => [$last180WorkingDaysPerformance, 100 - $last180WorkingDaysPerformance],
-                        'backgroundColor' => [
-                            LastMonthsInvoicingResumeChart::GREEN,
-                            LastMonthsInvoicingResumeChart::LIGHT_GREY,
-                        ],
-                    ],
-                    [
-                        'label' => $this->ts->trans('Last Year'),
-                        'data' => [$last365WorkingDaysPerformance, 100 - $last365WorkingDaysPerformance],
-                        'backgroundColor' => [
-                            LastMonthsInvoicingResumeChart::BLUE,
-                            LastMonthsInvoicingResumeChart::LIGHT_GREY,
-                        ],
-                    ],
-                ],
-            ])
-            ->setOptions([
-                'animation' => false,
-                'circumference' => 360,
-                'rotation' => 0,
-                'radius' => '100%',
-                'cutout' => '25%',
-                'events' => [],
-                'plugins' => [
-                    'legend' => [
-                        'display' => false,
-                    ],
-                    'tooltip' => [
-                        'enabled' => false,
-                    ],
-                    'datalabels' => [
-                        'color' => [
-                            LastMonthsInvoicingResumeChart::WHITE,
-                            LastMonthsInvoicingResumeChart::LIGHT_GREY,
-                        ],
-                        'font' => [
-                            'size' => 18,
-                            'weight' => 'bold',
-                        ],
-                    ],
-                ],
-            ])
-        ;
+        return count($this->pr->findAll());
+    }
 
-        return $chart;
+    public function getTotalContactMessagesAmount(): int
+    {
+        return count($this->cmr->findAll());
     }
 }
