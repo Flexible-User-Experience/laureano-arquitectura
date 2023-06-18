@@ -165,7 +165,7 @@ final class ExpenseAdmin extends AbstractBaseAdmin
                     'editable' => false,
                     'header_class' => 'text-right',
                     'row_align' => 'right',
-                    'template' => '@App/Admin/Cells/list__cell_tax_base_money_field.html.twig',
+                    'template' => '@App/admin/cells/list__cell_tax_base_money_field.html.twig',
                 ]
             )
             ->add(
@@ -184,10 +184,10 @@ final class ExpenseAdmin extends AbstractBaseAdmin
                     'actions' => [
                         'edit' => [],
                         'pdf' => [
-                            'template' => '@App/Admin/Cells/list__action_expense_pdf_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_expense_pdf_button.html.twig',
                         ],
                         'duplicate' => [
-                            'template' => '@App/Admin/Cells/list__action_expense_duplicate_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_expense_duplicate_button.html.twig',
                         ],
                         'delete' => [],
                     ],

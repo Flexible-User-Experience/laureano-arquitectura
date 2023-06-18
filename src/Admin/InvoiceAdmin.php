@@ -175,7 +175,7 @@ final class InvoiceAdmin extends AbstractBaseAdmin
                     'editable' => false,
                     'header_class' => 'text-right',
                     'row_align' => 'right',
-                    'template' => '@App/Admin/Cells/list__cell_tax_base_money_field.html.twig',
+                    'template' => '@App/admin/cells/list__cell_tax_base_money_field.html.twig',
                 ]
             )
             ->add(
@@ -185,7 +185,7 @@ final class InvoiceAdmin extends AbstractBaseAdmin
                     'editable' => false,
                     'header_class' => 'text-right',
                     'row_align' => 'right',
-                    'template' => '@App/Admin/Cells/list__cell_total_money_field.html.twig',
+                    'template' => '@App/admin/cells/list__cell_total_money_field.html.twig',
                 ]
             )
             ->add(
@@ -213,13 +213,13 @@ final class InvoiceAdmin extends AbstractBaseAdmin
                     'actions' => [
                         'edit' => [],
                         'pdf' => [
-                            'template' => '@App/Admin/Cells/list__action_invoice_pdf_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_invoice_pdf_button.html.twig',
                         ],
                         'email' => [
-                            'template' => '@App/Admin/Cells/list__action_invoice_email_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_invoice_email_button.html.twig',
                         ],
                         'duplicate' => [
-                            'template' => '@App/Admin/Cells/list__action_invoice_duplicate_button.html.twig',
+                            'template' => '@App/admin/cells/list__action_invoice_duplicate_button.html.twig',
                         ],
                     ],
                     'header_style' => 'width:146px',

@@ -19,7 +19,7 @@ final class ChartsController extends AbstractController
     public function mediaInlineSpendingAction(): Response
     {
         return $this->render('@App/admin/charts_dashboard.htm.twig', [
-            'base_template' => '@App/Admin/layout.html.twig',
+            'base_template' => '@App/admin/layout.html.twig',
             'blocks' => [
                 'top' => [
                     [

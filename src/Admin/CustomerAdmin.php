@@ -123,7 +123,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'editable' => false,
                     'header_class' => 'text-right',
                     'row_align' => 'right',
-                    'template' => '@App/Admin/Cells/list__cell_total_invoiced_money_field.html.twig',
+                    'template' => '@App/admin/cells/list__cell_total_invoiced_money_field.html.twig',
                 ]
             )
             ->add(
