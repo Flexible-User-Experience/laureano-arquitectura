@@ -77,7 +77,7 @@
                     <div class="info-box bg-yellow">
                         <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">{{ 'Invoice List' | trans }}</span>
+                            <span class="info-box-text">{{ 'Invoice List' | trans }} {{ 'emitted' | trans }}</span>
                             <span class="info-box-number">{{ computed.totalInvoicesAmount | i }}</span>
                             {% if computed.totalInvoicesAmount == 0 %}
                                 <div class="progress"></div>
