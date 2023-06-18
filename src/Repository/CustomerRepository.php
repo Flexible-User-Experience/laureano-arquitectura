@@ -120,4 +120,9 @@ class CustomerRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getScalarResult();
     }
+
+    public function getTotalCustomersAmount(): int
+    {
+        return count($this->getAllSortedByName());
+    }
 }
