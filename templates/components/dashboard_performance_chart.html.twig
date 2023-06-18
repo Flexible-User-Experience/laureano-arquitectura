@@ -1,0 +1,16 @@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title text-info"><i class="fas fa-chart-bar fa-fw"></i> {{ 'Performance Average' | trans }}</h3>
+        <div class="box-tools pull-right">
+            <a class="btn btn-outline-primary" href="{{ path('admin_charts') }}" title="{{ 'Show All' | trans }}"><i class="far fa-list-alt"></i></a>
+        </div>
+    </div>
+    <div class="box-body">
+        {{ render_chart(computed.chart, {'data-controller': 'labeledchart'}) }}
+    </div>
+    <div class="box-footer text-center">
+        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::RED') }}">{{ 'Last X Days' | trans({'%days%': 30}) }}</span>
+        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::GREEN') }}">{{ 'Last X Days' | trans({'%days%': 180}) }}</span>
+        <span class="label" style="background-color: {{ constant('App\\Twig\\Components\\LastMonthsInvoicingResumeChart::BLUE') }}">{{ 'Last X Days' | trans({'%days%': 365}) }}</span>
+    </div>
+</div>

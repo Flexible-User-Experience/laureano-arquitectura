@@ -17,6 +17,7 @@ Encore
     .addEntry('admin', './assets/admin.js')
     .addEntry('web', './assets/web.js')
     .splitEntryChunks()
+    .enableStimulusBridge('./assets/controllers.json')
     .enableSingleRuntimeChunk()
     /*
      * FEATURE CONFIG

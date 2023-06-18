@@ -7,9 +7,12 @@ TODO
 Changelog
 =========
 
-##### Version 1.01.002 (WIP)
+##### Version 1.02.002 (WIP)
  * fix bugs
  * keep working
+
+##### Version 1.02.001 (2023-0618)
+ * add Enterprise management
 
 ##### Version 1.01.001 (2023-06-16)
  * lots of pending works

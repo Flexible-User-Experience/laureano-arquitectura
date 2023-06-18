@@ -1,0 +1,39 @@
+{% if computed.getYearlyMedians | length > 0 %}
+    <div class="table-responsive">
+        <table class="table table-bordered margin-bottom-none">
+            <thead>
+            <tr>
+                <th class="text-right">{{ 'Year' | trans }}</th>
+                <th class="text-right">{{ 'Incoming' | trans }}</th>
+                <th class="text-right">{{ 'Expense' | trans }}</th>
+                <th class="text-right">{{ 'Result' | trans }}</th>
+                <th class="text-right">{{ 'Performance' | trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for yearly_medians in computed.getYearlyMedians %}
+                <tr>
+                    <td class="text-right">{{ yearly_medians.year }}</td>
+                    <td class="text-right text-success">{{ yearly_medians.monthlyMedianInvoiced | m }}</td>
+                    <td class="text-right text-danger">-{{ yearly_medians.monthlyMedianExpensed | m }}</td>
+                    <td class="text-right {% if yearly_medians.monthlyMedianResult | money_as_float >= 0 %}text-success{% else %}text-danger{% endif %}">{{ yearly_medians.monthlyMedianResult | m }}</td>
+                    <td class="text-right {% if yearly_medians.performance >= 0 %}text-success{% else %}text-danger{% endif %}">{{ yearly_medians.performance | percentage }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr class="active">
+                <th class="text-right">{{ 'Total' | trans }}</th>
+                <th class="text-right text-success">{{ computed.totalInvoiced | m }}</th>
+                <th class="text-right text-danger">-{{ computed.totalExpensed | m }}</th>
+                <th class="text-right {% if computed.totalResult | money_as_float >= 0 %}text-success{% else %}text-danger{% endif %}">{{ computed.totalResult | m }}</th>
+                <th class="text-right {% if computed.totalPerformance >= 0 %}text-success{% else %}text-danger{% endif %}">{{ computed.totalPerformance | percentage }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-warning margin-bottom-none" role="alert">
+        <i class="fa fa-exclamation-triangle fa-fw"></i> {{ 'No Results Found' | trans }}
+    </div>
+{% endif %}

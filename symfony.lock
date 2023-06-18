@@ -130,6 +130,9 @@
     "presta/sitemap-bundle": {
         "version": "v3.3.1"
     },
+    "qipsius/tcpdf-bundle": {
+        "version": "2.0.2"
+    },
     "sonata-project/admin-bundle": {
         "version": "4.25",
         "recipe": {
@@ -374,6 +377,20 @@
             "ref": "b46e4f8f1adb2864f0aa9c0ff57aea3324a07199"
         }
     },
+    "symfony/stimulus-bundle": {
+        "version": "2.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.9",
+            "ref": "05c45071c7ecacc1e48f94bc43c1f8d4405fb2b2"
+        },
+        "files": [
+            "assets/bootstrap.js",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js"
+        ]
+    },
     "symfony/translation": {
         "version": "6.3",
         "recipe": {
@@ -399,6 +416,15 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/ux-chartjs": {
+        "version": "v2.9.1"
+    },
+    "symfony/ux-lazy-image": {
+        "version": "v2.9.1"
+    },
+    "symfony/ux-twig-component": {
+        "version": "v2.9.1"
     },
     "symfony/validator": {
         "version": "6.3",
@@ -451,6 +477,18 @@
             "config/packages/webpack_encore.yaml",
             "package.json",
             "webpack.config.js"
+        ]
+    },
+    "tbbc/money-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.0",
+            "ref": "e97ae40ca09c6fa35e69accec8833d1e10445a06"
+        },
+        "files": [
+            "config/packages/tbbc_money.yaml"
         ]
     },
     "theofidry/alice-data-fixtures": {

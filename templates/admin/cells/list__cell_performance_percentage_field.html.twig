@@ -1,0 +1,5 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    <span class="text-{{ get_semaphore_text_color_class(object.performance) }}">{{ object.performance | percentage }}</span>
+{% endblock %}

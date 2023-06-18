@@ -1,0 +1,61 @@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title text-info"><i class="fas fa-briefcase fa-fw"></i> {{ 'Unpaid Invoices' | trans }}</h3>
+        <div class="box-tools pull-right">
+            <a class="btn btn-outline-primary" href="{{ path('admin_app_invoice_list') }}" title="{{ 'Show All' | trans }}"><i class="far fa-list-alt"></i></a>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        {% if computed.unpaidInvoices | length > 0 %}
+            <div class="table-responsive">
+                <table class="table margin-bottom-none">
+                    <tbody>
+                    {% set totalTax = 0 %}
+                    {% for invoice in computed.unpaidInvoices %}
+                        {% set totalTax = totalTax + invoice.taxBaseAmount %}
+                        <tr>
+                            <td class="text-center" style="width:75px">{{ invoice.sluggedSerialNumber }}</td>
+                            <td class="text-center" style="width:90px">{{ invoice.dateString }}</td>
+                            <td><a href="{{ path('admin_app_customer_edit', {'id': invoice.customer.id}) }}">{{ invoice.customer }}</a></td>
+                            <td class="text-right">{{ invoice.taxBase | money_localized_format }}</td>
+                            <td class="text-right" style="width:60px">
+                                <div class="btn-group">
+                                    <a href="{{ path('admin_app_invoice_edit', {'id': invoice.id}) }}" class="btn btn-xs btn-default" title="{{ 'Edit' | trans }}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-controller="pdf-button"
+                                       data-action="pdf-button#clicked"
+                                       data-toggle="modal"
+                                       data-target="#pdf-preview-modal"
+                                       data-pdf-button-attachment-value="{{ invoice.id }}"
+                                       data-pdf-button-path-value="{{ path('admin_app_invoice_pdf', {'id': invoice.id}) }}" class="btn btn-xs btn-default" title="{{ 'PDF' | trans }}">
+                                        <i class="far fa-file-pdf"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% set totalTax = totalTax * 0.01 %}
+                    </tbody>
+                    <tfoot>
+                    <tr class="active">
+                        <th colspan="3" class="text-right">{{ 'Total' | trans | upper }} {{ 'Total Base' | trans | upper }}</th>
+                        <th class="text-right">{{ totalTax | eur }}</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table margin-bottom-none">
+                    <tbody>
+                    <tr class="success">
+                        <td><i class="fa fa-thumbs-o-up fa-fw"></i> {{ 'No Unpaid Invoices Found' | trans }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</div>

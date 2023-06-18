@@ -1,3 +1,106 @@
+App\Entity\ExpenseCategory:
+  expensecategory{1..5}:
+    legacyId: '<current()>'
+    name: '<firstName()>'
+
+App\Entity\Expense:
+  expense{1..5}:
+    expenseCategory: '@expensecategory<current()>'
+    legacyId: '<current()>'
+    provider: '@provider<current()>'
+    date: '<dateTimeThisMonth()>'
+    description: '<sentence()>'
+    hasBeenPaid: '<boolean()>'
+    taxBaseAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+
+App\Entity\Invoice:
+  invoice{1..5}:
+    legacyId: '<current()>'
+    customer: '@customer<current()>'
+    date: '<dateTimeThisMonth()>'
+    sendDate: '<dateTimeThisMonth()>'
+    paymentDate: '<dateTimeThisMonth()>'
+    hasBeenSent: '<boolean()>'
+    hasBeenPaid: '<boolean()>'
+    paymentMethod: '<numberBetween(0, 2)>'
+    series: '2022'
+    number: '<current()>'
+    isIntraCommunityInvoice: '<boolean()>'
+    taxBaseAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+
+App\Entity\InvoiceLine:
+  invoiceline{1..3}:
+    legacyId: '<current()>'
+    invoice: '@invoice1'
+    units: '<numberBetween(1, 20)>'
+    description: '<sentence()>'
+    unitPriceAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+  invoiceline{4..5}:
+    legacyId: '<current()>'
+    invoice: '@invoice2'
+    units: '<numberBetween(1, 20)>'
+    description: '<sentence()>'
+    unitPriceAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+  invoiceline6:
+    legacyId: '6'
+    invoice: '@invoice3'
+    units: '<numberBetween(1, 20)>'
+    description: '<sentence()>'
+    unitPriceAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+  invoiceline7:
+    legacyId: '7'
+    invoice: '@invoice4'
+    units: '<numberBetween(1, 20)>'
+    description: '<sentence()>'
+    unitPriceAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+  invoiceline8:
+    legacyId: '8'
+    invoice: '@invoice5'
+    units: '<numberBetween(1, 20)>'
+    description: '<sentence()>'
+    unitPriceAmount: '<numberBetween(1000, 10000)>'
+    totalAmount: '<numberBetween(1000, 10000)>'
+
+App\Entity\Customer:
+  customer{1..5}:
+    legacyId: '<current()>'
+    fiscalIdentificationCode: '<isbn10()>'
+    fiscalName: '<company()>'
+    commercialName: '<catchPhrase()>'
+    address1: '<streetName()>'
+    postalCode: '<postcode()>'
+    city: '<city()>'
+    state: '<state()>'
+    country: '<country()>'
+    website: '<url()>'
+    email: '<safeEmail()>'
+    phoneNumber: '<phoneNumber()>'
+    mobileNumber: '<phoneNumber()>'
+    isCompany: '<boolean()>'
+
+App\Entity\Provider:
+  provider{1..5}:
+    legacyId: '<current()>'
+    fiscalIdentificationCode: '<isbn10()>'
+    fiscalName: '<company()>'
+    commercialName: '<catchPhrase()>'
+    address1: '<streetName()>'
+    postalCode: '<postcode()>'
+    city: '<city()>'
+    state: '<state()>'
+    country: '<country()>'
+    website: '<url()>'
+    email: '<safeEmail()>'
+    phoneNumber: '<phoneNumber()>'
+    mobileNumber: '<phoneNumber()>'
+    isCompany: '<boolean()>'
+
 App\Entity\ContactMessage:
   contactmessage{1..5}:
     legacyId: '<current()>'

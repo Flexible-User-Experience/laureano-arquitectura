@@ -25,8 +25,9 @@ services:
         autowire: true
         autoconfigure: true
         bind:
-            $locale: '%default_locale%'
-            $locales: '%locale_i18n_full%'
+            '$kpd': '%kernel.project_dir%'
+            '$locale': '%default_locale%'
+            '$locales': '%locale_i18n_full%'
     App\:
         resource: '../src/'
         exclude:
@@ -50,6 +51,21 @@ services:
             - '@Doctrine\Common\Persistence\ManagerRegistry'
         calls:
             - setGedmoTranslatableListener: [ '@stof_doctrine_extensions.listener.translatable' ]
+    # Entity Listeners
+    App\EventListener\ExpenseEventListener:
+        lazy: true
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Expense' }
+            - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Expense' }
+            - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'App\Entity\Expense' }
+            - { name: 'doctrine.orm.entity_listener', event: 'postRemove', entity: 'App\Entity\Expense' }
+    App\EventListener\InvoiceEventListener:
+        lazy: true
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Invoice' }
+            - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Invoice' }
+            - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'App\Entity\Invoice' }
+            - { name: 'doctrine.orm.entity_listener', event: 'postRemove', entity: 'App\Entity\Invoice' }
     # Forms
     App\Form\Type\GedmoTranslationsType:
         arguments:
@@ -79,3 +95,47 @@ services:
         tags:
             - { name: 'knp_menu.menu_builder', method: 'createMainMenu', alias: 'main' }
             - { name: 'knp_menu.menu_builder', method: 'createLanguagesMenu', alias: 'languages' }
+    # PDF Builders
+    App\Pdf\Builder\InvoicePdfBuilder:
+        arguments:
+            - '@qipsius.tcpdf'
+            - '@translator.default'
+            - '@parameter_bag'
+            - '@Tbbc\MoneyBundle\Formatter\MoneyFormatter'
+            - '@App\Manager\AssetsManager'
+    # Template Blocks
+    App\Block\DashboardBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\AllYearsMediansBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\AllYearsPerformanceBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\LastMonthsInvoicingResumeBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\Last12MonthsTopTenCustomerEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\TopTenCustomerEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\TotalRetainingEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }

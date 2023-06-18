@@ -3,10 +3,15 @@ framework:
     http_method_override: false
     handle_all_throwables: true
     session:
-        handler_id: null
-        cookie_secure: auto
-        cookie_samesite: lax
+        enabled: true
+        handler_id: 'session.handler.native_file'
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        cookie_lifetime: 115200 # 32 hours in seconds
+        cookie_secure: 'auto'
+        cookie_samesite: 'lax'
         storage_factory_id: 'session.storage.factory.native'
+    router:
+        default_uri: 'https://%project_url_base%'
     php_errors:
         log: true
 
@@ -15,3 +20,12 @@ when@test:
         test: true
         session:
             storage_factory_id: 'session.storage.factory.mock_file'
+
+when@prod:
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: 'cache.app'
+                doctrine.system_cache_pool:
+                    adapter: 'cache.system'

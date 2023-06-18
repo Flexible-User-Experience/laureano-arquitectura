@@ -1,6 +1,6 @@
 sonata_admin:
     title: '%project_web_title%'
-    title_logo: '/build/vectors/logo_grey.svg'
+    title_logo: '/build/vectors/logo_white.svg'
     persist_filters: true
     show_mosaic_button: false
     search: false
@@ -26,12 +26,29 @@ sonata_admin:
             Web:
                 icon: '<i class="fas fa-link"></i>'
                 translation_domain: 'messages'
+            Enterprise:
+                icon: '<i class="fas fa-briefcase"></i>'
+                translation_domain: 'messages'
+            Graphs:
+                on_top: true
+                icon: '<i class="fas fa-chart-bar"></i>'
+                label: 'Results & Graphs'
+                translation_domain: 'messages'
+                items:
+                    - route: 'admin_charts'
+                      label: 'Label'
         blocks:
-            - { type: 'sonata.admin.block.admin_list', position: 'left' }
+            -
+                position: 'top'
+                type: 'App\Block\DashboardBlock'
+                class: 'col-xs-12'
+                roles: [ 'ROLE_ADMIN' ]
 
 when@dev:
     sonata_admin:
         dashboard:
             groups:
                 Web:
+                    keep_open: true
+                Enterprise:
                     keep_open: true
