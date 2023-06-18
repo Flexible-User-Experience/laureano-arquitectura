@@ -2,7 +2,6 @@
 
 namespace App\Twig\Components;
 
-use App\Repository\WorkingDayRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -14,13 +13,11 @@ class DashboardPerformanceChart
 {
     private TranslatorInterface $ts;
     private ChartBuilderInterface $cb;
-    private WorkingDayRepository $wdr;
 
-    public function __construct(TranslatorInterface $ts, ChartBuilderInterface $cb, WorkingDayRepository $wdr)
+    public function __construct(TranslatorInterface $ts, ChartBuilderInterface $cb)
     {
         $this->ts = $ts;
         $this->cb = $cb;
-        $this->wdr = $wdr;
     }
 
     /**

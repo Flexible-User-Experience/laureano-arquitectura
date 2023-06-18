@@ -1,0 +1,2 @@
+qipsius_tcpdf:
+    class: 'App\Pdf\Builder\AppTcpdf'

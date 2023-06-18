@@ -1,5 +1,11 @@
 sonata_block:
     http_cache: false
+    default_contexts: [ 'admin' ]
     blocks:
-        sonata.admin.block.admin_list:
-            contexts: [ 'admin' ]
+        App\Block\DashboardBlock: ~
+        App\Block\AllYearsMediansBlock: ~
+        App\Block\AllYearsPerformanceBlock: ~
+        App\Block\LastMonthsInvoicingResumeBlock: ~
+        App\Block\Last12MonthsTopTenCustomerEarningsBlock: ~
+        App\Block\TopTenCustomerEarningsBlock: ~
+        App\Block\TotalRetainingEarningsBlock: ~
