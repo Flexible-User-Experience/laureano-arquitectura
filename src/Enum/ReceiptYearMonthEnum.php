@@ -4,7 +4,7 @@ namespace App\Enum;
 
 class ReceiptYearMonthEnum
 {
-    public const APP_FIRST_YEAR = 2011;
+    public const APP_FIRST_YEAR = 2020;
 
     public const JANUARY = 1;
     public const FEBRUARY = 2;

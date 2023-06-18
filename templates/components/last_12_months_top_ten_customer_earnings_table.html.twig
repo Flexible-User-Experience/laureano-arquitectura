@@ -28,7 +28,16 @@
         </table>
     </div>
 {% else %}
-    <div class="alert alert-warning margin-bottom-none" role="alert">
-        <i class="fa fa-exclamation-triangle fa-fw"></i> {{ 'No Results Found' | trans }}
+    <div class="table-responsive">
+        <table class="table margin-bottom-none">
+            <tbody>
+            <tr class="warning">
+                <td><i class="fa fa-exclamation-triangle fa-fw"></i> {{ 'No Results Found' | trans }}. {{ 'Create A New Customer Warning Help' | trans }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+{#    <div class="alert alert-warning margin-bottom-none" role="alert">#}
+{#        <i class="fa fa-exclamation-triangle fa-fw"></i> {{ 'No Results Found' | trans }}#}
+{#    </div>#}
 {% endif %}

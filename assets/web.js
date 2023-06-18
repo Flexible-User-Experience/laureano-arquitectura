@@ -1,4 +1,4 @@
 import './styles/web.scss';
-import './stimulus_bootstrap.js';
+import './stimulus_bootstrap';
 
 require('bootstrap');

@@ -3,6 +3,7 @@
 namespace App\Twig\Components;
 
 use App\Entity\AbstractBase;
+use App\Enum\ReceiptYearMonthEnum;
 use App\Model\MonthlyPerformance;
 use App\Repository\CustomerRepository;
 use App\Repository\ExpenseRepository;
@@ -15,7 +16,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('all_years_performance_table')]
 class AllYearsPerformanceTableComponent
 {
-    public const FIRST_YEAR = 2011;
+    public const FIRST_YEAR = ReceiptYearMonthEnum::APP_FIRST_YEAR;
     private InvoiceRepository $invoiceRepository;
     private ExpenseRepository $expenseRepository;
     private CustomerRepository $customerRepository;
