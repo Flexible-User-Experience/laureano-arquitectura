@@ -29,6 +29,14 @@ sonata_admin:
             Enterprise:
                 icon: '<i class="fas fa-briefcase"></i>'
                 translation_domain: 'messages'
+            Graphs:
+                on_top: true
+                icon: '<i class="fas fa-chart-bar"></i>'
+                label: 'Results & Graphs'
+                translation_domain: 'messages'
+                items:
+                    - route: 'admin_charts'
+                      label: 'Label'
         blocks:
             -
                 position: 'top'
