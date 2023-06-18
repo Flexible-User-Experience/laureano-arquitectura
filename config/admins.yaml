@@ -1,4 +1,5 @@
 services:
+    # Web
     admin.project:
         class: 'App\Admin\ProjectAdmin'
         tags:
@@ -15,5 +16,43 @@ services:
         class: 'App\Admin\ContactMessageAdmin'
         tags:
             - { name: 'sonata.admin', model_class: 'App\Entity\ContactMessage', controller: 'App\Controller\Admin\ContactMessageAdminController', manager_type: 'orm', label: 'Contact Message', group: 'Web' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    # Enterprise
+    admin.provider:
+        class: 'App\Admin\ProviderAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\Provider', controller: 'App\Controller\Admin\ProviderAdminController', manager_type: 'orm', label: 'Provider', group: 'Enterprise' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    admin.expense_category:
+        class: 'App\Admin\ExpenseCategoryAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\ExpenseCategory', controller: 'App\Controller\Admin\ExpenseCategoryAdminController', manager_type: 'orm', label: 'Expense Category', group: 'Enterprise' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    admin.expense:
+        class: 'App\Admin\ExpenseAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\Expense', controller: 'App\Controller\Admin\ExpenseAdminController', manager_type: 'orm', label: 'Expense', group: 'Enterprise' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    admin.customer:
+        class: 'App\Admin\CustomerAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\Customer', controller: 'App\Controller\Admin\CustomerAdminController', manager_type: 'orm', label: 'Customer', group: 'Enterprise' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+    admin.invoice:
+        class: 'App\Admin\InvoiceAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\Invoice', controller: 'App\Controller\Admin\InvoiceAdminController', manager_type: 'orm', label: 'Invoice', group: 'Enterprise' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
+            - [ 'setInvoiceManager', [ '@App\Manager\InvoiceManager' ] ]
+    admin.invoice_line:
+        class: 'App\Admin\InvoiceLineAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\InvoiceLine', controller: 'App\Controller\Admin\InvoiceLineAdminController', manager_type: 'orm', label: 'InvoiceLine', group: 'Enterprise', show_in_dashboard: false }
         calls:
             - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]

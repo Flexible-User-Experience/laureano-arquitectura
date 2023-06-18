@@ -26,12 +26,21 @@ sonata_admin:
             Web:
                 icon: '<i class="fas fa-link"></i>'
                 translation_domain: 'messages'
+            Enterprise:
+                icon: '<i class="fas fa-briefcase"></i>'
+                translation_domain: 'messages'
         blocks:
-            - { type: 'sonata.admin.block.admin_list', position: 'left' }
+            -
+                position: 'top'
+                type: 'App\Block\DashboardBlock'
+                class: 'col-xs-12'
+                roles: [ 'ROLE_ADMIN' ]
 
 when@dev:
     sonata_admin:
         dashboard:
             groups:
                 Web:
+                    keep_open: true
+                Enterprise:
                     keep_open: true

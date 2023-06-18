@@ -94,3 +94,39 @@ services:
         tags:
             - { name: 'knp_menu.menu_builder', method: 'createMainMenu', alias: 'main' }
             - { name: 'knp_menu.menu_builder', method: 'createLanguagesMenu', alias: 'languages' }
+    # Template Blocks
+    App\Block\DashboardBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\AllYearsMediansBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\AllYearsPerformanceBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\LastMonthsInvoicingResumeBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\Last12MonthsTopTenCustomerEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\TopTenCustomerEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }
+    App\Block\TotalRetainingEarningsBlock:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'sonata.block' }

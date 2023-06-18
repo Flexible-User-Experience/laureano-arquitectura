@@ -1,0 +1,34 @@
+{% if computed.topTenCustomerEarnings | length > 0 %}
+    <div class="table-responsive">
+        <table class="table table-bordered margin-bottom-none">
+            <thead>
+            <tr>
+                <th class="text-right">{{ 'Number Short' | trans }}</th>
+                <th>{{ 'Customer' | trans }}</th>
+                <th>{{ 'City' | trans }}</th>
+                <th class="text-right">{{ 'Incoming' | trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer_earnings in computed.topTenCustomerEarnings %}
+                <tr>
+                    <td class="text-right">{{ customer_earnings.number }}</td>
+                    <td>{{ customer_earnings.customer }}</td>
+                    <td>{{ customer_earnings.city }}</td>
+                    <td class="text-right text-success">{{ customer_earnings.earnings | m }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr class="active">
+                <th colspan="3" class="text-right">{{ 'Total' | trans }}</th>
+                <th class="text-right text-success">{{ computed.total | m }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-warning margin-bottom-none" role="alert">
+        <i class="fa fa-exclamation-triangle fa-fw"></i> {{ 'No Results Found' | trans }}
+    </div>
+{% endif %}
