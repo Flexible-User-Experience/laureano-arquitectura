@@ -96,7 +96,7 @@ class InvoiceManager
         $this->invoiceRepository->update(true);
         $result = true;
         try {
-            // TODO $this->mailerManager->sendNewInvoiceNotificationToCustomer($invoiceToBeSend);
+            $this->mailerManager->sendNewInvoiceNotificationToCustomer($invoiceToBeSend);
         } catch (TransportExceptionInterface|\ReflectionException) {
             $result = false;
         }

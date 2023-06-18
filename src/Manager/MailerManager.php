@@ -3,6 +3,8 @@
 namespace App\Manager;
 
 use App\Entity\ContactMessage;
+use App\Entity\Invoice;
+use App\Pdf\Builder\InvoicePdfBuilder;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -24,14 +26,16 @@ class MailerManager
     private ParameterBagInterface $parameterBag;
     private RouterInterface $router;
     private Environment $twig;
+    private InvoicePdfBuilder $invoicePdfBuilder;
 
-    public function __construct(TranslatorInterface $translator, MailerInterface $mailer, ParameterBagInterface $parameterBag, RouterInterface $router, Environment $twig)
+    public function __construct(TranslatorInterface $translator, MailerInterface $mailer, ParameterBagInterface $parameterBag, RouterInterface $router, Environment $twig, InvoicePdfBuilder $invoicePdfBuilder)
     {
         $this->translator = $translator;
         $this->mailer = $mailer;
         $this->parameterBag = $parameterBag;
         $this->router = $router;
         $this->twig = $twig;
+        $this->invoicePdfBuilder = $invoicePdfBuilder;
     }
 
     /**
@@ -82,6 +86,29 @@ class MailerManager
             ->context([
                 'contact' => $contactMessage,
             ])
+        ;
+        $this->mailer->send($email);
+    }
+
+    /**
+     * @throws TransportExceptionInterface|\ReflectionException
+     */
+    public function sendNewInvoiceNotificationToCustomer(Invoice $invoice): void
+    {
+        $pdfFileName = $this->parameterBag->get('project_web_title').'_'.strtolower($this->translator->trans('Invoice')).'_'.$invoice->getSluggedSerialNumber().'.pdf';
+        $pdf = $this->invoicePdfBuilder->build($invoice);
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->parameterBag->get('mailer_destination'), $this->parameterBag->get('project_web_title')))
+            ->to($invoice->getCustomer()->getEmail())
+            ->subject($this->translator->trans('Invoice').' '.$invoice->getSluggedSerialNumber())
+            ->htmlTemplate('@App/mail/new_invoice_notification_to_customer.html.twig')
+            ->context([
+                'invoice' => $invoice,
+            ])
+            ->attach(
+                $pdf->Output($pdfFileName, 'S'),
+                $pdfFileName
+            )
         ;
         $this->mailer->send($email);
     }
