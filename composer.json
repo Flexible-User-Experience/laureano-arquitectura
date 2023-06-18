@@ -56,6 +56,7 @@
         "symfony/web-link": "6.3.*",
         "symfony/webpack-encore-bundle": "^2.0",
         "symfony/yaml": "6.3.*",
+        "tbbc/money-bundle": "*",
         "twig/cssinliner-extra": "^3.0",
         "twig/extra-bundle": "^3.0",
         "twig/inky-extra": "^3.0",
