@@ -11,9 +11,23 @@
         </div>
         <div class="row">
             <div class="col">
-                <img src="{{ vich_uploader_asset(project, 'imageFile') | imagine_filter('2400xY') }}" class="img-fluid mb-3" alt="{{ project.name }}">
+                <img
+                        {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                            src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
+                        }) }}
+                        src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                        class="img-fluid mb-3"
+                        alt="{{ project.name }}"
+                >
                 {% for image in project.images %}
-                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('2400xY') }}" class="img-fluid mb-3" alt="{{ image.name }}">
+                    <img
+                            {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                            }) }}
+                            src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                            class="img-fluid mb-3"
+                            alt="{{ image.name }}"
+                    >
                 {% endfor %}
             </div>
             <div class="col">
