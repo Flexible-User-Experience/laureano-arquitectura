@@ -168,4 +168,9 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function getTotalInvoicesAmount(): int
+    {
+        return count($this->getAllSortedByDateQB()->getQuery()->getResult());
+    }
 }

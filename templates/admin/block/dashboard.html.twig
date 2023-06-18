@@ -5,4 +5,7 @@
     <div class="col-md-8">
         {{ component('unpaid_invoices_table') }}
     </div>
+    <div class="col-md-4">
+        <a href="{{ path('admin_charts') }}" class="btn btn-warning btn-lg"><i class="fas fa-chart-bar fa-fw"></i> {{ 'Show more graphs and results' | trans }}</a>
+    </div>
 </div>

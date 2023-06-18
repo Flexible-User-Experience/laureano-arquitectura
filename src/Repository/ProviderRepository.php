@@ -57,4 +57,9 @@ class ProviderRepository extends ServiceEntityRepository
     {
         return $this->getAllSortedByNameQ()->getResult();
     }
+
+    public function getTotalProvidersAmount(): int
+    {
+        return count($this->getAllSortedByName());
+    }
 }

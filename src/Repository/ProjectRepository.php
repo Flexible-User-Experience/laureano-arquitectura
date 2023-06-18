@@ -95,4 +95,9 @@ class ProjectRepository extends ServiceEntityRepository
     {
         return $this->getAllSortedByNameQ()->getResult();
     }
+
+    public function getTotalProjectsAmount(): int
+    {
+        return count($this->getAllSortedByNameQB()->getQuery()->getResult());
+    }
 }
