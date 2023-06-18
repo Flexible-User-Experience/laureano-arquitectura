@@ -11,6 +11,7 @@ Changelog
  * fix bugs
  * keep working
  * add total projects dashboard widget
+ * add total contact messages dashboard widget
 
 ##### Version 1.02.001 (2023-0618)
  * add Enterprise management
