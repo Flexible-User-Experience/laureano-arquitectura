@@ -10,6 +10,7 @@ Changelog
 ##### Version 1.03.001 (WIP)
  * fix bugs
  * keep working
+ * add total projects dashboard widget
 
 ##### Version 1.02.001 (2023-0618)
  * add Enterprise management

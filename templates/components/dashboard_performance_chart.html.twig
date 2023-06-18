@@ -1,14 +1,25 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <a href="{% if computed.projects == 0 %}{{ path('admin_app_project_create') }}{% else %}{{ path('admin_app_project_list') }}{% endif %}">
+    <a href="{% if computed.totalProjectsAmount == 0 %}{{ path('admin_app_project_create') }}{% else %}{{ path('admin_app_project_list') }}{% endif %}">
         <div class="info-box bg-teal">
-            <span class="info-box-icon"><i class="fas fa-folder-open"></i></span>
+            <span class="info-box-icon"><i class="far fa-folder-open"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">{{ 'projects' | trans }}</span>
-                <span class="info-box-number">{{ computed.projects }}</span>
-                {% if computed.projects == 0 %}
+                <span class="info-box-number">{{ computed.totalProjectsAmount }}</span>
+                {% if computed.totalProjectsAmount == 0 %}
                     <div class="progress"></div>
                     <span class="progress-description"><i class="fa fa-plus-circle fa-fw"></i> {{ 'Project Create' | trans }}</span>
                 {% endif %}
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <a href="{{ path('admin_app_contactmessage_list') }}">
+        <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="far fa-envelope-open"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ 'Contact Message List' | trans }}</span>
+                <span class="info-box-number">{{ computed.totalContactMessagesAmount }}</span>
             </div>
         </div>
     </a>
