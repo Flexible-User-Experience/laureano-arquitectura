@@ -26,6 +26,7 @@ $ yarn install
 $ yarn encore prod
 $ php bin/console doctrine:database:create --env=prod
 $ php bin/console doctrine:migrations:migrate --env=prod
+$ php bin/console messenger:consume async
 ```
 
 Remember to edit `.env` config file according to your system environment needs.
@@ -36,6 +37,10 @@ Remember to edit `.env` config file according to your system environment needs.
 $ ./scripts/developer-tools/test-database-reset.sh
 $ ./scripts/developer-tools/run-test.sh
 ```
+
+#### Developer important notes
+
+* Remember to properly configure Supervisor message queue consumers https://symfony.com/doc/current/messenger.html#messenger-supervisor
 
 #### Code Style notes
 
