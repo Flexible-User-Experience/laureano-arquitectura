@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AppTcpdf extends \TCPDF
 {
-    public const PDF_MARGIN_TOP = 30;
+    public const PDF_MARGIN_TOP = 48;
     public const PDF_MARGIN_BOTTOM = 20;
     public const PDF_MARGIN_LEFT = 20;
     public const PDF_MARGIN_RIGHT = 20;
@@ -17,9 +17,9 @@ class AppTcpdf extends \TCPDF
     public const HALF_AVAILABLE_WIDTH = self::AVAILABLE_WIDTH / 2;
     public const GAP_Y = 10;
     private const PRIMARY_COLOR = [
-        192,
-        40,
-        143,
+        240,
+        0,
+        0,
     ];
 
     private ParameterBagInterface $pb;
@@ -36,7 +36,7 @@ class AppTcpdf extends \TCPDF
     {
         // logo
         $this->SetXY(self::PDF_MARGIN_LEFT, 11);
-        $this->Image($this->am->getLocalPublicPath('build/images/logo.png'), null, null, 50);
+        $this->Image($this->am->getLocalPublicPath('build/images/full_logo.png'), null, null, 25);
     }
 
     public function Footer(): void

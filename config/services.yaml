@@ -25,8 +25,9 @@ services:
         autowire: true
         autoconfigure: true
         bind:
-            $locale: '%default_locale%'
-            $locales: '%locale_i18n_full%'
+            '$kpd': '%kernel.project_dir%'
+            '$locale': '%default_locale%'
+            '$locales': '%locale_i18n_full%'
     App\:
         resource: '../src/'
         exclude:
@@ -94,6 +95,14 @@ services:
         tags:
             - { name: 'knp_menu.menu_builder', method: 'createMainMenu', alias: 'main' }
             - { name: 'knp_menu.menu_builder', method: 'createLanguagesMenu', alias: 'languages' }
+    # PDF Builders
+    App\Pdf\Builder\InvoicePdfBuilder:
+        arguments:
+            - '@qipsius.tcpdf'
+            - '@translator.default'
+            - '@parameter_bag'
+            - '@Tbbc\MoneyBundle\Formatter\MoneyFormatter'
+            - '@App\Manager\AssetsManager'
     # Template Blocks
     App\Block\DashboardBlock:
         arguments:

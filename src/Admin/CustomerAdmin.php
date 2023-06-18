@@ -12,6 +12,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class CustomerAdmin extends AbstractBaseAdmin
@@ -171,7 +173,13 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'box_class' => 'box box-success',
                 ]
             )
-            ->add('email')
+            ->add(
+                'email',
+                EmailType::class,
+                [
+                    'required' => true,
+                ]
+            )
             ->add('phoneNumber')
             ->add('mobileNumber')
             ->add(
@@ -190,11 +198,35 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'box_class' => 'box box-success',
                 ]
             )
-            ->add('address1')
+            ->add(
+                'address1',
+                TextType::class,
+                [
+                    'required' => true,
+                ]
+            )
             ->add('address2')
-            ->add('postalCode')
-            ->add('city')
-            ->add('state')
+            ->add(
+                'postalCode',
+                TextType::class,
+                [
+                    'required' => true,
+                ]
+            )
+            ->add(
+                'city',
+                TextType::class,
+                [
+                    'required' => true,
+                ]
+            )
+            ->add(
+                'state',
+                TextType::class,
+                [
+                    'required' => true,
+                ]
+            )
             ->add(
                 'country',
                 CountryType::class,
