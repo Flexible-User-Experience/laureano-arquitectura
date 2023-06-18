@@ -31,7 +31,7 @@ return [
     Symfony\UX\LazyImage\LazyImageBundle::class => ['all' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    Tbbc\MoneyBundle\TbbcMoneyBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
-    Tbbc\MoneyBundle\TbbcMoneyBundle::class => ['all' => true],
 ];
