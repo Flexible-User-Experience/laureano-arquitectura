@@ -8,3 +8,7 @@
   copy:
     src:  "{{ playbook_dir }}/vars/auth.json"
     dest: "{{ ansistrano_release_path.stdout }}/auth.json"
+- name: copy google_apis_credentials.json private access
+  copy:
+    src:  "{{ playbook_dir }}/vars/google_apis_credentials.json"
+    dest: "{{ ansistrano_release_path.stdout }}/google_apis_credentials.json"

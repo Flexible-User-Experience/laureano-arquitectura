@@ -113,6 +113,7 @@
     },
     "extra": {
         "google/apiclient-services": [
+            "Analytics",
             "AnalyticsData"
         ],
         "symfony": {
