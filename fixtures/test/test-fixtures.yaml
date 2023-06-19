@@ -108,8 +108,14 @@ App\Entity\ContactMessage:
     email: '<safeEmail()>'
     message: '<sentence()>'
 
+App\Entity\ProjectCategory:
+  projectcategory{1..5}:
+    legacyId: '<current()>'
+    name: '<firstName()>'
+
 App\Entity\Project:
   project{1..5}:
+    projectCategory: '@projectcategory<current()>'
     legacyId: '<current()>'
     name: '<name()>'
     imageName: 'lorem-picsum.jpg'
