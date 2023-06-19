@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Project;
+use App\Entity\ProjectCategory;
 use App\Enum\SortOrderEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -123,5 +124,15 @@ class ProjectRepository extends ServiceEntityRepository
         ;
 
         return array_shift($previousProjects);
+    }
+
+    public function getProjectsByCategory(ProjectCategory $category): array
+    {
+        return $this->getActiveAndShowInFrontendSortedByPositionQB()
+            ->andWhere('p.projectCategory = :category')
+            ->setParameter('category', $category)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }
