@@ -3,7 +3,29 @@
 {% block title %}{{ 'Project' | trans }} · {{ parent() }}{% endblock %}
 
 {% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-body-secondary" aria-label="Submenu navbar">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu" aria-controls="submenu" aria-expanded="false" aria-label="{{ 'frontend.toggle' | trans }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-lg-flex" id="submenu">
+                        <div class="d-lg-flex col-lg-2 justify-content-lg-start">
+                            <a href="{{ path('app_web_projects_list') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-rotate-left fa-fw"></i> {{ 'Go back to projects' | trans }}</a>
+                        </div>
+                        <div class="d-lg-flex col-lg-5 justify-content-lg-start">
 
+                        </div>
+                        <div class="d-lg-flex col-lg-5 justify-content-lg-end">
+                            <a class="btn btn-outline-secondary me-3"><i class="fa-solid fa-circle-left fa-fw"></i> {{ 'Go to previous project' | trans }}</a>
+                            <a class="btn btn-outline-secondary"><i class="fa-solid fa-circle-right fa-fw"></i> {{ 'Go to following project' | trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
     <div class="container py-5">
         <div class="row">
             <div class="col">

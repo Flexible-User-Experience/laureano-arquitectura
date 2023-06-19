@@ -100,4 +100,28 @@ class ProjectRepository extends ServiceEntityRepository
     {
         return count($this->getAllSortedByNameQB()->getQuery()->getResult());
     }
+
+    public function getPreviousProjectOf(Project $project): ?Project
+    {
+        $previousProjects = $this->getActiveAndShowInFrontendSortedByPositionQB()
+            ->andWhere('p.position < :place')
+            ->setParameter('place', $project->getPosition())
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return array_pop($previousProjects);
+    }
+
+    public function getFollowingProjectOf(Project $project): ?Project
+    {
+        $previousProjects = $this->getActiveAndShowInFrontendSortedByPositionQB()
+            ->andWhere('p.position > :place')
+            ->setParameter('place', $project->getPosition())
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return array_shift($previousProjects);
+    }
 }
