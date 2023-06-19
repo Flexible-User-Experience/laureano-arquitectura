@@ -3,6 +3,7 @@
 namespace App\EventListener;
 
 use App\Entity\Project;
+use App\Entity\ProjectCategory;
 use App\Repository\ProjectCategoryRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -50,12 +51,12 @@ class SitemapSubscriber implements EventSubscriberInterface
                 'default'
             );
             // project categories list
-            $projects = $this->pcr->getActiveAndShowInFrontendSortedByPosition();
-            /** @var Project $project */
-            foreach ($projects as $project) {
+            $categories = $this->pcr->getAllSortedByName();
+            /** @var ProjectCategory $category */
+            foreach ($categories as $category) {
                 $urls->addUrl(
-                    $this->buildUrl($router, 'app_web_project_detail', $locale, [
-                        'slug' => $project->getSlug(),
+                    $this->buildUrl($router, 'app_web_project_category_detail', $locale, [
+                        'slug' => $category->getSlug(),
                     ]),
                     'default'
                 );
