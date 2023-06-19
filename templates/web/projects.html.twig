@@ -47,9 +47,11 @@
                                     alt="{{ project.name }}"
                             >
                             <div class="card-body">
-                                <h5 class="card-title">{{ project.name }}</h5>
+                                <span class="badge text-bg-secondary">{{ project.projectCategory.name }}</span>
+                                <h5 class="card-title mt-2">{{ project.name }}</h5>
                                 <p class="card-text">
                                     {{ project.summary }}
+
                                 </p>
                                 <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="btn btn-primary text-white">
                                     <i class="fa-solid fa-search fa-fw"></i> {{ 'read more' | trans | capitalize }}

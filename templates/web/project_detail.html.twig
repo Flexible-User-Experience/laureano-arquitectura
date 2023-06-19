@@ -58,7 +58,8 @@
                 {% endfor %}
             </div>
             <div class="col">
-                <h4 class="text-secondary mb-3">{{ project.summary }}</h4>
+                <span class="badge text-bg-secondary">{{ project.projectCategory.name }}</span>
+                <h4 class="text-secondary my-3">{{ project.summary }}</h4>
                 {{ project.description | raw }}
             </div>
         </div>
