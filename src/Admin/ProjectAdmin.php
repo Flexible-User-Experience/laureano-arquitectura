@@ -217,7 +217,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
         if (!$this->isFormToCreateNewRecord()) {
             $form
                 ->with(
-                    'Images',
+                    'Extra Images',
                     [
                         'class' => 'col-md-8',
                         'box_class' => 'box box-success',
