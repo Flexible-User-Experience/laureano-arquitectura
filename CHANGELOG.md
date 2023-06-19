@@ -16,6 +16,7 @@ Changelog
  * add timestamp in contact message list
  * fix assert project image files
  * simplify CKEditor basic toolbar
+ * add ProjectCategory management
 
 ##### Version 1.02.001 (2023-0618)
  * add Enterprise management

@@ -4,9 +4,11 @@ namespace App\Controller\Web;
 
 use App\Entity\ContactMessage;
 use App\Entity\Project;
+use App\Entity\ProjectCategory;
 use App\Form\Type\ContactMessageFormType;
 use App\Manager\MailerManager;
 use App\Repository\ContactMessageRepository;
+use App\Repository\ProjectCategoryRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,9 +34,10 @@ class MainController extends AbstractController
         ],
         name: 'app_web_projects_list',
     )]
-    public function projectsList(ProjectRepository $pr): Response
+    public function projectsList(ProjectCategoryRepository $pcr, ProjectRepository $pr): Response
     {
         return $this->render('web/projects.html.twig', [
+            'categories' => $pcr->getAllSortedByName(),
             'projects' => $pr->getActiveAndShowInFrontendSortedByPosition(),
         ]);
     }
@@ -54,6 +57,23 @@ class MainController extends AbstractController
         }
 
         return $this->render('web/project_detail_placeholder.html.twig');
+    }
+
+    #[Route(
+        path: [
+            'ca' => '/categoria-projecte/{slug}',
+            'es' => '/categoria-proyecto/{slug}',
+            'en' => '/project-category/{slug}',
+        ],
+        name: 'app_web_project_category_detail',
+    )]
+    public function projectCategoryDetail(ProjectCategoryRepository $pcr, ProjectRepository $pr, ProjectCategory $projectCategory): Response
+    {
+        return $this->render('web/project_category_detail.html.twig', [
+            'categories' => $pcr->getAllSortedByName(),
+            'category' => $projectCategory,
+            'projects' => $pr->getProjectsByCategory($projectCategory),
+        ]);
     }
 
     #[Route(

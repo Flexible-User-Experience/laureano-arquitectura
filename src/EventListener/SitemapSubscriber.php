@@ -3,6 +3,7 @@
 namespace App\EventListener;
 
 use App\Entity\Project;
+use App\Repository\ProjectCategoryRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -12,11 +13,13 @@ use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 
 class SitemapSubscriber implements EventSubscriberInterface
 {
+    private ProjectCategoryRepository $pcr;
     private ProjectRepository $pr;
     private array $locales;
 
-    public function __construct(ProjectRepository $pr, array $locales)
+    public function __construct(ProjectCategoryRepository $pcr, ProjectRepository $pr, array $locales)
     {
+        $this->pcr = $pcr;
         $this->pr = $pr;
         $this->locales = $locales;
     }
@@ -46,6 +49,17 @@ class SitemapSubscriber implements EventSubscriberInterface
                 $this->buildUrl($router, 'app_web_projects_list', $locale),
                 'default'
             );
+            // project categories list
+            $projects = $this->pcr->getActiveAndShowInFrontendSortedByPosition();
+            /** @var Project $project */
+            foreach ($projects as $project) {
+                $urls->addUrl(
+                    $this->buildUrl($router, 'app_web_project_detail', $locale, [
+                        'slug' => $project->getSlug(),
+                    ]),
+                    'default'
+                );
+            }
             // projects list
             $projects = $this->pr->getActiveAndShowInFrontendSortedByPosition();
             /** @var Project $project */
