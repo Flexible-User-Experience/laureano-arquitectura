@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Entity\AbstractBase;
+use App\Entity\ProjectCategory;
 use App\Entity\Translations\ProjectTranslation;
 use App\Enum\SortOrderEnum;
 use App\Form\Type\GedmoTranslationsType;
@@ -14,8 +15,10 @@ use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
+use Sonata\DoctrineORMAdminBundle\Filter\ModelFilter;
 use Sonata\Form\Type\CollectionType;
 use Sonata\Form\Type\DatePickerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -44,6 +47,17 @@ final class ProjectAdmin extends AbstractBaseAdmin
     {
         $filter
             ->add('name')
+            ->add(
+                'projectCategory',
+                ModelFilter::class,
+                [
+                    'field_options' => [
+                        'class' => ProjectCategory::class,
+                        'choice_label' => 'name',
+                        'query_builder' => $this->getEntityManager()->getRepository(ProjectCategory::class)->getAllSortedByNameQB(),
+                    ],
+                ]
+            )
             ->add(
                 'beginDate',
                 DateFilter::class,
@@ -92,6 +106,26 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 FieldDescriptionInterface::TYPE_STRING,
                 [
                     'editable' => true,
+                ]
+            )
+            ->add(
+                'projectCategory',
+                FieldDescriptionInterface::TYPE_MANY_TO_ONE,
+                [
+                    'editable' => false,
+                    'sortable' => true,
+                    'associated_property' => 'getName',
+                    'route' => [
+                        'name' => 'edit',
+                    ],
+                    'sort_field_mapping' => [
+                        'fieldName' => 'name',
+                    ],
+                    'sort_parent_association_mappings' => [
+                        [
+                            'fieldName' => 'projectCategory',
+                        ],
+                    ],
                 ]
             )
             ->add(
@@ -219,7 +253,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 ->with(
                     'Extra Images',
                     [
-                        'class' => 'col-md-8',
+                        'class' => 'col-md-7',
                         'box_class' => 'box box-success',
                     ]
                 )
@@ -248,6 +282,16 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 [
                     'class' => 'col-md-3',
                     'box_class' => 'box box-success',
+                ]
+            )
+            ->add(
+                'projectCategory',
+                EntityType::class,
+                [
+                    'required' => false,
+                    'class' => ProjectCategory::class,
+                    'choice_label' => 'name',
+                    'query_builder' => $this->getEntityManager()->getRepository(ProjectCategory::class)->getAllSortedByNameQB(),
                 ]
             )
             ->add(
