@@ -67,7 +67,7 @@ class ContactMessageRepository extends ServiceEntityRepository
     {
         $qb = $this->getAllSortedByCreatedAtQB()
             ->where('cm.hasBeenReplied = :replied')
-            ->setParameter('replied', true)
+            ->setParameter('replied', false)
         ;
 
         return count($qb->getQuery()->getResult());

@@ -153,6 +153,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 VichImageType::class,
                 [
                     'required' => $this->isFormToCreateNewRecord(),
+                    'help' => 'Image Helper',
                 ]
             )
             ->end()
@@ -216,7 +217,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
         if (!$this->isFormToCreateNewRecord()) {
             $form
                 ->with(
-                    'Images',
+                    'Extra Images',
                     [
                         'class' => 'col-md-8',
                         'box_class' => 'box box-success',

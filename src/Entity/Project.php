@@ -10,6 +10,7 @@ use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PositionTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translations\ProjectTranslation;
+use App\Manager\AssetsManager;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -69,6 +70,12 @@ class Project extends AbstractBase
     #[ORM\Column(type: Types::BOOLEAN, options: ['default' => true])]
     private bool $showInFrontend = true;
 
+    #[Assert\Image(maxSize: '10M', mimeTypes: [
+        AssetsManager::MIME_IMAGE_JPG_TYPE,
+        AssetsManager::MIME_IMAGE_JPEG_TYPE,
+        AssetsManager::MIME_IMAGE_PNG_TYPE,
+        AssetsManager::MIME_IMAGE_GIF_TYPE,
+    ], minWidth: 1200)]
     #[Vich\UploadableField(mapping: 'projects', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
