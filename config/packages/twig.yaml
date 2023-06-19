@@ -18,6 +18,8 @@ twig:
         project_title: '%project_web_title%'
         project_url_base: '%project_url_base%'
         enterprise_name: '%enterprise_name%'
+        enterprise_email: '%mailer_destination%'
+        enterprise_tin: '%enterprise_tin%'
         enterprise_phone: '%enterprise_phone%'
         enterprise_address: '%enterprise_address%'
         enterprise_zip: '%enterprise_zip%'
