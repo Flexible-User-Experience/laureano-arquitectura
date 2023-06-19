@@ -40,6 +40,10 @@ class Project extends AbstractBase
     #[ORM\OneToMany(mappedBy: 'object', targetEntity: ProjectTranslation::class, cascade: ['persist', 'remove'])]
     private ?Collection $translations;
 
+    #[ORM\ManyToOne(targetEntity: ProjectCategory::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ProjectCategory $projectCategory;
+
     #[Assert\Valid]
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, cascade: ['persist', 'remove'])]
     #[ORM\OrderBy(['position' => 'ASC'])]
@@ -112,6 +116,18 @@ class Project extends AbstractBase
         if ($this->translations->contains($translation)) {
             $this->translations->removeElement($translation);
         }
+
+        return $this;
+    }
+
+    public function getProjectCategory(): ProjectCategory
+    {
+        return $this->projectCategory;
+    }
+
+    public function setProjectCategory(ProjectCategory $projectCategory): self
+    {
+        $this->projectCategory = $projectCategory;
 
         return $this;
     }

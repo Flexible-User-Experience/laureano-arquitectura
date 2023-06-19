@@ -31,7 +31,7 @@ class ContactMessage extends AbstractBase
     #[ORM\Column(type: Types::BOOLEAN, options: ['default' => false])]
     private bool $hasBeenRead = false;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $replyDate = null;
 
     #[ORM\Column(type: Types::BOOLEAN, options: ['default' => false])]
