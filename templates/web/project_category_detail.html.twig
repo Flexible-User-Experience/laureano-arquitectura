@@ -29,6 +29,11 @@
         <div class="row">
             <div class="col">
                 <h1 class="pb-2 border-bottom">{{ 'projects' | trans | capitalize }}</h1>
+                {% if projects | length == 0 %}
+                    <div class="alert alert-warning mt-5 mb-0" role="alert">
+                        <i class="fa-solid fa-exclamation-triangle fa-fw"></i> {{ 'Empty Project List Warning' | trans }}
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -56,10 +61,6 @@
                         </div>
                     </div>
                 {% endfor %}
-            {% else %}
-
-                {# TODO show empty list warning #}
-
             {% endif %}
         </div>
     </div>
