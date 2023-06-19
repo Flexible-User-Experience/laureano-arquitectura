@@ -25,17 +25,23 @@ class WebTest extends WebTestCase
             ['/sitemap.default.xml'],
             // ca
             ['/'],
+            ['/categoria-projecte/project-category-1'],
             ['/projectes'],
+            ['/projecte/project-1'],
             ['/contacte'],
             ['/politica-de-privacitat'],
             // es
             ['/es/'],
+            ['/es/categoria-proyecto/project-category-1'],
             ['/es/proyectos'],
+            ['/es/proyecto/project-1'],
             ['/es/contacto'],
             ['/es/politica-de-privacidad'],
             // en
             ['/en/'],
+            ['/en/project-category/project-category-1'],
             ['/en/projects'],
+            ['/en/project/project-1'],
             ['/en/contact'],
             ['/en/privacy-policy'],
         ];
