@@ -15,11 +15,15 @@
                             <a href="{{ path('app_web_projects_list') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-rotate-left fa-fw"></i> {{ 'Go back to projects' | trans }}</a>
                         </div>
                         <div class="d-lg-flex col-lg-5 justify-content-lg-start">
-{#                            <a class="btn btn-primary text-white"><i class="fa-solid fa-circle-left fa-fw"></i></a>#}
+
                         </div>
                         <div class="d-lg-flex col-lg-5 justify-content-lg-end">
-                            <a class="btn btn-outline-secondary me-3" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Tooltip on left"><i class="fa-solid fa-circle-left fa-fw"></i></a>
-                            <a class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Tooltip on left"><i class="fa-solid fa-circle-right fa-fw"></i></a>
+                            {% if previous_project %}
+                                <a href="{{ path('app_web_project_detail', {'slug': previous_project.slug}) }}" class="btn btn-outline-secondary me-3"><i class="fa-solid fa-circle-left fa-fw"></i> {{ 'Go to previous project' | trans }}</a>
+                            {% endif %}
+                            {% if following_project %}
+                                <a href="{{ path('app_web_project_detail', {'slug': following_project.slug}) }}" class="btn btn-outline-secondary"><i class="fa-solid fa-circle-right fa-fw"></i> {{ 'Go to following project' | trans }}</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

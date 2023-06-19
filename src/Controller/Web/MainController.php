@@ -64,10 +64,12 @@ class MainController extends AbstractController
         ],
         name: 'app_web_project_detail',
     )]
-    public function projectDetail(Project $project): Response
+    public function projectDetail(ProjectRepository $pr, Project $project): Response
     {
         return $this->render('web/project_detail.html.twig', [
+            'previous_project' => $pr->getPreviousProjectOf($project),
             'project' => $project,
+            'following_project' => $pr->getFollowingProjectOf($project),
         ]);
     }
 
