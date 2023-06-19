@@ -10,9 +10,10 @@ Changelog
 ##### Version 1.03.001 (WIP)
  * fix bugs
  * keep working
- * add total projects dashboard widget
- * add total contact messages dashboard widget
+ * add dashboard widgets
  * add Google Analytics API bridge
+ * fix pending to replay dashboard contact messages
+ * add timestamp in contact message list
 
 ##### Version 1.02.001 (2023-0618)
  * add Enterprise management

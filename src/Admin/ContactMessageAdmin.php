@@ -71,7 +71,7 @@ final class ContactMessageAdmin extends AbstractBaseAdmin
                 'createdAt',
                 FieldDescriptionInterface::TYPE_DATE,
                 [
-                    'format' => AbstractBase::DATE_STRING_FORMAT,
+                    'format' => AbstractBase::DATETIME_STRING_FORMAT,
                     'editable' => false,
                     'header_class' => 'text-center',
                     'row_align' => 'center',
