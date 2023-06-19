@@ -10,6 +10,10 @@ class AssetsManager
 {
     public const MIME_APPLICATION_PDF_TYPE = 'application/pdf';
     public const MIME_APPLICATION_PDF_X_TYPE = 'application/x-pdf';
+    public const MIME_IMAGE_JPG_TYPE = 'image/jpg';
+    public const MIME_IMAGE_JPEG_TYPE = 'image/jpeg';
+    public const MIME_IMAGE_PNG_TYPE = 'image/png';
+    public const MIME_IMAGE_GIF_TYPE = 'image/gif';
 
     private Filesystem $filesystem;
     private string $projectRootPathDir;

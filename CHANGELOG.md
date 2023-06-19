@@ -14,6 +14,7 @@ Changelog
  * add Google Analytics API bridge
  * fix pending to replay dashboard contact messages
  * add timestamp in contact message list
+ * fix assert project image files
 
 ##### Version 1.02.001 (2023-0618)
  * add Enterprise management
