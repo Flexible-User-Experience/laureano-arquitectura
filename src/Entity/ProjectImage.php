@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Traits\ImageFileTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PositionTrait;
+use App\Manager\AssetsManager;
 use App\Repository\ProjectImageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,6 +29,12 @@ class ProjectImage extends AbstractBase
     #[ORM\Column(type: Types::STRING, length: 255)]
     private string $name;
 
+    #[Assert\Image(maxSize: '10M', mimeTypes: [
+        AssetsManager::MIME_IMAGE_JPG_TYPE,
+        AssetsManager::MIME_IMAGE_JPEG_TYPE,
+        AssetsManager::MIME_IMAGE_PNG_TYPE,
+        AssetsManager::MIME_IMAGE_GIF_TYPE,
+    ], minWidth: 1200)]
     #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
