@@ -57,4 +57,22 @@ class ProjectCategoryRepository extends ServiceEntityRepository
     {
         return $this->getAllSortedByNameQ()->getResult();
     }
+
+    public function getActiveSortedByNameQB(): QueryBuilder
+    {
+        return $this->getAllSortedByNameQB()
+            ->where('pc.active = :active')
+            ->setParameter('active', true)
+        ;
+    }
+
+    public function getActiveSortedByNameQ(): Query
+    {
+        return $this->getActiveSortedByNameQB()->getQuery();
+    }
+
+    public function getActiveSortedByName(): array
+    {
+        return $this->getActiveSortedByNameQ()->getResult();
+    }
 }
