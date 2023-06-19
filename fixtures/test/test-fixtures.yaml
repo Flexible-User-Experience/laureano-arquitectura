@@ -111,13 +111,13 @@ App\Entity\ContactMessage:
 App\Entity\ProjectCategory:
   projectcategory{1..5}:
     legacyId: '<current()>'
-    name: '<firstName()>'
+    name: 'project category <current()>'
 
 App\Entity\Project:
   project{1..5}:
     projectCategory: '@projectcategory<current()>'
     legacyId: '<current()>'
-    name: '<name()>'
+    name: 'project <current()>'
     imageName: 'lorem-picsum.jpg'
     description: '<paragraph()>'
     summary: '<word()>'

@@ -30,6 +30,9 @@ class AdminTest extends WebTestCase
     {
         return [
             ['/admin/dashboard'],
+            ['/admin/web/project-category/list'],
+            ['/admin/web/project-category/create'],
+            ['/admin/web/project-category/1/edit'],
             ['/admin/web/project/list'],
             ['/admin/web/project/create'],
             ['/admin/web/project/1/edit'],
@@ -78,6 +81,9 @@ class AdminTest extends WebTestCase
     public function provideNotFoundUrls(): array
     {
         return [
+            ['/admin/web/project-category/batch'],
+            ['/admin/web/project-category/1/show'],
+            ['/admin/web/project-category/1/delete'],
             ['/admin/web/project/batch'],
             ['/admin/web/project/1/show'],
             ['/admin/web/project-image/batch'],
