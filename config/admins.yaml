@@ -1,5 +1,11 @@
 services:
     # Web
+    admin.project_category:
+        class: 'App\Admin\ProjectCategoryAdmin'
+        tags:
+            - { name: 'sonata.admin', model_class: 'App\Entity\ProjectCategory', controller: 'App\Controller\Admin\ProjectCategoryAdminController', manager_type: 'orm', label: 'Project Category', group: 'Web' }
+        calls:
+            - [ 'setEntityManager', [ '@doctrine.orm.entity_manager' ] ]
     admin.project:
         class: 'App\Admin\ProjectAdmin'
         tags:
