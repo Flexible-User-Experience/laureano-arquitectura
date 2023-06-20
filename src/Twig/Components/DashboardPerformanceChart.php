@@ -68,8 +68,13 @@ class DashboardPerformanceChart
         return $this->ir->getTotalInvoicesAmount();
     }
 
-    public function getTotalWebVisitsAmount(): int
+    public function get365DaysAgoTotalVisitsAmount(): int
     {
-        return $this->gam->getTotalVisitsAmount();
+        return $this->gam->get365DaysAgoTotalVisitsAmount();
+    }
+
+    public function get30DaysAgoTotalVisitsAmount(): int
+    {
+        return $this->gam->get30DaysAgoTotalVisitsAmount();
     }
 }

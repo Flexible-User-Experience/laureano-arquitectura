@@ -6,7 +6,9 @@
                     <span class="info-box-icon"><i class="far fa-eye"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ 'Web visits' | trans }}</span>
-                        <span class="info-box-number">{{ computed.totalWebVisitsAmount | i }}</span>
+                        <span class="info-box-number">{{ computed.get30DaysAgoTotalVisitsAmount | i }} {{ 'last 30 days' | trans }}</span>
+                        <div class="progress"></div>
+                        <span class="progress-description">{{ computed.get365DaysAgoTotalVisitsAmount | i }} {{ 'last 365 days' | trans }}</span>
                     </div>
                 </div>
             </div>
