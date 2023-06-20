@@ -40,7 +40,7 @@ class AdminTopRightNavMenuBuilder
                 ->addChild(
                     'usergoogleaccesstoken',
                     [
-                        'label' => '<span class="btn btn-xs btn-warning"><i class="fas fa-exclamation-triangle fa-fw"></i> '.$this->ts->trans('Connect Google Api Warning').'</span>',
+                        'label' => '<span class="btn btn-xs btn-warning" style="line-height:1.3"><i class="fas fa-exclamation-triangle fa-fw"></i> '.$this->ts->trans('Connect Google Api Warning').'</span>',
                         'uri' => $this->gam->getGoogleApiClient()->createAuthUrl(),
                     ]
                 )
