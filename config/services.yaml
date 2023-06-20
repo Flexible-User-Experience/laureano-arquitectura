@@ -5,6 +5,7 @@ parameters:
     default_locale: 'ca'
     locale_i18n: [ 'es', 'en' ]
     locale_i18n_full: [ '%default_locale%', 'es', 'en' ]
+    google_analytics_property_id: '%env(string:GOOGLE_ANALYTICS_PROPERTY_ID)%'
     google_recaptcha_site_key: '%env(string:GOOGLE_RECAPTCHA_SITE_KEY)%'
     project_web_title: 'Laureano Arquitectura'
     project_url_base: '%env(string:PROJECT_BASE_URL)%'
