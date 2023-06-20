@@ -40,7 +40,7 @@ class AdminTopRightNavMenuBuilder
                 ->addChild(
                     'usergoogleaccesstoken',
                     [
-                        'label' => '<span class="text-warning"><i class="fas fa-exclamation-triangle mr-1"></i> '.$this->ts->trans('layout.connect_google_calendar_api').'</span>',
+                        'label' => '<span class="btn btn-xs btn-warning"><i class="fas fa-exclamation-triangle fa-fw"></i> '.$this->ts->trans('Connect Google Api Warning').'</span>',
                         'uri' => $this->gam->getGoogleApiClient()->createAuthUrl(),
                     ]
                 )
