@@ -6,7 +6,10 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Google\Client as GoogleApiClient;
 use Google\Exception;
-use Google\Service\Analytics as GoogleAnalyticsDataService;
+use Google\Service\AnalyticsData as GoogleAnalyticsDataService;
+use Google\Service\AnalyticsData\DateRange;
+use Google\Service\AnalyticsData\Metric;
+use Google\Service\AnalyticsData\RunReportRequest;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -16,6 +19,7 @@ class GoogleAnalyticsManager
 {
     public const GOOGLE_APIS_CREDENTIALS_FILENAME = 'google_apis_credentials.json';
 
+    private ParameterBagInterface $pb;
     private Security $ss;
     private UserRepository $ur;
     private GoogleApiClient $gac;
@@ -24,8 +28,9 @@ class GoogleAnalyticsManager
     /**
      * @throws Exception
      */
-    public function __construct(AssetsManager $am, ParameterBagInterface $pb, RouterInterface $rs, Security $ss, UserRepository $ur)
+    public function __construct(AssetsManager $am, RouterInterface $rs, ParameterBagInterface $pb, Security $ss, UserRepository $ur)
     {
+        $this->pb = $pb;
         $this->ss = $ss;
         $this->ur = $ur;
         $this->gac = new GoogleApiClient();
@@ -69,40 +74,27 @@ class GoogleAnalyticsManager
         $user = $this->ss->getUser();
         if ($user->getGoogleCredentialsAccepted()) {
             $this->reFetchUserGoogleApiClientAccessToken($user);
-            // Get the user's first view (profile) ID.
-            // Get the list of accounts for the authorized user.
-            $accounts = $this->getGoogleAnalyticsDataService()->management_accounts->listManagementAccounts();
-            if (count($accounts->getItems()) > 0) {
-                $items = $accounts->getItems();
-//                dd($items);
-                $firstAccountId = $items[3]->getId();
-                // Get the list of properties for the authorized user.
-                $properties = $this->getGoogleAnalyticsDataService()->management_webproperties->listManagementWebproperties($firstAccountId, [
-                    'max-results' => 50,
-                ]);
-                if (count($properties->getItems()) > 0) {
-                    $items = $properties->getItems();
-
-//                    dd($items);
-                } else {
-                    throw new Exception('No properties found for this user.');
-                }
-            } else {
-                throw new Exception('No accounts found for this user.');
+            $range = new DateRange();
+            $range->setStartDate('30daysAgo');
+            $range->setEndDate('today');
+            $req = new RunReportRequest();
+            $req->setDateRanges($range);
+            $metric = new Metric();
+            $metric->setName('newUsers');
+            $req->setMetrics($metric);
+            $req->setKeepEmptyRows(true);
+            $data = $this->getGoogleAnalyticsDataService()->properties->runReport(
+                'properties/'.$this->pb->get('google_analytics_property_id'),
+                $req,
+            );
+            if ($data->getRowCount() > 0) {
+                return $data->getRowCount();
             }
 
-            $data = $this->getGoogleAnalyticsDataService()->data_ga->get(
-                'ga:5534643240',
-                '2023-06-15',
-                '2023-06-20',
-                'ga:sessions,ga:pageviews'
-            );
-//            dd($data);
-
-//            return $data->totalResults;
+            return -1;
         }
 
-        return -10;
+        return 0;
     }
 
     public function reFetchUserGoogleApiClientAccessToken(User $user): void
