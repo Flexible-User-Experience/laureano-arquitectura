@@ -2,7 +2,9 @@
 
 namespace App\Manager;
 
+use App\Entity\PagePathVisit;
 use App\Entity\User;
+use App\Repository\PagePathVisitRepository;
 use App\Repository\UserRepository;
 use Google\Client as GoogleApiClient;
 use Google\Exception;
@@ -23,17 +25,19 @@ class GoogleAnalyticsManager
     private ParameterBagInterface $pb;
     private Security $ss;
     private UserRepository $ur;
+    private PagePathVisitRepository $ppvr;
     private GoogleApiClient $gac;
     private ?GoogleAnalyticsDataService $gads = null;
 
     /**
      * @throws Exception
      */
-    public function __construct(AssetsManager $am, RouterInterface $rs, ParameterBagInterface $pb, Security $ss, UserRepository $ur)
+    public function __construct(AssetsManager $am, RouterInterface $rs, ParameterBagInterface $pb, Security $ss, UserRepository $ur, PagePathVisitRepository $ppvr)
     {
         $this->pb = $pb;
         $this->ss = $ss;
         $this->ur = $ur;
+        $this->ppvr = $ppvr;
         $this->gac = new GoogleApiClient();
         $this->gac->setApplicationName($pb->get('project_web_title').' Google Analytics API Integration');
         $this->gac->addScope(GoogleAnalyticsDataService::ANALYTICS_READONLY);
@@ -120,6 +124,51 @@ class GoogleAnalyticsManager
         }
 
         return 0;
+    }
+
+    public function fetchYesterdayVisits(User $user): bool
+    {
+        $hasBeenFetched = false;
+        if ($user->getGoogleCredentialsAccepted()) {
+            $this->reFetchUserGoogleApiClientAccessToken($user);
+            // Create the DateRange object
+            $range = new DateRange();
+            $range->setStartDate('yesterday');
+            $range->setEndDate('yesterday');
+            // Create the Metrics object
+            $metric = new Metric();
+            $metric->setName('screenPageViews');
+            // Create the Dimension object
+            $dimension = new Dimension();
+            $dimension->setName('pagePath');
+            // Create the ReportRequest object
+            $req = new RunReportRequest();
+            $req->setDateRanges($range);
+            $req->setMetrics([$metric]);
+            $req->setDimensions([$dimension]);
+            $req->setKeepEmptyRows(true);
+            $data = $this->getGoogleAnalyticsDataService()->properties->runReport(
+                'properties/'.$this->pb->get('google_analytics_property_id'),
+                $req,
+            );
+            if ($data->getRowCount() > 0) {
+                $hasBeenFetched = true;
+                foreach ($data->getRows() as $row) {
+                    if (count($row->getDimensionValues()) > 0 && count($row->getMetricValues()) > 0) {
+                        $pagePathDimension = $row->getDimensionValues()[0]->getValue();
+                        $screenPageViewsValue = (int) $row->getMetricValues()[0]->getValue();
+                        $pagePathVisit = new PagePathVisit();
+                        $pagePathVisit
+                            ->setName($pagePathDimension)
+                            ->setScreenPageViews($screenPageViewsValue)
+                        ;
+                        $this->ppvr->add($pagePathVisit, true);
+                    }
+                }
+            }
+        }
+
+        return $hasBeenFetched;
     }
 
     public function reFetchUserGoogleApiClientAccessToken(User $user): void
