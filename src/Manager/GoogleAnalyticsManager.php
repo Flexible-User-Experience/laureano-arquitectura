@@ -28,7 +28,6 @@ class GoogleAnalyticsManager
         $this->gac = new GoogleApiClient();
         $this->gac->setApplicationName($pb->get('project_web_title').' Google Analytics API Integration');
         $this->gac->addScope(GoogleAnalyticsDataService::ANALYTICS_READONLY);
-//        $this->gac->addScope(GoogleAnalyticsDataService::ANALYTICS);
         $credentialsFilePath = $am->getProjectRootDir().self::GOOGLE_APIS_CREDENTIALS_FILENAME;
         if ($am->fileExists($credentialsFilePath)) {
             $this->gac->setAuthConfig($credentialsFilePath);
@@ -36,7 +35,7 @@ class GoogleAnalyticsManager
             $this->gac->setAccessType('offline');
             $this->gac->setPrompt('select_account consent');
         } else {
-            throw new Exception('Google Calendar API Credentials file '.$credentialsFilePath.' not found');
+            throw new Exception('Google Analytics API Credentials file '.$credentialsFilePath.' not found');
         }
     }
 

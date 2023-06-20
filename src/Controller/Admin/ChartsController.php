@@ -88,7 +88,10 @@ final class ChartsController extends AbstractController
             /** @var User $user */
             $user = $security->getUser();
             if ($user instanceof User) {
-                $user->setGoogleAccessToken($accessToken);
+                $user
+                    ->setGoogleAccessToken($accessToken)
+                    ->setGoogleCredentialsAccepted(true)
+                ;
                 $ur->update(true);
                 $this->addFlash(
                     'sonata_flash_success',
