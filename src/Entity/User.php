@@ -15,4 +15,34 @@ class User extends BaseUser
     #[ORM\GeneratedValue]
     #[ORM\Id]
     protected $id;
+
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $googleAccessToken = null;
+
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true, options: ['default' => false])]
+    private ?bool $googleCredentialsAccepted = false;
+
+    public function getGoogleAccessToken(): ?array
+    {
+        return $this->googleAccessToken;
+    }
+
+    public function setGoogleAccessToken(?array $googleAccessToken): self
+    {
+        $this->googleAccessToken = $googleAccessToken;
+
+        return $this;
+    }
+
+    public function getGoogleCredentialsAccepted(): ?bool
+    {
+        return $this->googleCredentialsAccepted;
+    }
+
+    public function setGoogleCredentialsAccepted(?bool $googleCredentialsAccepted): self
+    {
+        $this->googleCredentialsAccepted = $googleCredentialsAccepted;
+
+        return $this;
+    }
 }

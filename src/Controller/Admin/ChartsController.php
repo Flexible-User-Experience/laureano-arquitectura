@@ -8,11 +8,14 @@ use App\Block\Last12MonthsTopTenCustomerEarningsBlock;
 use App\Block\LastMonthsInvoicingResumeBlock;
 use App\Block\TopTenCustomerEarningsBlock;
 use App\Block\TotalRetainingEarningsBlock;
+use App\Entity\User;
 use App\Manager\GoogleAnalyticsManager;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/admin/charts')]
 final class ChartsController extends AbstractController
@@ -70,7 +73,7 @@ final class ChartsController extends AbstractController
     }
 
     #[Route('/google-user-oauth-token', name: 'admin_google_user_oauth_token')]
-    public function googleUserOauthToken(Request $request, GoogleAnalyticsManager $gam): Response
+    public function googleUserOauthToken(Request $request, GoogleAnalyticsManager $gam, TranslatorInterface $ts, UserRepository $ur): Response
     {
         $authCode = $request->get('code');
         if ($authCode) {
@@ -81,12 +84,22 @@ final class ChartsController extends AbstractController
             }
             $gam->getGoogleApiClient()->setAccessToken($accessToken);
             $gam->setGoogleAnalyticsServiceByGoogleApiClient($gam->getGoogleApiClient());
-            $gam->setGoogleUserAccessToken($accessToken);
+            /** @var User $user */
+            $user = $request->getUser();
+            if ($user instanceof User) {
+                $user->setGoogleAccessToken($accessToken);
+                $ur->update(true);
+                $this->addFlash(
+                    'sonata_flash_success',
+                    $ts->trans('layout.connect_google_calendar_api_success')
+                );
+            } else {
+                throw $this->createAccessDeniedException('User logged not found');
+            }
         } else {
             throw $this->createAccessDeniedException('No auth code URL param found');
         }
 
         return $this->redirectToRoute('sonata_admin_dashboard');
-
     }
 }
