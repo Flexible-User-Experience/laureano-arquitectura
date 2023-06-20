@@ -92,7 +92,7 @@ final class ChartsController extends AbstractController
                 $ur->update(true);
                 $this->addFlash(
                     'sonata_flash_success',
-                    $ts->trans('layout.connect_google_calendar_api_success')
+                    $ts->trans('Connect Google Api Success')
                 );
             } else {
                 throw $this->createAccessDeniedException('User logged not found');
