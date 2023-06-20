@@ -43,6 +43,7 @@ when@prod:
                 type: 'rotating_file'
                 level: 'debug'
                 max_files: 15
+                channels: [ '!deprecation' ]
             console:
                 type: 'console'
                 process_psr_3_messages: false

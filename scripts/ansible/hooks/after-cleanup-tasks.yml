@@ -1,5 +1,7 @@
 - name: restart messenger subsystem async workers
   shell: "supervisorctl start laureanoarquitectura-messenger-consume:*"
+- name: restart scheduler subsystem async workers
+  shell: "supervisorctl start laureanoarquitectura-scheduler-consume:*"
 - name: fix full release directory apache ownership
   file:
     path: "{{ ansistrano_release_path.stdout }}"
