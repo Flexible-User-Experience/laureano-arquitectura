@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Manager\GoogleAnalyticsManager;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -73,7 +74,7 @@ final class ChartsController extends AbstractController
     }
 
     #[Route('/google-user-oauth-token', name: 'admin_google_user_oauth_token')]
-    public function googleUserOauthToken(Request $request, GoogleAnalyticsManager $gam, TranslatorInterface $ts, UserRepository $ur): Response
+    public function googleUserOauthToken(Request $request, GoogleAnalyticsManager $gam, TranslatorInterface $ts, UserRepository $ur, Security $security): Response
     {
         $authCode = $request->get('code');
         if ($authCode) {
@@ -85,7 +86,7 @@ final class ChartsController extends AbstractController
             $gam->getGoogleApiClient()->setAccessToken($accessToken);
             $gam->setGoogleAnalyticsServiceByGoogleApiClient($gam->getGoogleApiClient());
             /** @var User $user */
-            $user = $request->getUser();
+            $user = $security->getUser();
             if ($user instanceof User) {
                 $user->setGoogleAccessToken($accessToken);
                 $ur->update(true);
