@@ -45,31 +45,14 @@ class GoogleApiTestCommand extends Command
         if (!$user) {
             $io->error('User ID# '.$uid.' not found!');
         } else {
-            if ($user->getGoogleAccessToken()) {
-                $this->gam->getGoogleApiClient()->setAccessToken($user->getGoogleAccessToken());
+            if ($user->getGoogleCredentialsAccepted() && $user->getGoogleAccessToken()) {
+                $this->gam->fetchYesterdayVisits($user);
+                $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+
+            } else {
+                $io->error('User not getGoogleCredentialsAccepted or getGoogleAccessToken');
+
             }
-            // if there is no previous user access token or it's expired
-            if ($this->gam->getGoogleApiClient()->isAccessTokenExpired()) {
-                // refresh the token if possible, else fetch a new one
-                if ($this->gam->getGoogleApiClient()->getRefreshToken()) {
-                    $this->gam->getGoogleApiClient()->fetchAccessTokenWithRefreshToken($this->gam->getGoogleApiClient()->getRefreshToken());
-                } else {
-                    // request authorization from the user
-                    $authUrl = $this->gam->getGoogleApiClient()->createAuthUrl();
-                    $io->text('Open the following link in your browser >>> '.$authUrl);
-                    $helper = $this->getHelper('question');
-                    $question = new Question('Enter verification code: ');
-                    $authCode = $helper->ask($input, $output, $question);
-                    // exchange authorization code for an access token
-                    $accessToken = $this->gam->getGoogleApiClient()->fetchAccessTokenWithAuthCode($authCode);
-                    $this->gam->getGoogleApiClient()->setAccessToken($accessToken);
-                    // check to see if there was an error
-                    if (array_key_exists('error', $accessToken)) {
-                        throw new \RuntimeException(implode(', ', $accessToken));
-                    }
-                }
-            }
-            $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
         }
 
         return Command::SUCCESS;

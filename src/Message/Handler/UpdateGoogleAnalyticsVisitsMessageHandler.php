@@ -22,7 +22,7 @@ class UpdateGoogleAnalyticsVisitsMessageHandler
         $this->gam = $gam;
     }
 
-    public function __invoke(UpdateGoogleAnalyticsVisitsMessage $message)
+    public function __invoke(UpdateGoogleAnalyticsVisitsMessage $message): void
     {
         $this->logger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] hit');
         $users = $this->ur->findAll();
