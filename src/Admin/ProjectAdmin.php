@@ -288,7 +288,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 'projectCategory',
                 EntityType::class,
                 [
-                    'required' => false,
+                    'required' => true,
                     'class' => ProjectCategory::class,
                     'choice_label' => 'name',
                     'query_builder' => $this->getEntityManager()->getRepository(ProjectCategory::class)->getAllSortedByNameQB(),
