@@ -11,20 +11,20 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 #[AsMessageHandler]
 class UpdateGoogleAnalyticsVisitsMessageHandler
 {
-    private LoggerInterface $logger;
+    private LoggerInterface $queueLogger;
     private UserRepository $ur;
     private GoogleAnalyticsManager $gam;
 
-    public function __construct(LoggerInterface $logger, UserRepository $ur, GoogleAnalyticsManager $gam)
+    public function __construct(LoggerInterface $queueLogger, UserRepository $ur, GoogleAnalyticsManager $gam)
     {
-        $this->logger = $logger;
+        $this->queueLogger = $queueLogger;
         $this->ur = $ur;
         $this->gam = $gam;
     }
 
     public function __invoke(UpdateGoogleAnalyticsVisitsMessage $message): void
     {
-        $this->logger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] hit');
+        $this->queueLogger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] hit');
         $users = $this->ur->findAll();
         if (count($users) > 0) {
             $optimalUser = null;
@@ -36,15 +36,15 @@ class UpdateGoogleAnalyticsVisitsMessageHandler
                 }
             }
             if ($optimalUser) {
-                $this->logger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] optimal user: '.$optimalUser->getUsername());
+                $this->queueLogger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] optimal user: '.$optimalUser->getUsername());
                 $hasBeenFetched = $this->gam->fetchYesterdayVisits($optimalUser);
                 if ($hasBeenFetched) {
-                    $this->logger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] new page visits fetch');
+                    $this->queueLogger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] new page visits fetch');
                 } else {
-                    $this->logger->error('[UpdateGoogleAnalyticsVisitsMessageHandler] no new page visits fetch!');
+                    $this->queueLogger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] ERROR! no new page visits fetch!');
                 }
             } else {
-                $this->logger->error('[UpdateGoogleAnalyticsVisitsMessageHandler] no optimal user found!');
+                $this->queueLogger->info('[UpdateGoogleAnalyticsVisitsMessageHandler] ERROR! no optimal user found!');
             }
         }
     }
