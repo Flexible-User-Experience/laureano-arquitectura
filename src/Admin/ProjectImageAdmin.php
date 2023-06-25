@@ -102,6 +102,7 @@ final class ProjectImageAdmin extends AbstractBaseAdmin
                 VichImageType::class,
                 [
                     'required' => true,
+                    'allow_delete' => false,
                     'help' => 'Short Image Helper',
                 ]
             )
