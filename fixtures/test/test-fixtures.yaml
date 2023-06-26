@@ -115,10 +115,10 @@ App\Entity\ProjectCategory:
 
 App\Entity\Project:
   project{1..5}:
-    projectCategory: '@projectcategory<current()>'
+    projectCategories:
+      - '@projectcategory<current()>'
     legacyId: '<current()>'
     name: 'project <current()>'
-    imageName: 'lorem-picsum.jpg'
     description: '<paragraph()>'
     summary: '<word()>'
     position: '<current()>'
@@ -130,7 +130,6 @@ App\Entity\ProjectImage:
     project: '@project<current()>'
     legacyId: '<current()>'
     name: '<name()>'
-    imageName: 'lorem-picsum.jpg'
     position: '<current()>'
 
 App\Entity\User:
