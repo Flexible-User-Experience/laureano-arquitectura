@@ -1,0 +1,25 @@
+<div class="card">
+    <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}">
+        <img
+                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                    src: vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY')
+                }) }}
+                src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY'), 4, 3) }}"
+                class="card-img-top"
+                alt="{{ project.name }}"
+        >
+    </a>
+    <div class="card-body">
+        {% for project_category in project.projectCategories %}
+            <span class="badge text-bg-secondary">{{ project_category.name }}</span>
+        {% endfor %}
+        <h5 class="card-title mt-2">{{ project.name }}</h5>
+        <p class="card-text">
+            {{ project.summary }}
+
+        </p>
+        <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="btn btn-primary text-white">
+            <i class="fa-solid fa-search fa-fw"></i> {{ 'read more' | trans | capitalize }}
+        </a>
+    </div>
+</div>

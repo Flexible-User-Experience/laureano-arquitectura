@@ -19,25 +19,7 @@
             {% if projects | length > 0 %}
                 {% for project in projects %}
                     <div class="col-sm-4">
-                        <div class="card">
-                            <img
-                                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                        src: vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY')
-                                    }) }}
-                                    src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY'), 4, 3) }}"
-                                    class="card-img-top"
-                                    alt="{{ project.name }}"
-                            >
-                            <div class="card-body">
-                                <h5 class="card-title">{{ project.name }}</h5>
-                                <p class="card-text">
-                                    {{ project.summary }}
-                                </p>
-                                <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="btn btn-primary text-white">
-                                    <i class="fa-solid fa-search fa-fw"></i> {{ 'read more' | trans | capitalize }}
-                                </a>
-                            </div>
-                        </div>
+                        {% include 'helpers/project_card.html.twig' %}
                     </div>
                 {% endfor %}
             {% endif %}
