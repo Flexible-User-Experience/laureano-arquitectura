@@ -48,7 +48,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
         $filter
             ->add('name')
             ->add(
-                'projectCategory',
+                'projectCategories',
                 ModelFilter::class,
                 [
                     'field_options' => [
@@ -109,8 +109,8 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 ]
             )
             ->add(
-                'projectCategory',
-                FieldDescriptionInterface::TYPE_MANY_TO_ONE,
+                'projectCategories',
+                FieldDescriptionInterface::TYPE_MANY_TO_MANY,
                 [
                     'editable' => false,
                     'sortable' => true,
@@ -123,7 +123,7 @@ final class ProjectAdmin extends AbstractBaseAdmin
                     ],
                     'sort_parent_association_mappings' => [
                         [
-                            'fieldName' => 'projectCategory',
+                            'fieldName' => 'projectCategories',
                         ],
                     ],
                 ]
@@ -286,12 +286,14 @@ final class ProjectAdmin extends AbstractBaseAdmin
                 ]
             )
             ->add(
-                'projectCategory',
+                'projectCategories',
                 EntityType::class,
                 [
                     'required' => true,
+                    'multiple' => true,
                     'class' => ProjectCategory::class,
                     'choice_label' => 'name',
+                    'help' => 'Project Categories Helper',
                     'query_builder' => $this->getEntityManager()->getRepository(ProjectCategory::class)->getAllSortedByNameQB(),
                 ]
             )

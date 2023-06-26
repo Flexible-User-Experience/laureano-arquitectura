@@ -38,27 +38,33 @@
         </div>
         <div class="row">
             <div class="col">
-                <img
-                        {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                            src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
-                        }) }}
-                        src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                        class="img-fluid mb-3"
-                        alt="{{ project.name }}"
-                >
-                {% for image in project.images %}
+                {% if project.imageName is not null %}
                     <img
                             {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                                src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
                             }) }}
-                            src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                            src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
                             class="img-fluid mb-3"
-                            alt="{{ image.name }}"
+                            alt="{{ project.name }}"
                     >
+                {% endif %}
+                {% for image in project.images %}
+                    {% if image.imageName is not null %}
+                        <img
+                                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                    src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                                }) }}
+                                src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                class="img-fluid mb-3"
+                                alt="{{ image.name }}"
+                        >
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="col">
-                <span class="badge text-bg-secondary">{{ project.projectCategory.name }}</span>
+                {% for project_category in project.projectCategories %}
+                    <span class="badge text-bg-secondary">{{ project_category.name }}</span>
+                {% endfor %}
                 <h4 class="text-secondary my-3">{{ project.summary }}</h4>
                 {{ project.description | raw }}
             </div>

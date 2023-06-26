@@ -40,9 +40,10 @@ class Project extends AbstractBase
     #[ORM\OneToMany(mappedBy: 'object', targetEntity: ProjectTranslation::class, cascade: ['persist', 'remove'])]
     private ?Collection $translations;
 
-    #[ORM\ManyToOne(targetEntity: ProjectCategory::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private ProjectCategory $projectCategory;
+    #[Assert\Count(min: 1)]
+    #[Assert\Valid]
+    #[ORM\ManyToMany(targetEntity: ProjectCategory::class)]
+    private ?Collection $projectCategories;
 
     #[Assert\Valid]
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, cascade: ['persist', 'remove'])]
@@ -86,6 +87,7 @@ class Project extends AbstractBase
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->projectCategories = new ArrayCollection();
         $this->images = new ArrayCollection();
     }
 
@@ -120,14 +122,32 @@ class Project extends AbstractBase
         return $this;
     }
 
-    public function getProjectCategory(): ProjectCategory
+    public function getProjectCategories(): ?Collection
     {
-        return $this->projectCategory;
+        return $this->projectCategories;
     }
 
-    public function setProjectCategory(ProjectCategory $projectCategory): self
+    public function setProjectCategories(?Collection $projectCategories): self
     {
-        $this->projectCategory = $projectCategory;
+        $this->projectCategories = $projectCategories;
+
+        return $this;
+    }
+
+    public function addProjectCategory(ProjectCategory $category): self
+    {
+        if (!$this->projectCategories->contains($category)) {
+            $this->projectCategories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeProjectCategory(ProjectCategory $category): self
+    {
+        if ($this->projectCategories->contains($category)) {
+            $this->projectCategories->removeElement($category);
+        }
 
         return $this;
     }

@@ -71,7 +71,7 @@ class MainController extends AbstractController
     {
         return $this->render('web/project_category_detail.html.twig', [
             'categories' => $pcr->getAllSortedByName(),
-            'category' => $projectCategory,
+            'selected_category' => $projectCategory,
             'projects' => $pr->getProjectsByCategory($projectCategory),
         ]);
     }

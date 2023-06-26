@@ -4,28 +4,7 @@
 
 {% block body %}
     {% if categories | length > 0 %}
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg bg-body-secondary" aria-label="Submenu navbar">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenu" aria-controls="submenu" aria-expanded="false" aria-label="{{ 'frontend.toggle' | trans }}">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse d-lg-flex" id="submenu">
-                            <div class="d-lg-flex col-lg-12 justify-content-lg-center">
-                                <ul class="nav nav-pills nav-fill">
-                                    {% for category in categories %}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ path('app_web_project_category_detail', {'slug': category.slug}) }}">{{ category.name }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        {% include 'helpers/project_categories_navbar.html.twig' %}
     {% endif %}
     <div class="container py-5">
         <div class="row">
@@ -37,29 +16,7 @@
             {% if projects | length > 0 %}
                 {% for project in projects %}
                     <div class="col-sm-4">
-                        <div class="card">
-                            <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}">
-                                <img
-                                        {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                            src: vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY')
-                                        }) }}
-                                        src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY'), 4, 3) }}"
-                                        class="card-img-top"
-                                        alt="{{ project.name }}"
-                                >
-                            </a>
-                            <div class="card-body">
-                                <span class="badge text-bg-secondary">{{ project.projectCategory.name }}</span>
-                                <h5 class="card-title mt-2">{{ project.name }}</h5>
-                                <p class="card-text">
-                                    {{ project.summary }}
-
-                                </p>
-                                <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}" class="btn btn-primary text-white">
-                                    <i class="fa-solid fa-search fa-fw"></i> {{ 'read more' | trans | capitalize }}
-                                </a>
-                            </div>
-                        </div>
+                        {% include 'helpers/project_card.html.twig' %}
                     </div>
                 {% endfor %}
             {% else %}

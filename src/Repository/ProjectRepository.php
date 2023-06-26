@@ -129,7 +129,8 @@ class ProjectRepository extends ServiceEntityRepository
     public function getProjectsByCategory(ProjectCategory $category): array
     {
         return $this->getActiveAndShowInFrontendSortedByPositionQB()
-            ->andWhere('p.projectCategory = :category')
+            ->innerJoin('p.projectCategories', 'c')
+            ->andWhere('c.id = :category')
             ->setParameter('category', $category)
             ->getQuery()
             ->getResult()
