@@ -21,6 +21,10 @@ Changelog
  * simplify CKEditor basic toolbar
  * add ProjectCategory management
  * make Project categories string lower conversion in public views
+ * add kit digital footer logos
+ * remove allow_delete from Project admins
+ * set ProjectCategory many to many relationship
+ * add project detail BS carousel
 
 ##### Version 1.02.001 (2023-06-18)
  * add Enterprise management
