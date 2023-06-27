@@ -2,6 +2,11 @@
 
 {% block title %}{{ project.name }} · {{ parent() }}{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('project_detail') }}
+{% endblock %}
+
 {% block body %}
     <div class="container-fluid">
         <div class="row">
@@ -14,9 +19,7 @@
                         <div class="d-lg-flex col-lg-2 justify-content-lg-start">
                             <a href="{{ path('app_web_projects_list') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-rotate-left fa-fw"></i> {{ 'Go back to projects' | trans }}</a>
                         </div>
-                        <div class="d-lg-flex col-lg-5 justify-content-lg-start">
-
-                        </div>
+                        <div class="d-lg-flex col-lg-5 justify-content-lg-start"></div>
                         <div class="d-lg-flex col-lg-5 justify-content-lg-end">
                             {% if previous_project %}
                                 <a href="{{ path('app_web_project_detail', {'slug': previous_project.slug}) }}" class="btn btn-outline-secondary me-3"><i class="fa-solid fa-circle-left fa-fw"></i> {{ 'Go to previous project' | trans }}</a>
