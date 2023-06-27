@@ -2,6 +2,8 @@ frontend:
     navbar: 'barra de navegación'
     logo: 'logo'
     toggle: 'intercambiador'
+    previous: 'anterior'
+    next: 'siguiente'
     flash:
         on_contact_message_submit_success: 'Tu mensaje se ha enviado correctamente. Te responderemos lo antes posible.'
 'read more': 'leer más'

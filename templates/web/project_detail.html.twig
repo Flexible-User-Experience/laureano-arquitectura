@@ -40,11 +40,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-lg-8">
                 {% if project.imageName is not null %}
                     {% if project.images | length > 0 %}
                         {# render a slider #}
-                        <div id="carousel" class="carousel slide">
+                        <div id="carousel" class="carousel slide mb-3 mb-lg-0">
+                            {# carousel indicators #}
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="{{ project.name }}"></button>
+                                {% for image in project.images %}
+                                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ loop.index }}" aria-label="{{ image.name }}"></button>
+                                {% endfor %}
+                            </div>
+                            {# carousel slides #}
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img
@@ -71,13 +79,14 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
+                            {# carousel navigation #}
                             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <i class="fa-solid fa-chevron-left fa-3x"></i>
+                                <span class="visually-hidden">{{ 'frontend.previous' | trans }}</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <i class="fa-solid fa-chevron-right fa-3x"></i>
+                                <span class="visually-hidden">{{ 'frontend.next' | trans }}</span>
                             </button>
                         </div>
                     {% else %}
@@ -93,7 +102,7 @@
                     {% endif %}
                 {% endif %}
             </div>
-            <div class="col">
+            <div class="col-12 col-lg-4">
                 {% for project_category in project.projectCategories %}
                     <span class="badge text-bg-secondary">{{ project_category.name | lower }}</span>
                 {% endfor %}
