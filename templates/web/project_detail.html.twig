@@ -42,27 +42,56 @@
         <div class="row">
             <div class="col">
                 {% if project.imageName is not null %}
-                    <img
-                            {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
-                            }) }}
-                            src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                            class="img-fluid mb-3"
-                            alt="{{ project.name }}"
-                    >
-                {% endif %}
-                {% for image in project.images %}
-                    {% if image.imageName is not null %}
+                    {% if project.images | length > 0 %}
+                        {# render a slider #}
+                        <div id="carousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img
+                                            {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                                src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
+                                            }) }}
+                                            src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                            class="d-block w-100"
+                                            alt="{{ project.name }}"
+                                    >
+                                </div>
+                                {% for image in project.images %}
+                                    {% if image.imageName is not null %}
+                                        <div class="carousel-item">
+                                            <img
+                                                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                                        src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                                                    }) }}
+                                                    src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                                    class="d-block w-100"
+                                                    alt="{{ image.name }}"
+                                            >
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    {% else %}
+                        {# render only main image #}
                         <img
                                 {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                    src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                                    src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
                                 }) }}
-                                src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                                class="img-fluid mb-3"
-                                alt="{{ image.name }}"
+                                src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                class="img-fluid mb-3 mb-sm-0"
+                                alt="{{ project.name }}"
                         >
                     {% endif %}
-                {% endfor %}
+                {% endif %}
             </div>
             <div class="col">
                 {% for project_category in project.projectCategories %}
