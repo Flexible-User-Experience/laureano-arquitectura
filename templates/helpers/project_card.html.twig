@@ -13,7 +13,7 @@
     </a>
     <div class="card-body">
         {% for project_category in project.projectCategories %}
-            <span class="badge text-bg-secondary">{{ project_category.name }}</span>
+            <span class="badge text-bg-secondary">{{ project_category.name | lower }}</span>
         {% endfor %}
         <h5 class="card-title mt-2">{{ project.name }}</h5>
         <p class="card-text">

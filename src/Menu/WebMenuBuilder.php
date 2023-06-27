@@ -46,7 +46,7 @@ class WebMenuBuilder
                     'class' => 'nav-item',
                 ],
                 'linkAttributes' => [
-                    'class' => 'nav-link'.('app_web_projects_list' === $current || 'app_web_project_detail' === $current || 'app_web_project_placeholder' === $current ? ' active' : ''),
+                    'class' => 'nav-link'.('app_web_projects_list' === $current || 'app_web_project_category_detail' === $current  || 'app_web_project_detail' === $current || 'app_web_project_placeholder' === $current ? ' active' : ''),
                 ],
             ]
         );
