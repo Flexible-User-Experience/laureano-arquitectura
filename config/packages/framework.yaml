@@ -2,6 +2,7 @@ framework:
     secret: '%env(APP_SECRET)%'
     http_method_override: false
     handle_all_throwables: true
+    esi: true
     session:
         enabled: true
         handler_id: 'session.handler.native_file'
