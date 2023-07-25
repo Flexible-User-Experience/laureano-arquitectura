@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}{{ project_title }}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('build/images/favicon.ico') }}">
-        {% if google_tag_manager_enabled %}
+        {% if google_tag_manager_enabled and chcookieconsent_isCategoryAllowedByUser('analytics') == true %}
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_tag_manager_api_key }}"></script>
             <script>
                 window.dataLayer = window.dataLayer || [];
@@ -47,7 +47,7 @@
                         <div class="col">
                             <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
                                 {{ message | trans }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'frontend.close_button' | trans }}"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'Close' | trans }}"></button>
                             </div>
                         </div>
                     </div>
@@ -78,5 +78,6 @@
                 </div>
             </div>
         </div>
+        {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : app.request.locale })) }}
     </body>
 </html>
