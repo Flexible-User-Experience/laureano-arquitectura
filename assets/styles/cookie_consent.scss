@@ -220,3 +220,11 @@ $secondary: #59595D;
 .ch-cookie-consent--simplified .ch-cookie-consent__btn-group {
     margin-top: 0;
 }
+
+button#cookie_consent_use_only_functional_cookies {
+    color: #FFF;
+}
+
+button#cookie_consent_use_all_cookies:hover {
+    border: 2px solid $secondary;
+}
