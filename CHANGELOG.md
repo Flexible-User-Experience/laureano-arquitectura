@@ -1,16 +1,19 @@
 TODO
 ====
 
- * add privacy policy page
  * add recovery password feature
 
 Changelog
 =========
 
-##### Version 1.04.001 (WIP)
+##### Version 1.05.001 (WIP)
  * fix bugs
  * keep working
  * fix problem with Scheduler Supervisor manager
+
+##### Version 1.04.001 (2023-07-25)
+ * add privacy policy page
+ * append Cookie Consent to your website to comply to GDPR for cookies 
 
 ##### Version 1.03.001 (2023-06-27)
  * add dashboard widgets

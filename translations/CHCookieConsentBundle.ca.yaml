@@ -1,0 +1,23 @@
+ch_cookie_consent:
+    title: 'Galetes al nostre lloc web.'
+    intro: 'Les galetes d''aquest lloc web només es fan servir per personalitzar el contingut i analitzar les pàgines visitades. Les galetes funcionals són estrictament necessàries per al funcionament correcte d''aquesta web i no es poden rebutjar. No es compartirà amb el nostre partner d''anàlisi cap informació sobre les pàgines que heu visitat excepte que ens faciliti el vostre consentiment acceptant l''opció "Permetre galetes analítiques".'
+    read_more: 'llegir més sobre això'
+    analytics:
+        title: 'Vols galetes analítiques?'
+        description: ''
+    tracking:
+        title: 'Vols galetes de rastreig?'
+        description: ''
+    marketing:
+        title: 'Vols anuncis personalitzats?'
+        description: ''
+    social_media:
+        title: 'Vols galetes de xarxes socials?'
+        description: ''
+    no: 'No'
+    yes: 'Sí'
+    save: 'Guardar'
+    use_only_functional_cookies: 'Utilitzar només galetes funcionals'
+    use_all_cookies: 'Permetre galetes analítiques'
+    show_details: 'Mostra els detalls'
+    hide_details: 'Oculta els detalls'
