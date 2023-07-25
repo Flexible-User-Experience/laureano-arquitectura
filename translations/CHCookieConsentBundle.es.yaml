@@ -1,6 +1,6 @@
 ch_cookie_consent:
-    title: 'Cookies en nuestro sitio web.'
-    intro: ''
+    title: 'Esta página web usa cookies.'
+    intro: 'Las cookies de este sitio web sólo se usan para personalizar el contenido y analizar las páginas visitadas. Las cookies funcionales son estrictamente necesarias para el funcionamiento correcto de esta web y no se pueden rechazar. No se compartirá con nuestro partner de análisis ninguna información sobre las páginas que usted ha visitado excepto que nos facilite su consentimiento aceptando la opción "Permitir cookies analíticas".'
     read_more: 'leer más sobre esto'
     analytics:
         title: '¿Quieres cookies analíticas?'
@@ -18,6 +18,6 @@ ch_cookie_consent:
     yes: 'Sí'
     save: 'Guardar'
     use_only_functional_cookies: 'Utilizar únicamente cookies funcionales'
-    use_all_cookies: 'Permitir todas las cookies'
+    use_all_cookies: 'Permitir cookies analíticas'
     show_details: 'Mostrar detalles'
     hide_details: 'Ocultar detalles'
