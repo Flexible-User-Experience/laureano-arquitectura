@@ -2,6 +2,7 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         charset: 'utf8mb4'
+        profiling_collect_backtrace: '%kernel.debug%'
         types:
             money: 'Tbbc\MoneyBundle\Type\MoneyType'
     orm:
