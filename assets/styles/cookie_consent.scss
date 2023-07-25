@@ -1,3 +1,5 @@
+$secondary: #59595D;
+
 .ch-cookie-consent {
     background-color: #fff;
     color: #000;
@@ -160,30 +162,30 @@
 }
 
 .ch-cookie-consent--dark-theme {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #fff;
+    background-color: rgba(220, 220, 220, 0.92);
+    color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__title, .ch-cookie-consent--dark-theme .ch-cookie-consent__read-more {
-    color: #fff;
+    color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__category {
-    border-color: #fff;
+    border-color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__category:first-child {
-    border-color: #fff;
+    border-color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__category-toggle input + label {
     background-color: #000;
-    color: #fff;
-    border-color: #fff;
+    color: $secondary;
+    border-color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__category-toggle input:checked + label, .ch-cookie-consent--dark-theme .ch-cookie-consent__category-toggle input + label:hover {
-    background-color: #fff;
+    background-color: $secondary;
     color: #000;
     border-color: #000;
 }
@@ -193,13 +195,13 @@
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__category-title {
-    color: #fff;
+    color: $secondary;
 }
 
 .ch-cookie-consent--dark-theme .ch-cookie-consent__btn--secondary {
     background: transparent;
-    color: #fff;
-    border: 2px solid #fff;
+    color: $secondary;
+    border: 2px solid $secondary;
 }
 
 .ch-cookie-consent--simplified .ch-cookie-consent__form {
@@ -217,5 +219,4 @@
 
 .ch-cookie-consent--simplified .ch-cookie-consent__btn-group {
     margin-top: 0;
-    margin-bottom: 25px;
 }
