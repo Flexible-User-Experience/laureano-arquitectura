@@ -107,8 +107,7 @@ Services:
         Item3: 'Certificats d''antiguitat'
         Item4: 'Certificats de solidesa'
         Item5: 'Certificats bancaris'
-        Item6: 'Certificats bancaris'
-        Item7: 'Inspecció tècnica d''edificis ITE'
+        Item6: 'Inspecció tècnica d''edificis ITE'
     G4:
         Title: 'AIXECAMENTS I MEDICIONS'
         Item1: 'Aixecaments planimètrics'

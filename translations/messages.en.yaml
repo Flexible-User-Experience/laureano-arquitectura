@@ -107,8 +107,7 @@ Services:
         Item3: 'Certificates of age'
         Item4: 'Certificates of solidity'
         Item5: 'Bank certificates'
-        Item6: 'Bank certificates'
-        Item7: 'Technical inspection ITE of buildings'
+        Item6: 'Technical inspection ITE of buildings'
     G4:
         Title: 'LIFTS AND MEASUREMENTS'
         Item1: 'Planimetric elevations'
