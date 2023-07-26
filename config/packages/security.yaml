@@ -57,7 +57,7 @@ security:
         - { path: ^/admin/request$, role: 'PUBLIC_ACCESS' }
         - { path: ^/admin/check-email$, role: 'PUBLIC_ACCESS' }
         - { path: ^/admin/reset/.*$, role: 'PUBLIC_ACCESS' }
-        - { path: ^/admin, roles: 'ROLE_ADMIN' }
+        - { path: ^/admin, roles: 'ROLE_CMS' }
         - { path: ^/.*, role: 'PUBLIC_ACCESS' }
 
 when@test:
