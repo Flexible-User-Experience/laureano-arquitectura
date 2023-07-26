@@ -26,14 +26,17 @@ sonata_admin:
             Web:
                 icon: '<i class="fas fa-link"></i>'
                 translation_domain: 'messages'
+                roles: [ 'ROLE_CMS' ]
             Enterprise:
                 icon: '<i class="fas fa-briefcase"></i>'
                 translation_domain: 'messages'
+                roles: [ 'ROLE_ADMIN' ]
             Graphs:
                 on_top: true
                 icon: '<i class="fas fa-chart-bar"></i>'
                 label: 'Results & Graphs'
                 translation_domain: 'messages'
+                roles: [ 'ROLE_ADMIN' ]
                 items:
                     - route: 'admin_charts'
                       label: 'Label'
