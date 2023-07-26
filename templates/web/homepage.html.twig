@@ -3,23 +3,46 @@
 {% block title %}{{ 'homepage' | trans | capitalize }} · {{ parent() }}{% endblock %}
 
 {% block body %}
-    <div class="container py-5">
+    <div class="container-fluid p-0">
+        <div class="text-center py-5" style="background-image: url('{{ asset('build/images/hero00.jpeg') }}');background-size: cover;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="mb-0 sr-only">{{ 'homepage' | trans | capitalize }}</h1>
+                        <img src="{{ asset('build/vectors/full_logo.svg') }}" alt="{{ 'frontend.logo' | trans | capitalize }} {{ project_title }}" width="230" class="d-block mx-auto m-5">
+                        <figure class="text-end bg-light-subtle opacity-75 shadow-lg rounded-2 p-3 m-5">
+                            <blockquote class="blockquote">
+                                <p>{{ 'Hero text paragraph 1' | trans | raw }}</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0">
+                                {{ 'Hero text paragraph 2' | trans | raw }}
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-body-tertiary">
         <div class="row">
             <div class="col">
-                <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
-                    <h1 class="mb-0 sr-only">{{ 'homepage' | trans | capitalize }}</h1>
-                    <img src="{{ asset('build/vectors/full_logo_grey.svg') }}" alt="{{ 'frontend.logo' | trans | capitalize }} {{ project_title }}" width="230" class="d-block mx-auto mb-5">
-                    <figure class="text-center">
-                        <blockquote class="blockquote">
-                            <p>{{ 'Hero text paragraph 1' | trans | raw }}</p>
-                        </blockquote>
-                        <figcaption class="blockquote-footer">
-                            {{ 'Hero text paragraph 2' | trans | raw }}
-                        </figcaption>
-                    </figure>
-                    <a class="btn btn-primary btn-lg text-white" href="{{ path('app_web_projects_list') }}">
-                        <i class="fa-solid fa-search fa-fw"></i> {{ 'projects_cta' | trans | capitalize }}
-                    </a>
+                <div class="container my-5">
+                    <div class="p-5 text-center">
+                        <p class="col-lg-8 mx-auto fs-5 text-muted">
+                            {{ 'Homeland.P1' | trans | raw }}
+                        </p>
+                        <p class="col-lg-8 mx-auto fs-5 text-muted">
+                            {{ 'Homeland.P2' | trans }}
+                        </p>
+                        <p class="col-lg-8 mx-auto fs-5 text-muted mb-5">
+                            {{ 'Homeland.P3' | trans }}
+                        </p>
+                        <div class="d-inline-flex gap-2">
+                            <a class="btn btn-primary btn-lg text-white" href="{{ path('app_web_projects_list') }}">
+                                <i class="fa-solid fa-search fa-fw"></i> {{ 'projects_cta' | trans | capitalize }}
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
