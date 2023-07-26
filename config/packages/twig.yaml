@@ -25,7 +25,7 @@ twig:
         enterprise_zip: '%enterprise_zip%'
         enterprise_city: '%enterprise_city%'
         enterprise_state: '%enterprise_state%'
-        admin_tag_version: 'v1.04.001'
+        admin_tag_version: 'v1.05.001'
 
 when@test:
     twig:

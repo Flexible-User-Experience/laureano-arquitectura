@@ -6,10 +6,14 @@ TODO
 Changelog
 =========
 
-##### Version 1.05.001 (WIP)
+##### Version 1.06.001 (WIP)
  * fix bugs
  * keep working
  * fix problem with Scheduler Supervisor manager
+
+##### Version 1.05.001 (2023-07-26)
+ * improve frontend homepage CTA disposition & content
+ * add frontend homepage services
 
 ##### Version 1.04.001 (2023-07-25)
  * add privacy policy page
