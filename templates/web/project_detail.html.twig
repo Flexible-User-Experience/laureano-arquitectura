@@ -1,5 +1,7 @@
 {% extends 'web/base.html.twig' %}
 
+{% block meta_description %}{{ project.summary }}{% endblock %}
+
 {% block title %}{{ project.name }} · {{ parent() }}{% endblock %}
 
 {% block javascripts %}
