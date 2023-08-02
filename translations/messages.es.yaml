@@ -4,6 +4,9 @@ frontend:
     toggle: 'intercambiador'
     previous: 'anterior'
     next: 'siguiente'
+    meta:
+        keywords: 'arquitecto, arquitectura, estudio arquitectura, arquitectura moderna, arquitectura y diseño, arquitectura interiores, arquitectura industrial, proyecto arquitectónico, arquitectura efímera'
+        description: 'Información corporativa sobre el despacho de arquitectura y los servicios que ofrece a sus clientes.'
     flash:
         on_contact_message_submit_success: 'Tu mensaje se ha enviado correctamente. Te responderemos lo antes posible.'
 'read more': 'leer más'
