@@ -4,6 +4,9 @@ frontend:
     toggle: 'intercanviador'
     previous: 'anterior'
     next: 'següent'
+    meta:
+        keywords: 'arquitecte, arquitectura, estudi arquitectura, arquitectura moderna, arquitectura i disseny, arquitectura interiors, arquitectura industrial, projecte arqutectònic, arquitectura efímera'
+        description: 'Informació corporativa sobre el despatx d''aqruitectura i els serveis que ofereix als seus clients.'
     flash:
         on_contact_message_submit_success: 'El teu missatge s''ha enviat correctament. Et respondrem el més aviat possible.'
 'read more': 'llegir més'
