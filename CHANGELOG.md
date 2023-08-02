@@ -6,9 +6,11 @@ TODO
 Changelog
 =========
 
-##### Version 1.07.001 (WIP)
+##### Version 1.08.001 (WIP)
  * fix bugs
  * keep working
+
+##### Version 1.07.001 (2023-08-02)
  * fix problem with Scheduler Supervisor manager
  * split security ROLE_ADMIN roles
  * add frontend meta keywords
