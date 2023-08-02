@@ -11,6 +11,8 @@ Changelog
  * keep working
  * fix problem with Scheduler Supervisor manager
  * split security ROLE_ADMIN roles
+ * add frontend meta keywords
+ * add frontend meta description
 
 ##### Version 1.06.001 (2023-07-27)
  * improve frontend footer container & background color
