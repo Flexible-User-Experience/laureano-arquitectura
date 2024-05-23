@@ -6,7 +6,7 @@ use App\Entity\Expense;
 use App\Repository\ExpenseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Vich\UploaderBundle\Handler\DownloadHandler;
 
 #[Route('/admin/download-media')]

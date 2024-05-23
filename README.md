@@ -1,7 +1,7 @@
 Laureano Arquitectura v1.0
 ==========================
 
-A fresh new Symfony 5.4 LTS webapp project to manage Laureano Arquitectura enterprise.
+A fresh new Symfony 6.4 LTS webapp project to manage Laureano Arquitectura enterprise.
 
 ---
 
