@@ -8,6 +8,7 @@ Changelog
 
 ##### Version 1.08.002 (WIP)
  * keep working
+ * fix problem with Yarn encore prod during Ansible deployment
 
 ##### Version 1.08.001 (2024-05-23)
  * set minimum PHP version up to 8.3
