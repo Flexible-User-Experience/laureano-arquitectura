@@ -5,3 +5,4 @@ framework:
         fallbacks:
             - 'es'
             - 'en'
+        providers:
