@@ -6,9 +6,14 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.001 (WIP)
- * fix bugs
+##### Version 1.08.002 (WIP)
  * keep working
+
+##### Version 1.08.001 (2024-05-23)
+ * set minimum PHP version up to 8.3
+ * Symfony 6.4 LTS upgrade
+ * Composer dependencies update
+ * replace Kit Digital logos
 
 ##### Version 1.07.001 (2023-08-02)
  * fix problem with Scheduler Supervisor manager
