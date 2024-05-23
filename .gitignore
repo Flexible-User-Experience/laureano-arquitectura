@@ -19,6 +19,8 @@ google_apis_credentials.json
 /var/uploads/*
 !/var/uploads/.gitkeep
 /var/testing-database.db
+.env
+.env.test
 .idea
 .DS_Store
 ###< app/bundle ###
