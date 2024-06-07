@@ -6,10 +6,14 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.002 (WIP)
+##### Version 1.08.003 (WIP)
  * keep working
+
+##### Version 1.08.002 (2024-06-07)
+ * Composer recipe update doctrine/doctrine-bundle
  * fix problem with Yarn encore prod during Ansible deployment
  * Symfony v6.4.8 update
+ * add Kit Digital footer legal text
 
 ##### Version 1.08.001 (2024-05-23)
  * set minimum PHP version up to 8.3
