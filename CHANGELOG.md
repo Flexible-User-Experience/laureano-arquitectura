@@ -6,8 +6,12 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.003 (WIP)
+##### Version 1.08.004 (WIP)
  * keep working
+
+##### Version 1.08.003 (2024-09-09)
+ * remove jitter from DefaultScheduleProvider to avoid problem with Supervisor
+ * Composer dependencies update
 
 ##### Version 1.08.002 (2024-06-07)
  * Composer recipe update doctrine/doctrine-bundle
