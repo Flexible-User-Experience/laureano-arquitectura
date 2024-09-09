@@ -20,12 +20,8 @@ class DefaultScheduleProvider implements ScheduleProviderInterface
             RecurringMessage::every(
                 '1 day',
                 new UpdateGoogleAnalyticsVisitsMessage(),
-                from: new \DateTimeImmutable('12:47', new \DateTimeZone('Europe/Madrid'))
-            )->withJitter(3600)
-//            RecurringMessage::every(
-//                '120 seconds',
-//                new UpdateGoogleAnalyticsVisitsMessage()
-//            )
+                from: new \DateTimeImmutable('09:07', new \DateTimeZone('Europe/Madrid'))
+            )
         );
     }
 }
