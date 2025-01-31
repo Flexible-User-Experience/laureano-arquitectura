@@ -6,8 +6,11 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.005 (WIP)
+##### Version 1.08.006 (WIP)
  * keep working
+
+##### Version 1.08.005 (2025-01-31)
+ * fix problem with CKEditor version check
 
 ##### Version 1.08.004 (2025-01-31)
  * Composer dependencies update
