@@ -6,8 +6,11 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.004 (WIP)
+##### Version 1.08.005 (WIP)
  * keep working
+
+##### Version 1.08.004 (2025-01-31)
+ * Composer dependencies update
 
 ##### Version 1.08.003 (2024-09-09)
  * remove jitter from DefaultScheduleProvider to avoid problem with Supervisor
