@@ -11,15 +11,17 @@
             let marker;
             const position = { lat: 40.71065, lng: 0.57584 };
             async function initMap() {
-                const { Map } = await google.maps.importLibrary("maps");
+                const { Map } = await google.maps.importLibrary('maps');
                 map = new Map(document.getElementById("map"), {
                     center: position,
                     zoom: 15,
+                    mapId: '5f2cfbf7a03625cc'
                 });
-                marker = new google.maps.AdvancedMarkerElement({
+                const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
+                marker = new AdvancedMarkerElement({
+                    map,
                     position: position,
                     draggable: false,
-                    map: map,
                     title: "{{ project_title }}",
                 });
             }
