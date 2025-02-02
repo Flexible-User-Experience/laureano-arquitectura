@@ -96,9 +96,11 @@
                                         <img src="{{ vich_uploader_asset(project, 'imageFile') | imagine_filter('140x140') }}" class="d-inline-flex mb-3 me-3" alt="{{ project.name }}">
                                     </a>
                                     {% for image in project.images %}
-                                        <a data-bs-target="#carousel" data-bs-slide-to="{{ loop.index }}" class="opacity-25" aria-label="{{ image.name }}">
-                                            <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x140') }}" class="d-inline-flex mb-3 me-3" alt="{{ image.name }}">
-                                        </a>
+                                        {% if image.imageName is not null %}
+                                            <a data-bs-target="#carousel" data-bs-slide-to="{{ loop.index }}" class="opacity-25" aria-label="{{ image.name }}">
+                                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x140') }}" class="d-inline-flex mb-3 me-3" alt="{{ image.name }}">
+                                            </a>
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
