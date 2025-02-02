@@ -12,6 +12,7 @@ Changelog
 ##### Version 1.08.006 (2025-02-02)
  * Composer dependencies & recipes update
  * fix problem with empty project images
+ * fix missing Kit Digital image
 
 ##### Version 1.08.005 (2025-01-31)
  * fix problem with CKEditor version check
