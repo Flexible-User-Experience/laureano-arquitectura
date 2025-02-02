@@ -13,6 +13,7 @@ Changelog
  * Composer dependencies & recipes update
  * fix error 500 problem with empty project images
  * fix missing Kit Digital image
+ * fix deprecated Google Map Marker usage
 
 ##### Version 1.08.005 (2025-01-31)
  * fix problem with CKEditor version check
