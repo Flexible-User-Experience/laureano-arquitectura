@@ -53,24 +53,24 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <img
-                                                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                                        src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
-                                                    }) }}
-                                                    src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                                                    class="d-block w-100"
-                                                    alt="{{ project.name }}"
+                                                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                                    src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
+                                                }) }}
+                                                src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                                class="d-block w-100"
+                                                alt="{{ project.name }}"
                                             >
                                         </div>
                                         {% for image in project.images %}
                                             {% if image.imageName is not null %}
                                                 <div class="carousel-item">
                                                     <img
-                                                            {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                                                src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
-                                                            }) }}
-                                                            src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                                                            class="d-block w-100"
-                                                            alt="{{ image.name }}"
+                                                        {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                                            src: vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY')
+                                                        }) }}
+                                                        src="{{ data_uri_thumbnail(vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                                                        class="d-block w-100"
+                                                        alt="{{ image.name }}"
                                                     >
                                                 </div>
                                             {% endif %}
@@ -108,12 +108,12 @@
                     {% else %}
                         {# render only main image #}
                         <img
-                                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                    src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
-                                }) }}
-                                src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
-                                class="img-fluid mb-3 mb-sm-0"
-                                alt="{{ project.name }}"
+                            {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                src: vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY')
+                            }) }}
+                            src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('1200xY'), 4, 3) }}"
+                            class="img-fluid mb-3 mb-sm-0"
+                            alt="{{ project.name }}"
                         >
                     {% endif %}
                 {% endif %}
