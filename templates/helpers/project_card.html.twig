@@ -2,12 +2,12 @@
     <a href="{{ path('app_web_project_detail', {'slug': project.slug}) }}">
         {% if project.imageName is not null %}
             <img
-                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                        src: vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY')
-                    }) }}
-                    src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY'), 4, 3) }}"
-                    class="card-img-top"
-                    alt="{{ project.name }}"
+                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                    src: vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY')
+                }) }}
+                src="{{ data_uri_thumbnail(vich_uploader_asset(project, 'imageFile') | imagine_filter('800xY'), 4, 3) }}"
+                class="card-img-top"
+                alt="{{ project.name }}"
             >
         {% endif %}
     </a>

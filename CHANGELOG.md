@@ -6,8 +6,14 @@ TODO
 Changelog
 =========
 
-##### Version 1.08.006 (WIP)
+##### Version 1.08.007 (WIP)
  * keep working
+
+##### Version 1.08.006 (2025-02-02)
+ * Composer dependencies & recipes update
+ * fix error 500 problem with empty project images
+ * fix missing Kit Digital image
+ * fix deprecated Google Map Marker usage
 
 ##### Version 1.08.005 (2025-01-31)
  * fix problem with CKEditor version check

@@ -7,7 +7,7 @@ A fresh new Symfony 6.4 LTS webapp project to manage Laureano Arquitectura enter
 
 #### Installation requirements
 
- * PHP 8.2+
+ * PHP 8.3+
  * MySQL 8.0+
  * Composer 2.0+
  * Node 18.0+
